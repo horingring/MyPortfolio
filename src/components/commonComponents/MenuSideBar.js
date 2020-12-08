@@ -3,16 +3,22 @@ import MenuSideBarTab from "./MenuSideBarTab";
 
 const MenuSideBar = () => {
   const [onFixed, setOnFixed] = useState(false);
+
+  //scrollTop이 일정지점에 이를 시, state(onFixed) 변경
   const onScroll = (e) => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
     // console.log(scrollTop);
-    if (scrollTop >= 722.4) {
+    const homeEl = document.getElementsByClassName("home-wrapper")[0];
+    const homeHeight = homeEl.offsetHeight;
+    if (scrollTop >= homeHeight) {
       setOnFixed(true);
     } else {
       setOnFixed(false);
     }
   };
 
+  //mount되었을 때, scroll시 onScroll 실행
+  //unmount되었을 때, 위 EventListener 제거
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
     return () => {
