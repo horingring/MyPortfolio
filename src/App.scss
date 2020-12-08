@@ -1,8 +1,66 @@
+//공통
+.page-wrapper {
+  height: 100vh;
+}
+
 @mixin xyCenter() {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.xyCenter {
+  @include xyCenter();
+}
+
+@mixin flexRow() {
+  display: flex;
+  flex-direction: row;
+}
+.flexRow {
+  @include flexRow();
+}
+
+// 미디어쿼리 (for 반응형 웹)
+@media (min-width: 1024px) {
+  .pageTitleContainer-wrapper {
+    width: 27vw;
+  }
+  .pageContentContainer-wrapper {
+    width: 67vw;
+  }
+  .menuSideBar-wrapper {
+    // width: 6vw;
+    width: 60px;
+  }
+}
+@media (max-width: 1023px) and (min-width: 768px) {
+  .pageTitleContainer-wrapper {
+    width: 28vw;
+  }
+  .pageContentContainer-wrapper {
+    width: 65vw;
+    background: blue;
+  }
+  .menuSideBar-wrapper {
+    // width: 7vw;
+    width: 55px;
+  }
+}
+@media (max-width: 767px) {
+  .pageTitleContainer-wrapper {
+    display: none;
+  }
+  .pageContentContainer-wrapper {
+    width: 87vw;
+  }
+  .menuSideBar-wrapper {
+    // width: 13vw;
+    width: 50px;
+  }
+}
+
+// <Home> 컴포넌트
 .home-wrapper {
   background-image: url("./img/air-balloons.jpg");
   background-position-x: center;
@@ -63,6 +121,90 @@
   }
 }
 
-.pageContainer-wrapper {
-  height: 100vh;
+// <MenuSideBar> 컴포넌트
+.menuSideBar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgb(74, 66, 145);
+  .menuSideBar {
+    padding: 100% 0;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    .menuSideBarTab-wrapper {
+      padding: 50% 10%;
+      &:hover {
+        cursor: pointer;
+        color: white;
+      }
+    }
+  }
+}
+
+// <MyInfo> 컴포넌트
+.myInfo {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  .pageTitleContainer-wrapper,
+  .pageContentContainer-wrapper,
+  .menuSideBar-wrapper {
+    height: 100vh;
+  }
+
+  // <PageTitleContainer> 컴포넌트
+  .pageTitleContainer-wrapper {
+    background-image: url("./img/mountain.jpg");
+    background-size: auto 100vh;
+    background-position-x: 580px;
+    background-attachment: fixed;
+    position: relative;
+    .pageTitleContainer {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      color: white;
+      background: rgba($color: #000000, $alpha: 0.2);
+      h1 {
+        margin-left: 5%;
+        font-weight: 900;
+      }
+    }
+  }
+
+  // <PageContentContainer> 컴포넌트
+  .pageContentContainer-wrapper {
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 30px;
+    .pageContentContainer {
+      height: 100%;
+      .pageContentSection-wrapper {
+        height: 50%;
+        .pageContentSection {
+          height: 100%;
+          h2 {
+            width: fit-content;
+            height: 10%;
+            margin: 0;
+            border-bottom: 5px solid black;
+          }
+          .sectionArticle {
+            width: 100%;
+            height: 90%;
+            .sectionArticle-column {
+              box-sizing: border-box;
+              padding: 20px 20px 20px 0;
+              width: 50%;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
 }

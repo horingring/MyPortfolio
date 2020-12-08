@@ -1,14 +1,15 @@
 import React from "react";
 import Home from "./components/Home/Home";
-import PageContainer from "./components/PageContainer/PageContainer";
+import MyInfo from "./components/MyInfo/MyInfo";
+import Project from "./components/Project/Project";
 import "./App.scss";
 
 const App = () => {
   return (
     <div className="App">
       <Home />
-      <PageContainer />
-      <PageContainer />
+      <MyInfo />
+      <Project />
     </div>
   );
 };
