@@ -127,6 +127,9 @@
   top: 0;
   right: 0;
   background: rgb(74, 66, 145);
+  &.onFixed {
+    position: fixed;
+  }
   .menuSideBar {
     padding: 100% 0;
     box-sizing: border-box;
