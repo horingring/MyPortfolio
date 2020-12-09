@@ -31,10 +31,10 @@ const MenuSideBar = (props) => {
   return (
     <div className={`menuSideBar-wrapper${onFixed ? " onFixed" : ""}`}>
       <div className="menuSideBar">
-        <MenuSideBarTab iconName="faHome" menuBarOnClick={menuBarOnClick} />
-        <MenuSideBarTab iconName="faUser" menuBarOnClick={menuBarOnClick} />
-        <MenuSideBarTab iconName="faTools" menuBarOnClick={menuBarOnClick} />
-        <MenuSideBarTab iconName="faEnvelope" menuBarOnClick={menuBarOnClick} />
+        <MenuSideBarTab menuName="Home" menuBarOnClick={menuBarOnClick} />
+        <MenuSideBarTab menuName="User" menuBarOnClick={menuBarOnClick} />
+        <MenuSideBarTab menuName="Tools" menuBarOnClick={menuBarOnClick} />
+        <MenuSideBarTab menuName="Envelope" menuBarOnClick={menuBarOnClick} />
       </div>
     </div>
   );
