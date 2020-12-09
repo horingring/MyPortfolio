@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import MenuSideBarTab from "./MenuSideBarTab";
 
-const MenuSideBar = () => {
+const MenuSideBar = (props) => {
+  const { menuBarOnClick } = props; // for, menuBar클릭시 currentPage state변경
+
   const [onFixed, setOnFixed] = useState(false);
 
   //scrollTop이 일정지점에 이를 시, state(onFixed) 변경
@@ -29,10 +31,10 @@ const MenuSideBar = () => {
   return (
     <div className={`menuSideBar-wrapper${onFixed ? " onFixed" : ""}`}>
       <div className="menuSideBar">
-        <MenuSideBarTab iconName="faHome" />
-        <MenuSideBarTab iconName="faUser" />
-        <MenuSideBarTab iconName="faTools" />
-        <MenuSideBarTab iconName="faEnvelope" />
+        <MenuSideBarTab iconName="faHome" menuBarOnClick={menuBarOnClick} />
+        <MenuSideBarTab iconName="faUser" menuBarOnClick={menuBarOnClick} />
+        <MenuSideBarTab iconName="faTools" menuBarOnClick={menuBarOnClick} />
+        <MenuSideBarTab iconName="faEnvelope" menuBarOnClick={menuBarOnClick} />
       </div>
     </div>
   );
