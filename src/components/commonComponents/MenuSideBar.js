@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import MenuSideBarTab from "./MenuSideBarTab";
 
 const MenuSideBar = (props) => {
-  const { menuBarOnClick } = props; // for, menuBar클릭시 currentPage state변경
+  const { menuBarOnClick, getMenuInfo } = props;
+  /* menuBarOnClick : menuBar클릭시 currentPage state변경
+     getMenuInfo : 메뉴정보 불러오기(for getIcon, setCurrentPage)*/
 
   const [onFixed, setOnFixed] = useState(false);
 
@@ -31,10 +33,26 @@ const MenuSideBar = (props) => {
   return (
     <div className={`menuSideBar-wrapper${onFixed ? " onFixed" : ""}`}>
       <div className="menuSideBar">
-        <MenuSideBarTab menuName="HOME" menuBarOnClick={menuBarOnClick} />
-        <MenuSideBarTab menuName="MY INFO" menuBarOnClick={menuBarOnClick} />
-        <MenuSideBarTab menuName="PROJECT" menuBarOnClick={menuBarOnClick} />
-        <MenuSideBarTab menuName="CONTACT ME" menuBarOnClick={menuBarOnClick} />
+        <MenuSideBarTab
+          menuName="HOME"
+          menuBarOnClick={menuBarOnClick}
+          getMenuInfo={getMenuInfo}
+        />
+        <MenuSideBarTab
+          menuName="MY INFO"
+          menuBarOnClick={menuBarOnClick}
+          getMenuInfo={getMenuInfo}
+        />
+        <MenuSideBarTab
+          menuName="PROJECT"
+          menuBarOnClick={menuBarOnClick}
+          getMenuInfo={getMenuInfo}
+        />
+        <MenuSideBarTab
+          menuName="CONTACT ME"
+          menuBarOnClick={menuBarOnClick}
+          getMenuInfo={getMenuInfo}
+        />
       </div>
     </div>
   );
