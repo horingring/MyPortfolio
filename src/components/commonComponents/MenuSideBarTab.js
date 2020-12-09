@@ -12,27 +12,27 @@ const MenuSideBarTab = (props) => {
   const { menuName } = props;
 
   const getMenuInfo = () => {
-    let menu_name = null;
+    let icon_name = null;
     let menu_num = 0;
-    if (menuName === "Home") {
-      menu_name = faHome;
+    if (menuName === "HOME") {
+      icon_name = faHome;
       menu_num = 1;
-    } else if (menuName === "User") {
-      menu_name = faUser;
+    } else if (menuName === "MY INFO") {
+      icon_name = faUser;
       menu_num = 2;
-    } else if (menuName === "Tools") {
-      menu_name = faTools;
+    } else if (menuName === "PROJECT") {
+      icon_name = faTools;
       menu_num = 3;
-    } else if (menuName === "Envelope") {
-      menu_name = faEnvelope;
+    } else if (menuName === "CONTACT ME") {
+      icon_name = faEnvelope;
       menu_num = 4;
     }
-    return { menu_name, menu_num };
+    return { icon_name, menu_num };
   };
 
-  const getMenuName = () => {
-    let { menu_name } = getMenuInfo();
-    return menu_name;
+  const getIconName = () => {
+    let { icon_name } = getMenuInfo();
+    return icon_name;
   };
 
   const onClick = () => {
@@ -43,7 +43,7 @@ const MenuSideBarTab = (props) => {
 
   return (
     <div className="menuSideBarTab-wrapper" onClick={onClick}>
-      <FontAwesomeIcon icon={getMenuName()} size="2x" />
+      <FontAwesomeIcon icon={getIconName()} size="2x" />
     </div>
   );
 };
