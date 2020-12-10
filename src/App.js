@@ -48,31 +48,38 @@ const App = () => {
     console.log("clickMode false 완료");
   };
 
-  //각 btn에 전달될 scrollTo 함수
-  const scrollToPage = (currentPage) => {
-    // 각 page의 height값
+  // 각 page의 height값 return하는 함수
+  const getPageHeightList = () => {
+    // 각 page height의 list
+    let pageHeightList = [];
+
+    //각 page의 height값 구하기
     const homeHeight = document.getElementsByClassName("home-wrapper")[0]
       .offsetHeight;
     const myInfoHeight = document.getElementsByClassName("myInfo-wrapper")[0]
       .offsetHeight;
     const projectHeight = document.getElementsByClassName("project-wrapper")[0]
       .offsetHeight;
+    pageHeightList = [0, homeHeight, myInfoHeight, projectHeight];
 
-    // 각 page height의 list
-    const pageHeightList = [0, homeHeight, myInfoHeight, projectHeight];
+    return pageHeightList;
+  };
 
-    // currentPage에 맞는 y좌표(pageTop) 구하는 함수
-    const getPageTop = (pageIndex) => {
-      let pageTop = 0;
-      for (let i = 0; i < pageHeightList.length; i++) {
-        pageTop = pageTop + pageHeightList[i];
-        if (i === pageIndex - 1) {
-          console.log(pageTop);
-          return pageTop;
-        }
+  // currentPage에 맞는 y좌표(pageTop) 구하는 함수
+  const getPageTop = (pageNumber) => {
+    let pageHeightList = getPageHeightList();
+    let pageTop = 0;
+    for (let i = 0; i < pageHeightList.length; i++) {
+      pageTop = pageTop + pageHeightList[i];
+      if (i === pageNumber - 1) {
+        return pageTop;
       }
-    };
+    }
+  };
 
+  //각 btn에 전달될 scrollTo 함수
+  const scrollToPage = (currentPage) => {
+    let pageHeightList = getPageHeightList();
     // 실행문 of scrollToPage
     if (clickMode) {
       console.log("scrollToPage 실행문");
@@ -116,6 +123,9 @@ const App = () => {
         menuBarOnClick={menuBarOnClick}
         getMenuInfo={getMenuInfo}
         currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        getPageTop={getPageTop}
+        clickMode={clickMode}
       />
       <Project />
     </div>
