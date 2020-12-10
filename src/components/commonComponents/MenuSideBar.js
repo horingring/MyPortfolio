@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import MenuSideBarTab from "./MenuSideBarTab";
 
 const MenuSideBar = (props) => {
-  const { menuBarOnClick, getMenuInfo } = props;
+  const { menuBarOnClick, getMenuInfo, currentPage } = props;
   /* menuBarOnClick : menuBar클릭시 currentPage state변경
-     getMenuInfo : 메뉴정보 불러오기(for getIcon, setCurrentPage)*/
+     getMenuInfo : 메뉴정보 불러오기(for getIcon, setCurrentPage)
+     currentPage : <App>의 state. 현재 위치한 페이지 정보 표시
+  */
 
   const [onFixed, setOnFixed] = useState(false);
 
@@ -21,6 +23,24 @@ const MenuSideBar = (props) => {
     }
   };
 
+  const getMenuSideBarTab = () => {
+    let menuSideBarlist = [];
+    let menuName = ["HOME", "MY INFO", "PROJECT", "CONTACT ME"];
+    for (let i = 0; i < menuName.length; i++) {
+      menuSideBarlist.push(
+        <MenuSideBarTab
+          key={i}
+          tabIndex={i}
+          menuName={menuName[i]}
+          menuBarOnClick={menuBarOnClick}
+          getMenuInfo={getMenuInfo}
+          currentPage={currentPage}
+        />
+      );
+    }
+    return menuSideBarlist;
+  };
+
   //mount되었을 때, scroll시 onScroll 실행
   //unmount되었을 때, 위 EventListener 제거
   useEffect(() => {
@@ -33,7 +53,8 @@ const MenuSideBar = (props) => {
   return (
     <div className={`menuSideBar-wrapper${onFixed ? " onFixed" : ""}`}>
       <div className="menuSideBar">
-        <MenuSideBarTab
+        {getMenuSideBarTab()}
+        {/* <MenuSideBarTab
           menuName="HOME"
           menuBarOnClick={menuBarOnClick}
           getMenuInfo={getMenuInfo}
@@ -52,7 +73,7 @@ const MenuSideBar = (props) => {
           menuName="CONTACT ME"
           menuBarOnClick={menuBarOnClick}
           getMenuInfo={getMenuInfo}
-        />
+        /> */}
       </div>
     </div>
   );

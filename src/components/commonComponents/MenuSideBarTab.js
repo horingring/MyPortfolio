@@ -2,10 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MenuSideBarTab = (props) => {
-  const { menuName } = props;
-  const { menuBarOnClick, getMenuInfo } = props;
+  const { menuName, tabIndex } = props;
+
+  //props From <App>
+  const { menuBarOnClick, getMenuInfo, currentPage } = props;
   /* menuBarOnClick : menuBar클릭시 currentPage state변경
-     getMenuInfo : 메뉴정보 불러오기(for getIcon, setCurrentPage)*/
+     getMenuInfo : 메뉴정보 불러오기(for getIcon, setCurrentPage)
+     currentPage : <App>의 state. 현재 위치한 페이지 정보 표시
+  */
 
   const getIconName = () => {
     let { icon_name } = getMenuInfo(menuName);
@@ -19,7 +23,12 @@ const MenuSideBarTab = (props) => {
   };
 
   return (
-    <div className="menuSideBarTab-wrapper" onClick={onClick}>
+    <div
+      className={`menuSideBarTab-wrapper ${
+        currentPage === tabIndex + 1 ? "onCurrentPage" : ""
+      }`}
+      onClick={onClick}
+    >
       <FontAwesomeIcon icon={getIconName()} size="2x" />
     </div>
   );
