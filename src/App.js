@@ -88,15 +88,6 @@ const App = () => {
           window.scrollTo(0, getPageTop(j));
         }
       }
-      // if(currentPage===1){
-      //   window.scrollTo(0,getPageTop(1));
-      // }
-      // else if(currentPage===2){
-      //   window.scrollTo(0,getPageTop(2));
-      // }
-      // else if(currentPage===3){
-      //   window.scrollTo(0,getPageTop(3));
-      // }
     }
   };
 
