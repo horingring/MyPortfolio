@@ -28,29 +28,7 @@ const MenuHomeBar = (props) => {
 
   return (
     <div className="menuHomeBar-wrapper">
-      <div className="menuHomeBar">
-        {getMenuHomeBarTab()}
-        {/* <MenuHomeBarTab
-          menuName="HOME"
-          menuBarOnClick={menuBarOnClick}
-          getMenuInfo={getMenuInfo}
-        />
-        <MenuHomeBarTab
-          menuName="MY INFO"
-          menuBarOnClick={menuBarOnClick}
-          getMenuInfo={getMenuInfo}
-        />
-        <MenuHomeBarTab
-          menuName="PROJECT"
-          menuBarOnClick={menuBarOnClick}
-          getMenuInfo={getMenuInfo}
-        />
-        <MenuHomeBarTab
-          menuName="CONTACT ME"
-          menuBarOnClick={menuBarOnClick}
-          getMenuInfo={getMenuInfo}
-        /> */}
-      </div>
+      <div className="menuHomeBar">{getMenuHomeBarTab()}</div>
     </div>
   );
 };

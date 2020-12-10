@@ -18,7 +18,6 @@ const MenuSideBarTab = (props) => {
 
   const onClick = () => {
     let { menu_num } = getMenuInfo(menuName);
-    console.log("menuSideBar btn 클릭");
     menuBarOnClick(menu_num);
   };
 

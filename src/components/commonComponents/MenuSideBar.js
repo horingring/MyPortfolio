@@ -52,29 +52,7 @@ const MenuSideBar = (props) => {
 
   return (
     <div className={`menuSideBar-wrapper${onFixed ? " onFixed" : ""}`}>
-      <div className="menuSideBar">
-        {getMenuSideBarTab()}
-        {/* <MenuSideBarTab
-          menuName="HOME"
-          menuBarOnClick={menuBarOnClick}
-          getMenuInfo={getMenuInfo}
-        />
-        <MenuSideBarTab
-          menuName="MY INFO"
-          menuBarOnClick={menuBarOnClick}
-          getMenuInfo={getMenuInfo}
-        />
-        <MenuSideBarTab
-          menuName="PROJECT"
-          menuBarOnClick={menuBarOnClick}
-          getMenuInfo={getMenuInfo}
-        />
-        <MenuSideBarTab
-          menuName="CONTACT ME"
-          menuBarOnClick={menuBarOnClick}
-          getMenuInfo={getMenuInfo}
-        /> */}
-      </div>
+      <div className="menuSideBar">{getMenuSideBarTab()}</div>
     </div>
   );
 };

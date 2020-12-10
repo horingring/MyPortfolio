@@ -37,21 +37,73 @@ const App = () => {
   const menuBarOnClick = (number) => {
     setCurrentPage(number);
     setClickMode(true);
+    console.log("clickMode true 완료");
   };
 
   //scroll시 click모드 -> scroll모드
   const onScroll = () => {
+    console.log("onScroll 실행");
+    //clickMode(state)가 fasle일 경우 다시 실행시킬 필요가 없다
     setClickMode(false);
+    console.log("clickMode false 완료");
+  };
+
+  //각 btn에 전달될 scrollTo 함수
+  const scrollToPage = (currentPage) => {
+    // 각 page의 height값
+    const homeHeight = document.getElementsByClassName("home-wrapper")[0]
+      .offsetHeight;
+    const myInfoHeight = document.getElementsByClassName("myInfo-wrapper")[0]
+      .offsetHeight;
+    const projectHeight = document.getElementsByClassName("project-wrapper")[0]
+      .offsetHeight;
+
+    // 각 page height의 list
+    const pageHeightList = [0, homeHeight, myInfoHeight, projectHeight];
+
+    // currentPage에 맞는 y좌표(pageTop) 구하는 함수
+    const getPageTop = (pageIndex) => {
+      let pageTop = 0;
+      for (let i = 0; i < pageHeightList.length; i++) {
+        pageTop = pageTop + pageHeightList[i];
+        if (i === pageIndex - 1) {
+          console.log(pageTop);
+          return pageTop;
+        }
+      }
+    };
+
+    // 실행문 of scrollToPage
+    if (clickMode) {
+      console.log("scrollToPage 실행문");
+      for (let j = 1; j <= pageHeightList.length; j++) {
+        if (currentPage === j) {
+          window.scrollTo(0, getPageTop(j));
+        }
+      }
+      // if(currentPage===1){
+      //   window.scrollTo(0,getPageTop(1));
+      // }
+      // else if(currentPage===2){
+      //   window.scrollTo(0,getPageTop(2));
+      // }
+      // else if(currentPage===3){
+      //   window.scrollTo(0,getPageTop(3));
+      // }
+    }
   };
 
   //mount되었을 때, scroll시 onScroll 실행
   //unmount되었을 때, 위 EventListener 제거
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
+    if (clickMode) {
+      scrollToPage(currentPage);
+      window.addEventListener("scroll", onScroll);
+    }
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  });
 
   return (
     <div className="App">
