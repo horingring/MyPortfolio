@@ -80,6 +80,10 @@
           margin: 10px 20px;
           font-weight: 600;
           color: rgb(190, 190, 190);
+          transition: color 0.25s ease-in-out;
+          &.onCurrentPage {
+            color: white;
+          }
           &:hover {
             cursor: pointer;
             color: white;
@@ -140,6 +144,10 @@
     justify-content: space-around;
     .menuSideBarTab-wrapper {
       padding: 50% 10%;
+      transition: color 0.35s ease-in-out;
+      &.onCurrentPage {
+        color: white;
+      }
       &:hover {
         cursor: pointer;
         color: white;
