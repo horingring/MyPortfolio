@@ -24,7 +24,7 @@ const MenuSideBar = (props) => {
   //scrollTop이 일정지점에 이를 시, state(onFixed) 변경
   const onScroll = (e) => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-    // console.log(scrollTop);
+    console.log(scrollTop);
     if (scrollTop >= getPageTop(2)) {
       setOnFixed(true);
       if (scrollTop < getPageTop(3)) {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Home from "./components/Home/Home";
 import MyInfo from "./components/MyInfo/MyInfo";
 import Project from "./components/Project/Project";
+import ContactMe from "./components/ContactMe/ContactMe";
 import "./App.scss";
 import {
   faHome,
@@ -119,6 +120,7 @@ const App = () => {
         clickMode={clickMode}
       />
       <Project />
+      <ContactMe />
     </div>
   );
 };
