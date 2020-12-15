@@ -7,7 +7,7 @@ const Project = () => {
     <div className="project-wrapper page-wrapper">
       <div className="project">
         <PageTitleContainer titleText="Skills & Project." />
-        <PageContentContainer />
+        <PageContentContainer pageName="project" />
       </div>
     </div>
   );

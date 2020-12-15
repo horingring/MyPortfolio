@@ -1,13 +1,30 @@
 import React from "react";
 import PageContentSection from "./PageContentSection";
 
-const PageContentContainer = () => {
+const PageContentContainer = (props) => {
+  const { pageName } = props;
+
+  const getContentSection = () => {
+    if (pageName === "myInfo") {
+      return (
+        <>
+          <PageContentSection contentTitle="Strength" />
+          <PageContentSection contentTitle="My Info" />
+        </>
+      );
+    } else if (pageName === "project") {
+      return (
+        <>
+          <PageContentSection contentTitle="Web Tech" />
+          <PageContentSection contentTitle="Project" />
+        </>
+      );
+    }
+  };
+
   return (
     <div className="pageContentContainer-wrapper">
-      <div className="pageContentContainer">
-        <PageContentSection contentTitle="Strength" />
-        <PageContentSection contentTitle="My Info" />
-      </div>
+      <div className="pageContentContainer">{getContentSection()}</div>
     </div>
   );
 };
