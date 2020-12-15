@@ -49,42 +49,52 @@ const App = () => {
     console.log("clickMode false 완료");
   };
 
-  // 각 page의 height값 return하는 함수
-  const getPageHeightList = () => {
-    // 각 page height의 list
-    let pageHeightList = [];
+  // 각 page의 div를 return하는 함수
+  const getPageDivList = () => {
+    // 각 page div의 list
+    let pageDivList = [];
 
-    //각 page의 height값 구하기
-    const homeHeight = document.getElementsByClassName("home-wrapper")[0]
-      .offsetHeight;
-    const myInfoHeight = document.getElementsByClassName("myInfo-wrapper")[0]
-      .offsetHeight;
-    const projectHeight = document.getElementsByClassName("project-wrapper")[0]
-      .offsetHeight;
-    pageHeightList = [0, homeHeight, myInfoHeight, projectHeight];
+    //각 page의 div 가져오기
+    const homeWrapperDiv = document.getElementsByClassName("home-wrapper")[0];
 
-    return pageHeightList;
+    const myInfoWrapperDiv = document.getElementsByClassName(
+      "myInfo-wrapper"
+    )[0];
+
+    const projectWrapperDiv = document.getElementsByClassName(
+      "project-wrapper"
+    )[0];
+    const contactMeWrapperDiv = document.getElementsByClassName(
+      "contactMe-wrapper"
+    )[0];
+
+    pageDivList = [
+      homeWrapperDiv,
+      myInfoWrapperDiv,
+      projectWrapperDiv,
+      contactMeWrapperDiv,
+    ];
+
+    return pageDivList;
   };
 
-  // currentPage에 맞는 y좌표(pageTop) 구하는 함수
+  // currentPage에 맞는 y좌표(pageAbsoluteTop) 구하는 함수
   const getPageTop = (pageNumber) => {
-    let pageHeightList = getPageHeightList();
-    let pageTop = 0;
-    for (let i = 0; i < pageHeightList.length; i++) {
-      pageTop = pageTop + pageHeightList[i];
-      if (i === pageNumber - 1) {
-        return pageTop;
-      }
-    }
+    let pageDivList = getPageDivList();
+    let pageAbsoluteTop = 0;
+    pageAbsoluteTop =
+      window.pageYOffset +
+      pageDivList[pageNumber - 1].getBoundingClientRect().top;
+    return pageAbsoluteTop;
   };
 
   //각 btn에 전달될 scrollTo 함수
   const scrollToPage = (currentPage) => {
-    let pageHeightList = getPageHeightList();
+    let pageDivList = getPageDivList();
     // 실행문 of scrollToPage
     if (clickMode) {
       console.log("scrollToPage 실행문");
-      for (let j = 1; j <= pageHeightList.length; j++) {
+      for (let j = 1; j <= pageDivList.length; j++) {
         if (currentPage === j) {
           window.scrollTo(0, getPageTop(j));
         }
@@ -92,7 +102,12 @@ const App = () => {
     }
   };
 
-  //mount되었을 때, scroll시 onScroll 실행
+  //첫 mount시, scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  //update되었을 때, scroll시 onScroll 실행
   //unmount되었을 때, 위 EventListener 제거
   useEffect(() => {
     if (clickMode) {
