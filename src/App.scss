@@ -32,6 +32,7 @@
   .menuSideBar-wrapper {
     // width: 6vw;
     width: 60px;
+    z-index: 999;
   }
 }
 @media (max-width: 1023px) and (min-width: 768px) {
@@ -169,7 +170,7 @@
     height: 100vh;
   }
 
-  // <PageTitleContainer> 컴포넌트
+  // <PageTitleContainer> 컴포넌트 (of <MyInfo>)
   .pageTitleContainer-wrapper {
     background-image: url("./img/mountain.jpg");
     background-size: auto 100vh;
@@ -192,7 +193,73 @@
     }
   }
 
-  // <PageContentContainer> 컴포넌트
+  // <PageContentContainer> 컴포넌트 (of <MyInfo>)
+  .pageContentContainer-wrapper {
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 30px;
+    .pageContentContainer {
+      height: 100%;
+      .pageContentSection-wrapper {
+        height: 50%;
+        .pageContentSection {
+          height: 100%;
+          h2 {
+            width: fit-content;
+            height: 10%;
+            margin: 0;
+            border-bottom: 5px solid black;
+          }
+          .sectionArticle {
+            width: 100%;
+            height: 90%;
+            .sectionArticle-column {
+              box-sizing: border-box;
+              padding: 20px 20px 20px 0;
+              width: 50%;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//<Project> 컴포넌트
+.project {
+  background-color: rgba($color: #6ea0c1, $alpha: 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  .pageTitleContainer-wrapper,
+  .pageContentContainer-wrapper {
+    height: 100vh;
+  }
+
+  // <PageTitleContainer> 컴포넌트 (of <Project>)
+  .pageTitleContainer-wrapper {
+    background-image: url("./img/notebook.jpg");
+    background-size: auto 100vh;
+    background-color: rgba($color: #7f561e, $alpha: 0.7);
+    background-repeat: no-repeat;
+    background-position-x: -400px;
+    background-attachment: fixed;
+    position: relative;
+    .pageTitleContainer {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      color: white;
+      background: rgba($color: #ffffff, $alpha: 0.13);
+      h1 {
+        margin-left: 5%;
+        font-weight: 900;
+      }
+    }
+  }
+
+  // <PageContentContainer> 컴포넌트 (of <Project>)
   .pageContentContainer-wrapper {
     height: 100vh;
     box-sizing: border-box;
