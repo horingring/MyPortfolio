@@ -63,6 +63,8 @@
 // <Home> 컴포넌트
 .home-wrapper {
   background-image: url("./img/air-balloons.jpg");
+  background-repeat: no-repeat;
+  background-color: rgba($color: #6ea0c1, $alpha: 0.8);
   background-position-x: center;
   background-position-y: center;
   .home {
@@ -171,7 +173,10 @@
   .pageTitleContainer-wrapper {
     background-image: url("./img/mountain.jpg");
     background-size: auto 100vh;
-    background-position-x: 580px;
+    background-color: rgba($color: #c8b49f, $alpha: 0.7);
+    background-repeat: no-repeat;
+    background-position-x: -500px;
+    // background-position-x: 580px;
     background-attachment: fixed;
     position: relative;
     .pageTitleContainer {

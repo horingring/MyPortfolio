@@ -24,18 +24,24 @@ const MenuSideBar = (props) => {
   //scrollTop이 일정지점에 이를 시, state(onFixed) 변경
   const onScroll = (e) => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-    // console.log(scrollTop);
-    if (scrollTop >= getPageTop(2)) {
+    if (scrollTop >= getPageTop(2) - 1) {
+      // 간혹 브라우저가 어떤 높이일 때 menuTab 클릭 시 getPageTop의 높이가 -0.000...으로 되는 경우가 있다.
+      // 왜 그런지는 도통 모르겠지만 조건에 -1을 주니 해당 문제는 피할 수 있었다.
+      // (*원래 -1을 준 이유는 '반올림'의 문제라 생각했기 때문이다. 그런데 그것 때문이 아닌 것 같다.)
       setOnFixed(true);
       if (scrollTop < getPageTop(3)) {
+        console.log("스크롤탑: ", scrollTop, ", getPageTop: ", getPageTop(2));
         setCurrentPage(2);
       } else if (scrollTop >= getPageTop(3) && scrollTop < getPageTop(4)) {
+        console.log("스크롤탑: ", scrollTop, ", getPageTop : ", getPageTop(3));
         setCurrentPage(3);
       } else if (scrollTop >= getPageTop(4)) {
+        console.log("스크롤탑: ", scrollTop, ", getPageTop : ", getPageTop(4));
         setCurrentPage(4);
       }
     } else {
       setOnFixed(false);
+      console.log("스크롤탑: ", scrollTop, ", getPageTop : ", getPageTop(1));
       setCurrentPage(1);
     }
   };
