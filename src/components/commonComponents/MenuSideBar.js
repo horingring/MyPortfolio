@@ -30,21 +30,21 @@ const MenuSideBar = (props) => {
       // (*원래 -1을 준 이유는 '반올림'의 문제라 생각했기 때문이다. 그런데 그것 때문이 아닌 것 같다.)
       setOnFixed(true);
       if (scrollTop < getPageTop(3) - 1) {
-        console.log("스크롤탑: ", scrollTop, ", getPageTop: ", getPageTop(2));
+        // console.log("스크롤탑: ", scrollTop, ", getPageTop: ", getPageTop(2));
         setCurrentPage(2);
       } else if (
         scrollTop >= getPageTop(3) - 1 &&
         scrollTop < getPageTop(4) - 1
       ) {
-        console.log("스크롤탑: ", scrollTop, ", getPageTop : ", getPageTop(3));
+        // console.log("스크롤탑: ", scrollTop, ", getPageTop : ", getPageTop(3));
         setCurrentPage(3);
       } else if (scrollTop >= getPageTop(4) - 1) {
-        console.log("스크롤탑: ", scrollTop, ", getPageTop : ", getPageTop(4));
+        // console.log("스크롤탑: ", scrollTop, ", getPageTop : ", getPageTop(4));
         setCurrentPage(4);
       }
     } else {
       setOnFixed(false);
-      console.log("스크롤탑: ", scrollTop, ", getPageTop : ", getPageTop(1));
+      // console.log("스크롤탑: ", scrollTop, ", getPageTop : ", getPageTop(1));
       setCurrentPage(1);
     }
   };

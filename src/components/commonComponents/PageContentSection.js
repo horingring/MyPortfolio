@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "../Project/Modal";
 
 const PageContentSection = (props) => {
   const { contentTitle } = props;
+
+  //state
+  const [onModal, setOnModal] = useState(false);
+
+  const openModal = () => {
+    setOnModal(true);
+  };
+
+  const closeModal = (e) => {
+    setOnModal(false);
+  };
 
   const getSectionArticle = () => {
     if (contentTitle === "Strength") {
@@ -28,7 +40,10 @@ const PageContentSection = (props) => {
     } else if (contentTitle === "Project") {
       return (
         <>
-          <div className="sectionArticle-column project-article">
+          <div
+            className="sectionArticle-column project-article"
+            onClick={openModal}
+          >
             <div className="project-article-image">
               <div className="project-article-overlay">
                 <p>Pizza Order</p>
@@ -50,12 +65,15 @@ const PageContentSection = (props) => {
   };
 
   return (
-    <div className="pageContentSection-wrapper">
-      <div className="pageContentSection">
-        <h2>{contentTitle}</h2>
-        <div className="sectionArticle flexRow">{getSectionArticle()}</div>
+    <>
+      {onModal ? <Modal closeModal={closeModal} /> : null}
+      <div className="pageContentSection-wrapper">
+        <div className="pageContentSection">
+          <h2>{contentTitle}</h2>
+          <div className="sectionArticle flexRow">{getSectionArticle()}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
