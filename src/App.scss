@@ -37,7 +37,7 @@
   .menuSideBar-wrapper {
     // width: 6vw;
     width: 60px;
-    z-index: 999;
+    z-index: 100;
   }
 }
 @media (max-width: 1023px) and (min-width: 768px) {
@@ -51,7 +51,7 @@
   .menuSideBar-wrapper {
     // width: 7vw;
     width: 55px;
-    z-index: 999;
+    z-index: 100;
   }
 }
 @media (max-width: 767px) {
@@ -64,13 +64,13 @@
   .menuSideBar-wrapper {
     // width: 13vw;
     width: 50px;
-    z-index: 999;
+    z-index: 100;
   }
 }
 
 //<Modal> 컴포넌트
 .modal-overlay {
-  z-index: 1000;
+  z-index: 199;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -81,7 +81,7 @@
   background: rgba($color: #000000, $alpha: 0.5);
 }
 .modal-wrapper {
-  z-index: 1001;
+  z-index: 200;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -91,102 +91,128 @@
   height: 100vh;
   @include xyCenter();
   .modal {
-    z-index: 1002;
+    z-index: 201;
     width: 80%;
     height: 80%;
     background: rgba(181, 176, 221, 0.88);
     border-radius: 10px;
-    .slick-slider {
+    .slick-slider > .slick-prev {
+      left: -30px;
+    }
+    .slick-slider > .slick-next {
+      right: -30px;
+    }
+    .slick-dots {
+      bottom: -30px;
+    }
+    .slick-slider,
+    .slick-list,
+    .slick-track,
+    .slick-slide,
+    .slick-slide > div {
       @include WH100Percent();
-      .slick-prev {
-        z-index: 1200;
-        left: 1.5%;
-        // &::before {
-        //   color: white;
-        // }
+    }
+    .modalPage-wrapper {
+      @include WH100Percent();
+      box-sizing: border-box;
+      padding: 4% 5%;
+      .modalTitle-box-wrapper {
+        position: relative;
+        top: -20px;
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        .modalTitle-wrapper {
+          width: 60%;
+          height: 100%;
+          .modalTitle {
+            margin: 0;
+            font-weight: 800;
+          }
+        }
+        .moreDetail-btn-wrapper {
+          width: 40%;
+          height: 100%;
+          @include xyCenter();
+          .moreDetail-btn {
+            width: 80%;
+            height: 80%;
+            border-radius: 5px;
+            background-color: rgb(224, 224, 224);
+            box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.2s ease-in-out;
+            @include xyCenter();
+            &:hover {
+              cursor: pointer;
+              box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+            }
+            p {
+              margin: 0;
+            }
+          }
+        }
       }
-      .slick-next {
-        z-index: 1200;
-        right: 1.5%;
+      .modalLanguage-box-wrapper {
+        box-sizing: border-box;
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .modalLanguage {
+          position: relative;
+          top: -10px;
+          box-sizing: content-box;
+          width: fit-content;
+          padding: 5px 30px;
+          color: rgb(94, 94, 94);
+          background-color: rgb(243, 236, 236);
+          margin-right: 15px;
+          border-radius: 5px;
+          font-weight: 600;
+          // box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
       }
-      .slick-dots {
-        bottom: 1%;
-      }
-      .slick-list {
-        @include WH100Percent();
-        .slick-track {
+      .modalContent-box-wrapper {
+        z-index: 1000;
+        width: 100%;
+        height: 80%;
+        background-color: rgb(243, 236, 236);
+        border-radius: 10px;
+        .slick-slider,
+        .slick-list,
+        .slick-track,
+        .slick-slide,
+        .slick-slide > div {
           @include WH100Percent();
-          .slick-slide {
+          .modalContent-wrapper {
             @include WH100Percent();
-            & > div {
+            box-sizing: border-box;
+            padding: 4% 6%;
+            .modalContent {
               @include WH100Percent();
-              .modalPage-wrapper {
-                @include WH100Percent();
-                box-sizing: border-box;
-                padding: 4% 5%;
-                .modalTitle-box-wrapper {
-                  position: relative;
-                  top: -20px;
-                  width: 100%;
-                  height: 10%;
-                  display: flex;
-                  flex-direction: row;
-                  .modalTitle-wrapper {
-                    width: 60%;
-                    height: 100%;
-                    .modalTitle {
-                      margin: 0;
-                      font-weight: 800;
-                    }
-                  }
-                  .moreDetail-btn-wrapper {
-                    width: 40%;
-                    height: 100%;
-                    @include xyCenter();
-                    .moreDetail-btn {
-                      width: 80%;
-                      height: 80%;
-                      border-radius: 5px;
-                      background-color: rgb(224, 224, 224);
-                      box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-                      transition: box-shadow 0.2s ease-in-out;
-                      @include xyCenter();
-                      &:hover {
-                        cursor: pointer;
-                        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-                      }
-                      p {
-                        margin: 0;
-                      }
-                    }
-                  }
-                }
-                .modalLanguage-box-wrapper {
-                  box-sizing: border-box;
-                  width: 100%;
-                  height: 10%;
-                  display: flex;
-                  flex-direction: row;
-                  align-items: center;
-                  .modalLanguage {
-                    position: relative;
-                    top: -10px;
-                    box-sizing: content-box;
-                    width: fit-content;
-                    padding: 5px 30px;
-                    color: rgb(94, 94, 94);
-                    background-color: rgb(243, 236, 236);
-                    margin-right: 15px;
-                    border-radius: 5px;
-                    font-weight: 600;
-                    // box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-                  }
-                }
-                .modalContent-box-wrapper {
-                  width: 100%;
-                  height: 80%;
-                  background-color: rgb(243, 236, 236);
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              .modalContentSection:nth-child(1) {
+                width: 50%;
+                height: 100%;
+                border-radius: 10px;
+                background-color: rgb(224, 224, 224);
+              }
+              .modalContentSection:nth-child(2) {
+                margin-left: 15px;
+                width: 48%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .modalContentArticle {
+                  background-color: rgb(224, 224, 224);
                   border-radius: 10px;
+                  width: 100%;
+                  height: 30%;
                 }
               }
             }

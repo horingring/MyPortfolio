@@ -14,11 +14,12 @@ const Modal = (props) => {
   };
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    draggable: false,
   };
 
   return (
@@ -27,8 +28,8 @@ const Modal = (props) => {
       <div className="modal-wrapper" onClick={closeModalByOverlay}>
         <div className="modal">
           <Slider {...settings}>
-            <ModalPage></ModalPage>
-            <div className="modalPage-wrapper">div2</div>
+            <ModalPage projectNum={1} />
+            <ModalPage projectNum={2} />
           </Slider>
         </div>
       </div>
