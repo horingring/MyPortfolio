@@ -25,7 +25,7 @@ const MyInfo = (props) => {
     <div className="myInfo-wrapper page-wrapper">
       <div className="myInfo">
         <PageTitleContainer titleText="My Info." />
-        <PageContentContainer />
+        <PageContentContainer pageName="myInfo" />
         <MenuSideBar
           menuBarOnClick={menuBarOnClick}
           getMenuInfo={getMenuInfo}

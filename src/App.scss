@@ -1,12 +1,18 @@
 //공통
 .page-wrapper {
   height: 100vh;
+  box-sizing: border-box;
 }
 
 @mixin xyCenter() {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin WH100Percent() {
+  width: 100%;
+  height: 100%;
 }
 
 .xyCenter {
@@ -26,38 +32,216 @@
   .pageTitleContainer-wrapper {
     width: 27vw;
   }
-  .pageContentContainer-wrapper {
+  .pageContentContainer-wrapper,
+  .contactMeContentContainer-wrapper {
     width: 67vw;
   }
   .menuSideBar-wrapper {
     // width: 6vw;
     width: 60px;
-    z-index: 999;
+    z-index: 100;
   }
 }
 @media (max-width: 1023px) and (min-width: 768px) {
   .pageTitleContainer-wrapper {
     width: 28vw;
   }
-  .pageContentContainer-wrapper {
+  .pageContentContainer-wrapper,
+  .contactMeContentContainer-wrapper {
     width: 65vw;
-    background: blue;
   }
   .menuSideBar-wrapper {
     // width: 7vw;
     width: 55px;
+    z-index: 100;
   }
 }
 @media (max-width: 767px) {
   .pageTitleContainer-wrapper {
     display: none;
   }
-  .pageContentContainer-wrapper {
+  .pageContentContainer-wrapper,
+  .contactMeContentContainer-wrapper {
     width: 87vw;
   }
   .menuSideBar-wrapper {
     // width: 13vw;
     width: 50px;
+    z-index: 100;
+  }
+}
+
+//<Modal> 컴포넌트
+.modal-overlay {
+  z-index: 199;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color: #000000, $alpha: 0.5);
+}
+.modal-wrapper {
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  @include xyCenter();
+  .modal {
+    z-index: 201;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    .slick-slider > .slick-prev {
+      left: -30px;
+    }
+    .slick-slider > .slick-next {
+      right: -30px;
+    }
+    .slick-dots {
+      bottom: -30px;
+    }
+    .slick-slider,
+    .slick-list,
+    .slick-track,
+    .slick-slide,
+    .slick-slide > div {
+      @include WH100Percent();
+      border-radius: 10px;
+    }
+    .modalPage-wrapper {
+      @include WH100Percent();
+      box-sizing: border-box;
+      padding: 4% 5%;
+      border-radius: 10px;
+      background: rgba(181, 176, 221, 0.88);
+      &.project_pizza-color {
+        background: rgba($color: #e9c649, $alpha: 0.88);
+      }
+      &.project_portfolio-color {
+        background: rgba(181, 176, 221, 0.88);
+      }
+      .modalTitle-box-wrapper {
+        position: relative;
+        top: -20px;
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        .modalTitle-wrapper {
+          width: 55%;
+          height: 100%;
+          .modalTitle {
+            margin: 0;
+            font-weight: 800;
+          }
+        }
+        .moreDetail-btn-wrapper {
+          width: 40%;
+          height: 100%;
+          @include xyCenter();
+          .moreDetail-btn {
+            width: 80%;
+            height: 80%;
+            border-radius: 5px;
+            background-color: rgb(224, 224, 224);
+            box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.2s ease-in-out;
+            @include xyCenter();
+            &:hover {
+              cursor: pointer;
+              box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+            }
+            p {
+              margin: 0;
+            }
+          }
+        }
+        .modalXBtn-wrapper {
+          @include xyCenter();
+          position: relative;
+          right: -15px;
+          width: 5%;
+          color: rgba(#e0e0e0, 1);
+          &:hover {
+            cursor: pointer;
+            color: white;
+          }
+        }
+      }
+      .modalLanguage-box-wrapper {
+        box-sizing: border-box;
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .modalLanguage {
+          position: relative;
+          top: -10px;
+          box-sizing: content-box;
+          width: fit-content;
+          padding: 5px 30px;
+          color: rgb(94, 94, 94);
+          background-color: rgb(243, 236, 236);
+          margin-right: 15px;
+          border-radius: 5px;
+          font-weight: 600;
+          // box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+      }
+      .modalContent-box-wrapper {
+        z-index: 1000;
+        width: 100%;
+        height: 80%;
+        background-color: rgb(243, 236, 236);
+        border-radius: 10px;
+        .slick-slider,
+        .slick-list,
+        .slick-track,
+        .slick-slide,
+        .slick-slide > div {
+          @include WH100Percent();
+          .modalContent-wrapper {
+            @include WH100Percent();
+            box-sizing: border-box;
+            padding: 4% 6%;
+            .modalContent {
+              @include WH100Percent();
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              .modalContentSection:nth-child(1) {
+                width: 50%;
+                height: 100%;
+                border-radius: 10px;
+                background-color: rgb(224, 224, 224);
+              }
+              .modalContentSection:nth-child(2) {
+                margin-left: 15px;
+                width: 48%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .modalContentArticle {
+                  background-color: rgb(224, 224, 224);
+                  border-radius: 10px;
+                  width: 100%;
+                  height: 30%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -205,10 +389,12 @@
         .pageContentSection {
           height: 100%;
           h2 {
+            color: #0d1117;
+            font-weight: 800;
             width: fit-content;
             height: 10%;
             margin: 0;
-            border-bottom: 5px solid black;
+            border-bottom: 5px solid #0d1117;
           }
           .sectionArticle {
             width: 100%;
@@ -271,10 +457,12 @@
         .pageContentSection {
           height: 100%;
           h2 {
+            color: #0d1117;
+            font-weight: 800;
             width: fit-content;
             height: 10%;
             margin: 0;
-            border-bottom: 5px solid black;
+            border-bottom: 5px solid #0d1117;
           }
           .sectionArticle {
             width: 100%;
@@ -284,7 +472,164 @@
               padding: 20px 20px 20px 0;
               width: 50%;
               height: 100%;
+              //.project-article 공통
+              &.project-article {
+                .project-article-image {
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba($color: #6ea0c1, $alpha: 0.3);
+                  background-size: 93% 88%;
+                  // background-size: auto 100%;
+                  background-repeat: no-repeat;
+                  background-position-x: center;
+                  background-position-y: center;
+                  .project-article-overlay {
+                    @include xyCenter();
+                    flex-direction: column;
+                    z-index: 1;
+                    transition: all 0.25s ease-in-out;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    p {
+                      font-size: 30px;
+                      font-weight: 700;
+                      margin: 0;
+                      padding: 5px 0;
+                      transition: all 0.3s ease-in-out;
+                    }
+                    &:hover {
+                      cursor: pointer;
+                      opacity: 1;
+                      background: rgba(0, 0, 0, 0.4);
+                      color: white;
+                      p {
+                        font-size: 35px;
+                      }
+                    }
+                  }
+                }
+                //.project-article - 1번째
+                &.project-article:nth-child(1) {
+                  .project-article-image {
+                    background-image: url("./img/PizzaService_Menu.png");
+                  }
+                }
+                &.project-article:nth-child(2) {
+                  .project-article-image {
+                    background-image: url("./img/MyPortfolio_Home.png");
+                  }
+                }
+              }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+.contactMe-wrapper {
+  background-image: url("./img/nightSky.jpg");
+  background-repeat: no-repeat;
+  background-size: auto 150vh;
+  background-position-x: 100%;
+  background-position-y: 85%;
+  .contactMe {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    position: relative;
+    .pageTitleContainer-wrapper {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.1);
+      .pageTitleContainer {
+        @include xyCenter();
+        width: 95vw;
+        height: 25%;
+        background-color: rgba($color: #000000, $alpha: 0.1);
+        h1 {
+          color: white;
+          font-weight: 900;
+          margin: 0;
+          margin-left: 5%;
+          // position: relative;
+          // left: 10%;
+        }
+      }
+    }
+    .contactMeContentContainer-wrapper {
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      .contactMeContentContainer {
+        @include WH100Percent();
+        box-sizing: border-box;
+        & > div:nth-child(1) {
+          width: 100%;
+          height: 25%;
+        }
+        .contactMeLink-wrapper {
+          width: 100%;
+          height: 35%;
+          @include xyCenter();
+          .contactMeLink-box {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            .contactMeLink {
+              width: 100px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              opacity: 0.9;
+              &:hover {
+                cursor: pointer;
+                opacity: 1;
+                font-weight: 700;
+              }
+              p {
+                color: white;
+                font-size: 20px;
+                text-align: center;
+                margin: 0;
+                padding-top: 10px;
+              }
+            }
+            .contactMeLink > img {
+              width: 56px;
+              height: 56px;
+              border-radius: 5px;
+            }
+            .contactMeLink:nth-child(2) > svg {
+              color: rgba(0, 0, 0, 0.8);
+            }
+            .contactMeLink:nth-child(3) > svg {
+              color: rgb(41, 128, 185);
+            }
+            .contactMeLink:nth-child(4) > svg {
+              color: rgb(236, 173, 173);
+            }
+          }
+        }
+        .contactMeAddress-wrapper {
+          width: 100%;
+          height: 40%;
+          h1 {
+            margin: 0;
+            padding: 10px 0;
+            position: relative;
+            top: 5%;
+            right: 10%;
+            color: white;
+            text-align: right;
           }
         }
       }
