@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ModalPage from "./ModalPage";
 
 const Modal = (props) => {
-  const { closeModal } = props;
+  const { closeModal, initialProjectNum } = props;
 
   const closeModalByOverlay = (e) => {
     if (e.target === e.currentTarget) {
@@ -20,6 +20,7 @@ const Modal = (props) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     draggable: false,
+    initialSlide: initialProjectNum - 1,
   };
 
   return (
@@ -29,6 +30,7 @@ const Modal = (props) => {
         className="modal-wrapper"
         onClick={closeModalByOverlay}
         onKeyDown={(e) => {
+          //modal창을 한번 클릭해야만 동작하는 문제가 있음
           if (e.keyCode === 27) {
             closeModal();
           }

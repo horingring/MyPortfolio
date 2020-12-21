@@ -6,8 +6,10 @@ const PageContentSection = (props) => {
 
   //state
   const [onModal, setOnModal] = useState(false);
+  const [initialProjectNum, setInitialProjectNum] = useState(1);
 
-  const openModal = () => {
+  const openModal = (num) => {
+    setInitialProjectNum(num);
     setOnModal(true);
   };
 
@@ -42,7 +44,9 @@ const PageContentSection = (props) => {
         <>
           <div
             className="sectionArticle-column project-article"
-            onClick={openModal}
+            onClick={() => {
+              openModal(1);
+            }}
           >
             <div className="project-article-image">
               <div className="project-article-overlay">
@@ -52,7 +56,12 @@ const PageContentSection = (props) => {
             </div>
           </div>
           {/*  */}
-          <div className="sectionArticle-column project-article">
+          <div
+            className="sectionArticle-column project-article"
+            onClick={() => {
+              openModal(2);
+            }}
+          >
             <div className="project-article-image">
               <div className="project-article-overlay">
                 <p>Web Portfolio</p>
@@ -66,7 +75,9 @@ const PageContentSection = (props) => {
 
   return (
     <>
-      {onModal ? <Modal closeModal={closeModal} /> : null}
+      {onModal ? (
+        <Modal closeModal={closeModal} initialProjectNum={initialProjectNum} />
+      ) : null}
       <div className="pageContentSection-wrapper">
         <div className="pageContentSection">
           <h2>{contentTitle}</h2>
