@@ -1,6 +1,7 @@
 //공통
 .page-wrapper {
   height: 100vh;
+  box-sizing: border-box;
 }
 
 @mixin xyCenter() {
@@ -31,7 +32,8 @@
   .pageTitleContainer-wrapper {
     width: 27vw;
   }
-  .pageContentContainer-wrapper {
+  .pageContentContainer-wrapper,
+  .contactMeContentContainer-wrapper {
     width: 67vw;
   }
   .menuSideBar-wrapper {
@@ -44,9 +46,9 @@
   .pageTitleContainer-wrapper {
     width: 28vw;
   }
-  .pageContentContainer-wrapper {
+  .pageContentContainer-wrapper,
+  .contactMeContentContainer-wrapper {
     width: 65vw;
-    background: blue;
   }
   .menuSideBar-wrapper {
     // width: 7vw;
@@ -58,7 +60,8 @@
   .pageTitleContainer-wrapper {
     display: none;
   }
-  .pageContentContainer-wrapper {
+  .pageContentContainer-wrapper,
+  .contactMeContentContainer-wrapper {
     width: 87vw;
   }
   .menuSideBar-wrapper {
@@ -523,6 +526,110 @@
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+.contactMe-wrapper {
+  background-image: url("./img/nightSky.jpg");
+  background-repeat: no-repeat;
+  background-size: auto 150vh;
+  background-position-x: 100%;
+  background-position-y: 85%;
+  .contactMe {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    position: relative;
+    .pageTitleContainer-wrapper {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.1);
+      .pageTitleContainer {
+        @include xyCenter();
+        width: 95vw;
+        height: 25%;
+        background-color: rgba($color: #000000, $alpha: 0.1);
+        h1 {
+          color: white;
+          font-weight: 900;
+          margin: 0;
+          margin-left: 5%;
+          // position: relative;
+          // left: 10%;
+        }
+      }
+    }
+    .contactMeContentContainer-wrapper {
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      .contactMeContentContainer {
+        @include WH100Percent();
+        box-sizing: border-box;
+        & > div:nth-child(1) {
+          width: 100%;
+          height: 25%;
+        }
+        .contactMeLink-wrapper {
+          width: 100%;
+          height: 35%;
+          @include xyCenter();
+          .contactMeLink-box {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            .contactMeLink {
+              width: 100px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              opacity: 0.9;
+              &:hover {
+                cursor: pointer;
+                opacity: 1;
+                font-weight: 700;
+              }
+              p {
+                color: white;
+                font-size: 20px;
+                text-align: center;
+                margin: 0;
+                padding-top: 10px;
+              }
+            }
+            .contactMeLink > img {
+              width: 56px;
+              height: 56px;
+              border-radius: 5px;
+            }
+            .contactMeLink:nth-child(2) > svg {
+              color: rgba(0, 0, 0, 0.8);
+            }
+            .contactMeLink:nth-child(3) > svg {
+              color: rgb(41, 128, 185);
+            }
+            .contactMeLink:nth-child(4) > svg {
+              color: rgb(236, 173, 173);
+            }
+          }
+        }
+        .contactMeAddress-wrapper {
+          width: 100%;
+          height: 40%;
+          h1 {
+            margin: 0;
+            padding: 10px 0;
+            position: relative;
+            top: 5%;
+            right: 10%;
+            color: white;
+            text-align: right;
           }
         }
       }
