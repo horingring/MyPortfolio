@@ -94,7 +94,6 @@
     z-index: 201;
     width: 80%;
     height: 80%;
-    background: rgba(181, 176, 221, 0.88);
     border-radius: 10px;
     .slick-slider > .slick-prev {
       left: -30px;
@@ -111,11 +110,20 @@
     .slick-slide,
     .slick-slide > div {
       @include WH100Percent();
+      border-radius: 10px;
     }
     .modalPage-wrapper {
       @include WH100Percent();
       box-sizing: border-box;
       padding: 4% 5%;
+      border-radius: 10px;
+      background: rgba(181, 176, 221, 0.88);
+      &.project_pizza-color {
+        background: rgba($color: #e9c649, $alpha: 0.88);
+      }
+      &.project_portfolio-color {
+        background: rgba(181, 176, 221, 0.88);
+      }
       .modalTitle-box-wrapper {
         position: relative;
         top: -20px;

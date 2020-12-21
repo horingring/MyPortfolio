@@ -8,14 +8,32 @@ const ModalPage = (props) => {
   const { projectNum } = props;
 
   const getProjectInfoByNum = () => {
+    let projectInfo = {};
     let projectTitle = "";
+    let projectColor = "";
+    let projectLanguage = [];
     if (projectNum === 1) {
       projectTitle = "Pizza Order Service";
-      return projectTitle;
+      projectColor = "project_pizza-color";
+      projectLanguage = ["React", "JavaScript", "jQuery", "css"];
     } else if (projectNum === 2) {
       projectTitle = "Web Portfolio";
-      return projectTitle;
+      projectColor = "project_portfolio-color";
+      projectLanguage = ["React", "JavaScript", "scss"];
     }
+    projectInfo = { projectTitle, projectColor, projectLanguage };
+    return projectInfo;
+  };
+
+  const getProjectLanguage = () => {
+    const projectLanguagelist = [];
+    const { projectLanguage } = getProjectInfoByNum();
+    for (let i = 0; i < projectLanguage.length; i++) {
+      projectLanguagelist.push(
+        <div className="modalLanguage">{projectLanguage[i]}</div>
+      );
+    }
+    return projectLanguagelist;
   };
 
   const sliderSettings = {
@@ -27,10 +45,14 @@ const ModalPage = (props) => {
   };
 
   return (
-    <div className="modalPage-wrapper">
+    <div
+      className={`modalPage-wrapper ${
+        getProjectInfoByNum() ? getProjectInfoByNum().projectColor : ""
+      }`}
+    >
       <div className="modalTitle-box-wrapper">
         <div className="modalTitle-wrapper">
-          <h1 className="modalTitle">{getProjectInfoByNum()}</h1>
+          <h1 className="modalTitle">{getProjectInfoByNum().projectTitle}</h1>
         </div>
         <div className="moreDetail-btn-wrapper">
           <div className="moreDetail-btn">
@@ -38,11 +60,7 @@ const ModalPage = (props) => {
           </div>
         </div>
       </div>
-      <div className="modalLanguage-box-wrapper">
-        <div className="modalLanguage">React</div>
-        <div className="modalLanguage">JavaScript</div>
-        <div className="modalLanguage">CSS</div>
-      </div>
+      <div className="modalLanguage-box-wrapper">{getProjectLanguage()}</div>
       <div className="modalContent-box-wrapper">
         <Slider {...sliderSettings}>
           <ModalContent />
