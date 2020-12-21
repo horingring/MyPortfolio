@@ -3,9 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ModalContent from "./ModalContent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ModalPage = (props) => {
-  const { projectNum } = props;
+  const { projectNum, closeModal } = props;
 
   const getProjectInfoByNum = () => {
     let projectInfo = {};
@@ -30,7 +32,9 @@ const ModalPage = (props) => {
     const { projectLanguage } = getProjectInfoByNum();
     for (let i = 0; i < projectLanguage.length; i++) {
       projectLanguagelist.push(
-        <div className="modalLanguage">{projectLanguage[i]}</div>
+        <div className="modalLanguage" key={i}>
+          {projectLanguage[i]}
+        </div>
       );
     }
     return projectLanguagelist;
@@ -58,6 +62,9 @@ const ModalPage = (props) => {
           <div className="moreDetail-btn">
             <p>이 프로젝트 상세보기</p>
           </div>
+        </div>
+        <div className="modalXBtn-wrapper" onClick={closeModal}>
+          <FontAwesomeIcon icon={faTimes} size="2x" />
         </div>
       </div>
       <div className="modalLanguage-box-wrapper">{getProjectLanguage()}</div>

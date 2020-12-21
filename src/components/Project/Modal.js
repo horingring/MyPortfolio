@@ -25,11 +25,19 @@ const Modal = (props) => {
   return (
     <>
       <div className="modal-overlay"></div>
-      <div className="modal-wrapper" onClick={closeModalByOverlay}>
+      <div
+        className="modal-wrapper"
+        onClick={closeModalByOverlay}
+        onKeyDown={(e) => {
+          if (e.keyCode === 27) {
+            closeModal();
+          }
+        }}
+      >
         <div className="modal">
           <Slider {...settings}>
-            <ModalPage projectNum={1} />
-            <ModalPage projectNum={2} />
+            <ModalPage projectNum={1} closeModal={closeModal} />
+            <ModalPage projectNum={2} closeModal={closeModal} />
           </Slider>
         </div>
       </div>
