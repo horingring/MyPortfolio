@@ -5,7 +5,7 @@ import {
   faInstagramSquare,
   faGithubSquare,
 } from "@fortawesome/free-brands-svg-icons";
-import naverLogo from "../../img/naverLogo.png";
+import naverLogo from "../../img/logo/naverLogo.png";
 
 const ContactMeContentContainer = () => {
   const [onCopied, setOnCopied] = useState("Click to Copy");

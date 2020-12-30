@@ -8,7 +8,7 @@ const PageContentContainer = (props) => {
     if (pageName === "myInfo") {
       return (
         <>
-          <PageContentSection contentTitle="Strength" />
+          <PageContentSection contentTitle="Pursuit" />
           <PageContentSection contentTitle="My Info" />
         </>
       );
