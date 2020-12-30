@@ -45,8 +45,8 @@ const PageContentSection = (props) => {
                   <h3>유지보수성</h3>
                 </div>
                 <div className="pursuitExplainContent">
-                  유지보수가 용이한 코딩,<br></br>
-                  안정적인 레이아웃
+                  <p>유지보수가 용이한 코딩,</p>
+                  <p>안정적인 레이아웃</p>
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@ const PageContentSection = (props) => {
                   <h3>개연성</h3>
                 </div>
                 <div className="pursuitExplainContent">
-                  주제와 컨셉에 맞는 디자인
+                  <p>주제와 컨셉에 맞는 디자인</p>
                 </div>
               </div>
             </div>
@@ -74,8 +74,8 @@ const PageContentSection = (props) => {
                   <h3>통일성</h3>
                 </div>
                 <div className="pursuitExplainContent">
-                  디자인 요소 간의 조화와<br></br>
-                  균형을 지키는 디자인
+                  <p>디자인 요소 간의 조화와</p>
+                  <p>균형을 지키는 디자인</p>
                 </div>
               </div>
             </div>
@@ -88,8 +88,8 @@ const PageContentSection = (props) => {
                   <h3>전달성</h3>
                 </div>
                 <div className="pursuitExplainContent">
-                  높은 가독성,<br></br>
-                  편안함을 주는 디자인
+                  <p>높은 가독성,</p>
+                  <p>편안함을 주는 디자인</p>
                 </div>
               </div>
             </div>
