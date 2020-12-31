@@ -436,7 +436,7 @@
               }
               .pursuit-box {
                 box-sizing: border-box;
-                width: fit-content;
+                width: 280px;
                 height: 50%;
                 padding: 0 20px;
                 .pursuitImage-wrapper {
@@ -580,11 +580,16 @@
           .sectionArticle {
             width: 100%;
             height: 90%;
+            @include xyCenter();
             .sectionArticle-column {
               box-sizing: border-box;
-              padding: 20px 20px 20px 0;
-              width: 50%;
-              height: 100%;
+              padding: 20px 30px 20px 0;
+              width: 45%;
+              height: 90%;
+              &.sectionArticle-column:nth-child(2) {
+                padding-right: 0;
+                padding-left: 30px;
+              }
               //.project-article 공통
               &.project-article {
                 .project-article-image {
@@ -635,6 +640,80 @@
                 &.project-article:nth-child(2) {
                   .project-article-image {
                     background-image: url("./img/MyPortfolio_Home.png");
+                  }
+                }
+              }
+            }
+            &.WebTechArticle {
+              position: relative;
+              left: -20px;
+              font-size: 0.9rem;
+              padding: 0 50px;
+              box-sizing: border-box;
+              .sectionArticle-column {
+                @include flexColumn();
+                justify-content: space-evenly;
+                .webTech-box-wrapper {
+                  width: 100%;
+                  height: 30%;
+                  display: flex;
+                  align-items: center;
+                  .webTech-box {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 48%;
+                    @include flexRow();
+                    .webTechImage-wrapper {
+                      width: 20%;
+                      @include xyCenter();
+                      img {
+                        width: auto;
+                        height: 45px;
+                      }
+                    }
+                    .webTechGraph-wrapper {
+                      @include flexRow();
+                      align-items: center;
+                      width: 80%;
+                      height: 100%;
+                      position: relative;
+                      background: rgb(200, 200, 200);
+                      border-radius: 5px;
+                      .webTechGraph {
+                        display: flex;
+                        align-items: center;
+                        height: 100%;
+                        background: rgb(52, 152, 219);
+                        border-radius: 5px;
+                        span {
+                          position: relative;
+                          left: 15px;
+                          color: white;
+                        }
+                        &.webTechGraph_html {
+                          width: 80%;
+                        }
+                        &.webTechGraph_css {
+                          width: 80%;
+                        }
+                        &.webTechGraph_js {
+                          width: 60%;
+                        }
+                        &.webTechGraph_react {
+                          width: 70%;
+                        }
+                        &.webTechGraph_github {
+                          width: 40%;
+                        }
+                        &.webTechGraph_sass {
+                          width: 50%;
+                        }
+                      }
+                      .webTechGraphPercent {
+                        position: absolute;
+                        right: 10px;
+                      }
+                    }
                   }
                 }
               }
