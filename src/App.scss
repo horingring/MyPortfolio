@@ -106,7 +106,7 @@
   .modal {
     z-index: 201;
     width: 80%;
-    height: 80%;
+    height: 90%;
     border-radius: 10px;
     .slick-slider > .slick-prev {
       left: -30px;
@@ -131,12 +131,6 @@
       padding: 4% 5%;
       border-radius: 10px;
       background: rgba(181, 176, 221, 0.88);
-      &.project_pizza-color {
-        background: rgba($color: #e9c649, $alpha: 0.88);
-      }
-      &.project_portfolio-color {
-        background: rgba(181, 176, 221, 0.88);
-      }
       .modalTitle-box-wrapper {
         position: relative;
         top: -20px;
@@ -221,33 +215,85 @@
           .modalContent-wrapper {
             @include WH100Percent();
             box-sizing: border-box;
-            padding: 4% 6%;
+            padding: 3.5% 6%;
             .modalContent {
               @include WH100Percent();
               display: flex;
               flex-direction: row;
               justify-content: space-between;
               .modalContentSection:nth-child(1) {
+                @include xyCenter();
                 width: 50%;
                 height: 100%;
                 border-radius: 10px;
                 background-color: rgb(224, 224, 224);
+                img {
+                  border-radius: 10px;
+                  width: 90%;
+                  height: auto;
+                }
               }
               .modalContentSection:nth-child(2) {
-                margin-left: 15px;
+                margin-left: 50px;
                 width: 48%;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                .modalContentArticle {
-                  background-color: rgb(224, 224, 224);
-                  border-radius: 10px;
+                .modalContentArticle-box {
+                  box-sizing: border-box;
                   width: 100%;
                   height: 30%;
+                  .modalContentArticleTitle-wrapper {
+                    h4 {
+                      margin: 0;
+                      padding-bottom: 10px;
+                      color: #2d2d2d;
+                    }
+                  }
+                  .modalContentArticle {
+                    font-size: 0.9rem;
+                    box-sizing: border-box;
+                    height: 75%;
+                    padding: 10px 20px;
+                    background-color: rgb(224, 224, 224);
+                    border-radius: 10px;
+                    overflow: auto;
+                    ul {
+                      margin: 0;
+                      padding-left: 20px;
+                      li {
+                        padding: 5px 0;
+                        list-style-type: circle;
+                      }
+                    }
+                  }
+                  &:nth-child(2) {
+                    @include flexColumn();
+                    justify-content: flex-end;
+                  }
                 }
               }
             }
+          }
+        }
+      }
+      //피자 프로젝트 modalPage
+      &.project_pizza-color {
+        background: rgba($color: #e9c649, $alpha: 0.88);
+      }
+      //포트폴리오 프로젝트 modalPage
+      &.project_portfolio-color {
+        background: rgba(181, 176, 221, 0.88);
+        .modalContent-wrapper_home,
+        .modalContent-wrapper_myInfo,
+        .modalContent-wrapper_project,
+        .modalContent-wrapper_contactMe {
+          .modalContentArticle-box:nth-child(1) {
+            height: 37.5% !important;
+          }
+          .modalContentArticle-box:nth-child(2) {
+            height: 60% !important;
           }
         }
       }
@@ -512,7 +558,6 @@
                       margin: 0 !important;
                       padding: 10px;
                       list-style-type: circle;
-                      margin: 20px 0;
                     }
                   }
                 }
@@ -527,7 +572,7 @@
 
 //<Project> 컴포넌트
 .project {
-  background-color: rgba($color: #6ea0c1, $alpha: 0.2);
+  background-color: rgba($color: #a3cce7, $alpha: 0.2);
   position: relative;
   display: flex;
   flex-direction: row;
@@ -677,18 +722,25 @@
                       width: 80%;
                       height: 100%;
                       position: relative;
-                      background: rgb(200, 200, 200);
+                      background: #d0e0f5;
                       border-radius: 5px;
                       .webTechGraph {
+                        font-family: "Nanum Square";
                         display: flex;
                         align-items: center;
                         height: 100%;
-                        background: rgb(52, 152, 219);
+                        background-image: linear-gradient(
+                          to right,
+                          #eebdd6,
+                          #a264f5
+                        );
+                        //#d0e0f5
                         border-radius: 5px;
                         span {
                           position: relative;
                           left: 15px;
                           color: white;
+                          font-weight: 700;
                         }
                         &.webTechGraph_html {
                           width: 80%;
@@ -717,6 +769,10 @@
                   }
                 }
               }
+            }
+            &.ProjectArticle {
+              box-sizing: border-box;
+              padding: 0 50px;
             }
           }
         }
@@ -773,6 +829,7 @@
           height: 35%;
           @include xyCenter();
           .contactMeLink-box {
+            font-family: "Nanum Square";
             width: 100%;
             display: flex;
             justify-content: space-evenly;
