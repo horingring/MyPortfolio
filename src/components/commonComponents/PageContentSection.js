@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "../Project/Modal";
 import shield from "../../img/logo/pursuit_shield.png";
 import copy from "../../img/logo/pursuit_archives.png";
@@ -18,6 +18,33 @@ const PageContentSection = (props) => {
   //state
   const [onModal, setOnModal] = useState(false);
   const [initialProjectNum, setInitialProjectNum] = useState(1);
+  const [onGraphArea, setOnGraphArea] = useState(false);
+
+  const onScroll = (e) => {
+    const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
+    const graphAreaTop =
+      window.pageYOffset +
+      document.getElementsByClassName("myInfo")[0].getBoundingClientRect().top +
+      (document
+        .getElementsByClassName("webTechGraph_js")[0]
+        .getBoundingClientRect().top +
+        10 -
+        document.getElementsByClassName("project")[0].getBoundingClientRect()
+          .top);
+
+    const graphAreaBottom =
+      window.pageYOffset +
+      document
+        .getElementsByClassName("WebTechArticle")[0]
+        .getBoundingClientRect().bottom -
+      10;
+    if (scrollTop >= graphAreaTop && scrollTop <= graphAreaBottom) {
+      setOnGraphArea(true);
+    } else {
+      setOnGraphArea(false);
+    }
+    // console.log(onGraphArea, scrollTop, graphAreaTop, graphAreaBottom);
+  };
 
   const openModal = (num) => {
     setInitialProjectNum(num);
@@ -31,6 +58,18 @@ const PageContentSection = (props) => {
   const getNonSpaceContentTitle = () => {
     const nonSpaceContentTitle = contentTitle.replace(/(\s*)/g, "");
     return nonSpaceContentTitle;
+  };
+
+  const getTitleComent = () => {
+    let titleComment = "";
+    if (contentTitle === "Pursuit") {
+      titleComment = "다음과 같은 디자인을 추구합니다.";
+    } else if (contentTitle === "Web Tech") {
+      titleComment = "다음의 기술을 사용할 수 있습니다.";
+    } else if (contentTitle === "Project") {
+      titleComment = "이러한 프로젝트를 수행하였습니다.";
+    }
+    return titleComment;
   };
 
   const getSectionArticle = () => {
@@ -144,7 +183,11 @@ const PageContentSection = (props) => {
                   <img src={htmlLogo} alt="html_logo"></img>
                 </div>
                 <div className="webTechGraph-wrapper">
-                  <div className="webTechGraph webTechGraph_html">
+                  <div
+                    className={`webTechGraph webTechGraph_html ${
+                      onGraphArea ? "onGraphArea" : ""
+                    }`}
+                  >
                     <span>HTML</span>
                   </div>
                   <div className="webTechGraphPercent">80%</div>
@@ -157,7 +200,11 @@ const PageContentSection = (props) => {
                   <img src={cssLogo} alt="css_logo"></img>
                 </div>
                 <div className="webTechGraph-wrapper">
-                  <div className="webTechGraph webTechGraph_css">
+                  <div
+                    className={`webTechGraph webTechGraph_css ${
+                      onGraphArea ? "onGraphArea" : ""
+                    }`}
+                  >
                     <span>CSS</span>
                   </div>
                   <div className="webTechGraphPercent">80%</div>
@@ -170,7 +217,11 @@ const PageContentSection = (props) => {
                   <img src={jsLogo} alt="js_logo"></img>
                 </div>
                 <div className="webTechGraph-wrapper">
-                  <div className="webTechGraph webTechGraph_js">
+                  <div
+                    className={`webTechGraph webTechGraph_js ${
+                      onGraphArea ? "onGraphArea" : ""
+                    }`}
+                  >
                     <span>Javascript</span>
                   </div>
                   <div className="webTechGraphPercent">60%</div>
@@ -185,7 +236,11 @@ const PageContentSection = (props) => {
                   <img src={reactLogo} alt="react_logo"></img>
                 </div>
                 <div className="webTechGraph-wrapper">
-                  <div className="webTechGraph webTechGraph_react">
+                  <div
+                    className={`webTechGraph webTechGraph_react ${
+                      onGraphArea ? "onGraphArea" : ""
+                    }`}
+                  >
                     <span>React</span>
                   </div>
                   <div className="webTechGraphPercent">70%</div>
@@ -198,7 +253,11 @@ const PageContentSection = (props) => {
                   <img src={githubLogo} alt="github_logo"></img>
                 </div>
                 <div className="webTechGraph-wrapper">
-                  <div className="webTechGraph webTechGraph_github">
+                  <div
+                    className={`webTechGraph webTechGraph_github ${
+                      onGraphArea ? "onGraphArea" : ""
+                    }`}
+                  >
                     <span>Github</span>
                   </div>
                   <div className="webTechGraphPercent">40%</div>
@@ -211,7 +270,11 @@ const PageContentSection = (props) => {
                   <img src={sassLogo} alt="sass_logo"></img>
                 </div>
                 <div className="webTechGraph-wrapper">
-                  <div className="webTechGraph webTechGraph_sass">
+                  <div
+                    className={`webTechGraph webTechGraph_sass ${
+                      onGraphArea ? "onGraphArea" : ""
+                    }`}
+                  >
                     <span>Sass</span>
                   </div>
                   <div className="webTechGraphPercent">50%</div>
@@ -255,6 +318,13 @@ const PageContentSection = (props) => {
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  });
+
   return (
     <>
       {onModal ? (
@@ -264,9 +334,7 @@ const PageContentSection = (props) => {
         <div className="pageContentSection">
           <div className="flexRow">
             <h2>{contentTitle}</h2>
-            {contentTitle === "Pursuit" ? (
-              <p>다음과 같은 디자인을 추구합니다.</p>
-            ) : null}
+            {contentTitle === "My Info" ? null : <p>{getTitleComent()}</p>}
           </div>
           <div
             className={`sectionArticle flexRow ${getNonSpaceContentTitle()}Article`}

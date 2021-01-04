@@ -139,34 +139,38 @@
         display: flex;
         flex-direction: row;
         .modalTitle-wrapper {
-          width: 55%;
+          // width: 55%;
+          width: 95%;
           height: 100%;
+          display: flex;
+          align-items: center;
           .modalTitle {
             margin: 0;
             font-weight: 800;
           }
         }
-        .moreDetail-btn-wrapper {
-          width: 40%;
-          height: 100%;
-          @include xyCenter();
-          .moreDetail-btn {
-            width: 80%;
-            height: 80%;
-            border-radius: 5px;
-            background-color: rgb(224, 224, 224);
-            box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-            transition: box-shadow 0.2s ease-in-out;
-            @include xyCenter();
-            &:hover {
-              cursor: pointer;
-              box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-            }
-            p {
-              margin: 0;
-            }
-          }
-        }
+        // 이 프로젝트 상세보기 Btn. JSX에서 주석처리.
+        // .moreDetail-btn-wrapper {
+        //   width: 40%;
+        //   height: 100%;
+        //   @include xyCenter();
+        //   .moreDetail-btn {
+        //     width: 80%;
+        //     height: 80%;
+        //     border-radius: 5px;
+        //     background-color: rgb(224, 224, 224);
+        //     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+        //     transition: box-shadow 0.2s ease-in-out;
+        //     @include xyCenter();
+        //     &:hover {
+        //       cursor: pointer;
+        //       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        //     }
+        //     p {
+        //       margin: 0;
+        //     }
+        //   }
+        // }
         .modalXBtn-wrapper {
           @include xyCenter();
           position: relative;
@@ -185,10 +189,19 @@
         height: 10%;
         display: flex;
         flex-direction: row;
+        justify-content: flex-end;
         align-items: center;
+        div:nth-child(1) {
+          position: relative;
+          top: -15px;
+          margin-right: 25px;
+          font-size: 1.5rem;
+          color: rgb(94, 94, 94);
+          font-weight: 800;
+        }
         .modalLanguage {
           position: relative;
-          top: -10px;
+          top: -15px;
           box-sizing: content-box;
           width: fit-content;
           padding: 5px 30px;
@@ -620,13 +633,23 @@
         height: 50%;
         .pageContentSection {
           height: 100%;
-          h2 {
-            color: #0d1117;
-            font-weight: 800;
-            width: fit-content;
-            height: 10%;
-            margin: 0;
-            border-bottom: 5px solid #0d1117;
+          .flexRow:nth-child(1) {
+            h2 {
+              color: #0d1117;
+              font-weight: 800;
+              width: fit-content;
+              height: 10%;
+              margin: 0;
+              border-bottom: 5px solid #0d1117;
+            }
+            & > p {
+              color: rgb(158, 158, 158);
+              font-size: 0.8rem;
+              position: relative;
+              top: 5px;
+              left: 30px;
+              margin: 0;
+            }
           }
           .sectionArticle {
             width: 100%;
@@ -734,37 +757,40 @@
                         font-family: "Nanum Square";
                         display: flex;
                         align-items: center;
+                        width: 2%;
                         height: 100%;
                         background-image: linear-gradient(
                           to right,
                           #eebdd6,
                           #a264f5
                         );
-                        //#d0e0f5
                         border-radius: 5px;
+                        transition: width 2s ease-in-out;
                         span {
                           position: relative;
                           left: 15px;
                           color: white;
                           font-weight: 700;
                         }
-                        &.webTechGraph_html {
-                          width: 80%;
-                        }
-                        &.webTechGraph_css {
-                          width: 80%;
-                        }
-                        &.webTechGraph_js {
-                          width: 60%;
-                        }
-                        &.webTechGraph_react {
-                          width: 70%;
-                        }
-                        &.webTechGraph_github {
-                          width: 40%;
-                        }
-                        &.webTechGraph_sass {
-                          width: 50%;
+                        &.onGraphArea {
+                          &.webTechGraph_html {
+                            width: 80%;
+                          }
+                          &.webTechGraph_css {
+                            width: 80%;
+                          }
+                          &.webTechGraph_js {
+                            width: 60%;
+                          }
+                          &.webTechGraph_react {
+                            width: 70%;
+                          }
+                          &.webTechGraph_github {
+                            width: 40%;
+                          }
+                          &.webTechGraph_sass {
+                            width: 50%;
+                          }
                         }
                       }
                       .webTechGraphPercent {

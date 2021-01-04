@@ -215,7 +215,7 @@ const ModalPage = (props) => {
                   </div>
                   <div className="modalContentArticle">
                     <ul>
-                      <li>다음 페이지인 MyInfo로 넘어가는 btn이 있음</li>
+                      <li>다음 페이지인 MyInfo로 넘어가는 button이 있음</li>
                       <li>
                         모든 페이지로 scroll 이동할 수 있는 메뉴배너가 있음
                       </li>
@@ -372,16 +372,19 @@ const ModalPage = (props) => {
         <div className="modalTitle-wrapper">
           <h1 className="modalTitle">{getProjectInfoByNum().projectTitle}</h1>
         </div>
-        <div className="moreDetail-btn-wrapper">
+        {/* <div className="moreDetail-btn-wrapper">
           <div className="moreDetail-btn">
             <p>이 프로젝트 상세보기</p>
           </div>
-        </div>
+        </div> */}
         <div className="modalXBtn-wrapper" onClick={closeModal}>
           <FontAwesomeIcon icon={faTimes} size="2x" />
         </div>
       </div>
-      <div className="modalLanguage-box-wrapper">{getProjectLanguage()}</div>
+      <div className="modalLanguage-box-wrapper">
+        <div>Used Tech&nbsp;&nbsp;&nbsp;:</div>
+        {getProjectLanguage()}
+      </div>
       <div className="modalContent-box-wrapper">
         {getModalContent()}
         {/* <Slider {...sliderSettings}>
