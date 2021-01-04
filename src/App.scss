@@ -244,6 +244,12 @@
                   box-sizing: border-box;
                   width: 100%;
                   height: 30%;
+                  &.modalContentArticle-box:nth-child(1) {
+                    height: 37.5%;
+                  }
+                  &.modalContentArticle-box:nth-child(2) {
+                    height: 60%;
+                  }
                   .modalContentArticleTitle-wrapper {
                     h4 {
                       margin: 0;
@@ -285,10 +291,10 @@
       //포트폴리오 프로젝트 modalPage
       &.project_portfolio-color {
         background: rgba(181, 176, 221, 0.88);
-        .modalContent-wrapper_home,
-        .modalContent-wrapper_myInfo,
-        .modalContent-wrapper_project,
-        .modalContent-wrapper_contactMe {
+        .modalContent-wrapper_portfolio_home,
+        .modalContent-wrapper_portfolio_myInfo,
+        .modalContent-wrapper_portfolio_project,
+        .modalContent-wrapper_portfolio_contactMe {
           .modalContentArticle-box:nth-child(1) {
             height: 37.5% !important;
           }
