@@ -10,8 +10,8 @@ import pizza_order from "../../img/modal/PizzaService_Order.gif";
 import pizza_chatting from "../../img/modal/PizzaService_Chatting.gif";
 import portfolio_home from "../../img/modal/MyPortfolio_Home-page.png";
 import portfolio_myInfo from "../../img/modal/MyPortfolio_MyInfo-page.png";
-import portfolio_project from "../../img/modal/MyPortfolio_Project-page.png";
-import portfolio_contactMe from "../../img/modal/MyPortfolio_ContactMe-page.png";
+import portfolio_project from "../../img/modal/MyPortfolio_Project-page.gif";
+import portfolio_contactMe from "../../img/modal/MyPortfolio_ContactMe-page.gif";
 
 const ModalPage = (props) => {
   const { projectNum, closeModal } = props;
@@ -48,14 +48,16 @@ const ModalPage = (props) => {
   };
 
   const getModalContent = () => {
-    // let modalContentList = [];
     if (projectNum === 1) {
       return (
         <Slider {...sliderSettings}>
           <div className="modalContent-wrapper modalContent-wrapper_pizza_home">
             <div className="modalContent">
               <div className="modalContentSection">
-                <img src={pizza_homeAndMenu} alt="pizza_homeAndMenu"></img>
+                <div className="modalImg-box">
+                  <h2>Home page</h2>
+                  <img src={pizza_homeAndMenu} alt="pizza_homeAndMenu"></img>
+                </div>
               </div>
               <div className="modalContentSection">
                 <div className="modalContentArticle-box">
@@ -100,7 +102,10 @@ const ModalPage = (props) => {
           <div className="modalContent-wrapper modalContent-wrapper_pizza_order">
             <div className="modalContent">
               <div className="modalContentSection">
-                <img src={pizza_order} alt="pizza_order"></img>
+                <div className="modalImg-box">
+                  <h2>Pizza Order page</h2>
+                  <img src={pizza_order} alt="pizza_order"></img>
+                </div>
               </div>
               <div className="modalContentSection">
                 <div className="modalContentArticle-box">
@@ -145,7 +150,10 @@ const ModalPage = (props) => {
           <div className="modalContent-wrapper modalContent-wrapper_pizza_chatting">
             <div className="modalContent">
               <div className="modalContentSection">
-                <img src={pizza_chatting} alt="pizza_chatting"></img>
+                <div className="modalImg-box">
+                  <h2>Chatbot Chatting page</h2>
+                  <img src={pizza_chatting} alt="pizza_chatting"></img>
+                </div>
               </div>
               <div className="modalContentSection">
                 <div className="modalContentArticle-box">
@@ -195,7 +203,10 @@ const ModalPage = (props) => {
           <div className="modalContent-wrapper modalContent-wrapper_portfolio_home">
             <div className="modalContent">
               <div className="modalContentSection">
-                <img src={portfolio_home} alt="portfolio_home"></img>
+                <div className="modalImg-box">
+                  <h2>Home page</h2>
+                  <img src={portfolio_home} alt="portfolio_home"></img>
+                </div>
               </div>
               <div className="modalContentSection">
                 <div className="modalContentArticle-box">
@@ -231,7 +242,10 @@ const ModalPage = (props) => {
           <div className="modalContent-wrapper modalContent-wrapper_portfolio_myInfo">
             <div className="modalContent">
               <div className="modalContentSection">
-                <img src={portfolio_myInfo} alt="portfolio_myInfo"></img>
+                <div className="modalImg-box">
+                  <h2>My Info page</h2>
+                  <img src={portfolio_myInfo} alt="portfolio_myInfo"></img>
+                </div>
               </div>
               <div className="modalContentSection">
                 <div className="modalContentArticle-box">
@@ -271,7 +285,10 @@ const ModalPage = (props) => {
           <div className="modalContent-wrapper modalContent-wrapper_portfolio_project">
             <div className="modalContent">
               <div className="modalContentSection">
-                <img src={portfolio_project} alt="portfolio_project"></img>
+                <div className="modalImg-box">
+                  <h2>Project page</h2>
+                  <img src={portfolio_project} alt="portfolio_project"></img>
+                </div>
               </div>
               <div className="modalContentSection">
                 <div className="modalContentArticle-box">
@@ -295,6 +312,11 @@ const ModalPage = (props) => {
                         사용가능한 Skill과 그 기술수행 능력을 Graph로 나타냄
                       </li>
                       <li>
+                        Graph가 특정 scroll 영역에 들어올 시 Bar의 width가
+                        늘어나는 효과를 줌<br></br>
+                        영역 탈출 시 Bar의 width는 다시 줄어듬
+                      </li>
+                      <li>
                         Project의 이미지를 클릭 시 나타나는 Modal 창에 수행
                         Project의 정보 기재
                       </li>
@@ -315,7 +337,13 @@ const ModalPage = (props) => {
           <div className="modalContent-wrapper modalContent-wrapper_portfolio_contactMe">
             <div className="modalContent">
               <div className="modalContentSection">
-                <img src={portfolio_contactMe} alt="portfolio_contactMe"></img>
+                <div className="modalImg-box">
+                  <h2>Contact Me page</h2>
+                  <img
+                    src={portfolio_contactMe}
+                    alt="portfolio_contactMe"
+                  ></img>
+                </div>
               </div>
               <div className="modalContentSection">
                 <div className="modalContentArticle-box">

@@ -145,6 +145,7 @@
           display: flex;
           align-items: center;
           .modalTitle {
+            color: #2d2d2d;
             margin: 0;
             font-weight: 800;
           }
@@ -240,10 +241,22 @@
                 height: 100%;
                 border-radius: 10px;
                 background-color: rgb(224, 224, 224);
-                img {
-                  border-radius: 10px;
-                  width: 90%;
-                  height: auto;
+                .modalImg-box {
+                  position: relative;
+                  top: -20px;
+                  width: 100%;
+                  height: fit-content;
+                  @include flexColumn();
+                  @include xyCenter();
+                  h2 {
+                    color: #2d2d2d;
+                    font-weight: 800;
+                  }
+                  img {
+                    border-radius: 10px;
+                    width: 90%;
+                    height: auto;
+                  }
                 }
               }
               .modalContentSection:nth-child(2) {
