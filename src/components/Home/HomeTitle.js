@@ -1,6 +1,7 @@
 import React from "react";
 
 const HomeTitle = () => {
+  //--컴포넌트 return문--
   return (
     <div className="homeTitle-wrapper">
       <div className="homeTitle">

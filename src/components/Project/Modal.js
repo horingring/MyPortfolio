@@ -5,14 +5,17 @@ import "slick-carousel/slick/slick-theme.css";
 import ModalPage from "./ModalPage";
 
 const Modal = (props) => {
+  //--props--
   const { closeModal, initialProjectNum } = props;
 
+  //--정의함수--
   const closeModalByOverlay = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
     }
   };
 
+  //--slick slider settings--
   const settings = {
     dots: false,
     infinite: true,
@@ -23,6 +26,7 @@ const Modal = (props) => {
     initialSlide: initialProjectNum - 1,
   };
 
+  //--컴포넌트 return문--
   return (
     <>
       <div className="modal-overlay"></div>

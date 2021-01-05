@@ -4,6 +4,7 @@ import PageContentContainer from "../commonComponents/PageContentContainer";
 import MenuSideBar from "../commonComponents/MenuSideBar";
 
 const MyInfo = (props) => {
+  //--props--
   //props from <App>
   const {
     menuBarOnClick,
@@ -21,6 +22,7 @@ const MyInfo = (props) => {
      clickMode : <App>의 state. scroll시 currentPage(state) 변경을 막기 위함.
   */
 
+  //--컴포넌트 return문--
   return (
     <div className="myInfo-wrapper page-wrapper">
       <div className="myInfo">

@@ -3,6 +3,7 @@ import PageTitleContainer from "../commonComponents/PageTitleContainer";
 import PageContentContainer from "../commonComponents/PageContentContainer";
 
 const Project = () => {
+  //--컴포넌트 return문--
   return (
     <div className="project-wrapper page-wrapper">
       <div className="project">

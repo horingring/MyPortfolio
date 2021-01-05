@@ -8,8 +8,10 @@ import {
 import naverLogo from "../../img/logo/naverLogo.png";
 
 const ContactMeContentContainer = () => {
+  //--state--
   const [onCopied, setOnCopied] = useState("Click to Copy");
 
+  //--정의함수--
   const onMouseOverCopyBtn = () => {
     if (onCopied !== "Copied!") {
       const copyMessage = document.getElementsByClassName("copyMessage")[0];
@@ -53,6 +55,7 @@ const ContactMeContentContainer = () => {
     setOnCopied("Copied!");
   };
 
+  //--컴포넌트 return문--
   return (
     <div className="contactMeContentContainer-wrapper">
       <div className="contactMeContentContainer">

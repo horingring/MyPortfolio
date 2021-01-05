@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MenuSideBarTab from "./MenuSideBarTab";
 
 const MenuSideBar = (props) => {
+  //--props--
   //props from <App>
   const {
     menuBarOnClick,
@@ -19,8 +20,10 @@ const MenuSideBar = (props) => {
      clickMode : <App>의 state. scroll시 currentPage(state) 변경을 막기 위함.
   */
 
+  //--state--
   const [onFixed, setOnFixed] = useState(false);
 
+  //--정의함수--
   //scrollTop이 일정지점에 이를 시, state(onFixed) 변경
   const onScroll = (e) => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
@@ -67,6 +70,7 @@ const MenuSideBar = (props) => {
     return menuSideBarlist;
   };
 
+  //--useEffect--
   //mount되었을 때, scroll시 onScroll 실행
   //unmount되었을 때, 위 EventListener 제거
   useEffect(() => {
@@ -78,6 +82,7 @@ const MenuSideBar = (props) => {
     };
   });
 
+  //--컴포넌트 return문--
   return (
     <div className={`menuSideBar-wrapper${onFixed ? " onFixed" : ""}`}>
       <div className="menuSideBar">{getMenuSideBarTab()}</div>

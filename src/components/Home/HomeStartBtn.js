@@ -1,19 +1,17 @@
 import React from "react";
 
 const HomeStartBtn = (props) => {
-  // .homeStartBtn-wrapper 클릭 시 <App>의 currentPage(state) 변경
-
+  //--props--
   //props from <App>
   const { menuBarOnClick } = props;
   /* menuBarOnClick : menuBar클릭시 currentPage state변경*/
+
+  //--정의함수--
   const onClick = () => {
     menuBarOnClick(2);
   };
 
-  // useEffect(() => {
-  //   scrollToPage(currentPage);
-  // });
-
+  //--컴포넌트 return문--
   return (
     <div className="homeStartBtn-wrapper">
       <div className="homeStartBtn" onClick={onClick}>
