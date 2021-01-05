@@ -12,9 +12,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const App = () => {
+  //--state--
   const [currentPage, setCurrentPage] = useState(1);
   const [clickMode, setClickMode] = useState(false);
 
+  //--정의함수--
   // 메뉴정보 불러오기(for getIcon, setCurrentPage)
   const getMenuInfo = (menuName) => {
     let icon_name = null;
@@ -102,6 +104,7 @@ const App = () => {
     }
   };
 
+  //--useEffect--
   //첫 mount시, scrollTo(0, 0);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -119,6 +122,7 @@ const App = () => {
     };
   });
 
+  //--컴포넌트 return문--
   return (
     <div className="App">
       <Home

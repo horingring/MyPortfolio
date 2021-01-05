@@ -1,6 +1,7 @@
 import React from "react";
 
 const MenuHomeBarTab = (props) => {
+  //--props--
   const { menuName, tabIndex } = props;
 
   //props From <App>
@@ -10,11 +11,13 @@ const MenuHomeBarTab = (props) => {
      currentPage : <App>의 state. 현재 위치한 페이지 정보 표시
   */
 
+  //--정의함수--
   const onClick = () => {
     let { menu_num } = getMenuInfo(menuName);
     menuBarOnClick(menu_num);
   };
 
+  //--컴포넌트 return문--
   return (
     <div
       className={`menuHomeBarTab ${

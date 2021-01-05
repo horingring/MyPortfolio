@@ -1,14 +1,14 @@
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import ModalContent from "./ModalContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import ModalSliderPizzaService from "./ModalProjects/ModalSliderPizzaService";
+import ModalSliderWebPortfolio from "./ModalProjects/ModalSliderWebPortfolio";
 
 const ModalPage = (props) => {
+  //--props--
   const { projectNum, closeModal } = props;
 
+  //--정의함수--
   const getProjectInfoByNum = () => {
     let projectInfo = {};
     let projectTitle = "";
@@ -40,6 +40,7 @@ const ModalPage = (props) => {
     return projectLanguagelist;
   };
 
+  //--slick slider settings--
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -48,6 +49,15 @@ const ModalPage = (props) => {
     slidesToScroll: 1,
   };
 
+  const getModalContent = () => {
+    if (projectNum === 1) {
+      return <ModalSliderPizzaService sliderSettings={sliderSettings} />;
+    } else if (projectNum === 2) {
+      return <ModalSliderWebPortfolio sliderSettings={sliderSettings} />;
+    }
+  };
+
+  //--컴포넌트 return문--
   return (
     <div
       className={`modalPage-wrapper ${
@@ -58,22 +68,20 @@ const ModalPage = (props) => {
         <div className="modalTitle-wrapper">
           <h1 className="modalTitle">{getProjectInfoByNum().projectTitle}</h1>
         </div>
-        <div className="moreDetail-btn-wrapper">
+        {/* <div className="moreDetail-btn-wrapper">
           <div className="moreDetail-btn">
             <p>이 프로젝트 상세보기</p>
           </div>
-        </div>
+        </div> */}
         <div className="modalXBtn-wrapper" onClick={closeModal}>
           <FontAwesomeIcon icon={faTimes} size="2x" />
         </div>
       </div>
-      <div className="modalLanguage-box-wrapper">{getProjectLanguage()}</div>
-      <div className="modalContent-box-wrapper">
-        <Slider {...sliderSettings}>
-          <ModalContent />
-          <ModalContent />
-        </Slider>
+      <div className="modalLanguage-box-wrapper">
+        <div>Used Tech&nbsp;&nbsp;&nbsp;:</div>
+        {getProjectLanguage()}
       </div>
+      <div className="modalContent-box-wrapper">{getModalContent()}</div>
     </div>
   );
 };

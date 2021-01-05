@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MenuSideBarTab = (props) => {
+  //--props--
   const { menuName, tabIndex } = props;
 
   //props From <App>
@@ -11,6 +12,7 @@ const MenuSideBarTab = (props) => {
      currentPage : <App>의 state. 현재 위치한 페이지 정보 표시
   */
 
+  //--정의함수--
   const getIconName = () => {
     let { icon_name } = getMenuInfo(menuName);
     return icon_name;
@@ -21,6 +23,7 @@ const MenuSideBarTab = (props) => {
     menuBarOnClick(menu_num);
   };
 
+  //--컴포넌트 return문--
   return (
     <div
       className={`menuSideBarTab-wrapper ${

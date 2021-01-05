@@ -23,8 +23,18 @@
   display: flex;
   flex-direction: row;
 }
+
+@mixin flexColumn() {
+  display: flex;
+  flex-direction: column;
+}
+
 .flexRow {
   @include flexRow();
+}
+
+.flexColumn {
+  @include flexColumn();
 }
 
 // 미디어쿼리 (for 반응형 웹)
@@ -96,7 +106,7 @@
   .modal {
     z-index: 201;
     width: 80%;
-    height: 80%;
+    height: 90%;
     border-radius: 10px;
     .slick-slider > .slick-prev {
       left: -30px;
@@ -121,12 +131,6 @@
       padding: 4% 5%;
       border-radius: 10px;
       background: rgba(181, 176, 221, 0.88);
-      &.project_pizza-color {
-        background: rgba($color: #e9c649, $alpha: 0.88);
-      }
-      &.project_portfolio-color {
-        background: rgba(181, 176, 221, 0.88);
-      }
       .modalTitle-box-wrapper {
         position: relative;
         top: -20px;
@@ -135,34 +139,39 @@
         display: flex;
         flex-direction: row;
         .modalTitle-wrapper {
-          width: 55%;
+          // width: 55%;
+          width: 95%;
           height: 100%;
+          display: flex;
+          align-items: center;
           .modalTitle {
+            color: #2d2d2d;
             margin: 0;
             font-weight: 800;
           }
         }
-        .moreDetail-btn-wrapper {
-          width: 40%;
-          height: 100%;
-          @include xyCenter();
-          .moreDetail-btn {
-            width: 80%;
-            height: 80%;
-            border-radius: 5px;
-            background-color: rgb(224, 224, 224);
-            box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-            transition: box-shadow 0.2s ease-in-out;
-            @include xyCenter();
-            &:hover {
-              cursor: pointer;
-              box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-            }
-            p {
-              margin: 0;
-            }
-          }
-        }
+        // 이 프로젝트 상세보기 Btn. JSX에서 주석처리.
+        // .moreDetail-btn-wrapper {
+        //   width: 40%;
+        //   height: 100%;
+        //   @include xyCenter();
+        //   .moreDetail-btn {
+        //     width: 80%;
+        //     height: 80%;
+        //     border-radius: 5px;
+        //     background-color: rgb(224, 224, 224);
+        //     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+        //     transition: box-shadow 0.2s ease-in-out;
+        //     @include xyCenter();
+        //     &:hover {
+        //       cursor: pointer;
+        //       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        //     }
+        //     p {
+        //       margin: 0;
+        //     }
+        //   }
+        // }
         .modalXBtn-wrapper {
           @include xyCenter();
           position: relative;
@@ -181,10 +190,19 @@
         height: 10%;
         display: flex;
         flex-direction: row;
+        justify-content: flex-end;
         align-items: center;
+        div:nth-child(1) {
+          position: relative;
+          top: -15px;
+          margin-right: 25px;
+          font-size: 1.5rem;
+          color: rgb(94, 94, 94);
+          font-weight: 800;
+        }
         .modalLanguage {
           position: relative;
-          top: -10px;
+          top: -15px;
           box-sizing: content-box;
           width: fit-content;
           padding: 5px 30px;
@@ -211,33 +229,103 @@
           .modalContent-wrapper {
             @include WH100Percent();
             box-sizing: border-box;
-            padding: 4% 6%;
+            padding: 3.5% 6%;
             .modalContent {
               @include WH100Percent();
               display: flex;
               flex-direction: row;
               justify-content: space-between;
               .modalContentSection:nth-child(1) {
+                @include xyCenter();
                 width: 50%;
                 height: 100%;
                 border-radius: 10px;
                 background-color: rgb(224, 224, 224);
+                .modalImg-box {
+                  position: relative;
+                  top: -20px;
+                  width: 100%;
+                  height: fit-content;
+                  @include flexColumn();
+                  @include xyCenter();
+                  h2 {
+                    color: #2d2d2d;
+                    font-weight: 800;
+                  }
+                  img {
+                    border-radius: 10px;
+                    width: 90%;
+                    height: auto;
+                  }
+                }
               }
               .modalContentSection:nth-child(2) {
-                margin-left: 15px;
+                margin-left: 50px;
                 width: 48%;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                .modalContentArticle {
-                  background-color: rgb(224, 224, 224);
-                  border-radius: 10px;
+                .modalContentArticle-box {
+                  box-sizing: border-box;
                   width: 100%;
                   height: 30%;
+                  &.modalContentArticle-box:nth-child(1) {
+                    height: 37.5%;
+                  }
+                  &.modalContentArticle-box:nth-child(2) {
+                    height: 60%;
+                  }
+                  .modalContentArticleTitle-wrapper {
+                    h4 {
+                      margin: 0;
+                      padding-bottom: 10px;
+                      color: #2d2d2d;
+                    }
+                  }
+                  .modalContentArticle {
+                    font-size: 0.9rem;
+                    box-sizing: border-box;
+                    height: 75%;
+                    padding: 10px 20px;
+                    background-color: rgb(224, 224, 224);
+                    border-radius: 10px;
+                    overflow: auto;
+                    ul {
+                      margin: 0;
+                      padding-left: 20px;
+                      li {
+                        padding: 5px 0;
+                        list-style-type: circle;
+                      }
+                    }
+                  }
+                  &:nth-child(2) {
+                    @include flexColumn();
+                    justify-content: flex-end;
+                  }
                 }
               }
             }
+          }
+        }
+      }
+      //피자 프로젝트 modalPage
+      &.project_pizza-color {
+        background: rgba($color: #e9c649, $alpha: 0.88);
+      }
+      //포트폴리오 프로젝트 modalPage
+      &.project_portfolio-color {
+        background: rgba(181, 176, 221, 0.88);
+        .modalContent-wrapper_portfolio_home,
+        .modalContent-wrapper_portfolio_myInfo,
+        .modalContent-wrapper_portfolio_project,
+        .modalContent-wrapper_portfolio_contactMe {
+          .modalContentArticle-box:nth-child(1) {
+            height: 37.5% !important;
+          }
+          .modalContentArticle-box:nth-child(2) {
+            height: 60% !important;
           }
         }
       }
@@ -388,22 +476,124 @@
         height: 50%;
         .pageContentSection {
           height: 100%;
-          h2 {
-            color: #0d1117;
-            font-weight: 800;
-            width: fit-content;
-            height: 10%;
-            margin: 0;
-            border-bottom: 5px solid #0d1117;
+          .flexRow:nth-child(1) {
+            h2 {
+              color: #0d1117;
+              font-weight: 800;
+              width: fit-content;
+              height: 10%;
+              margin: 0;
+              border-bottom: 5px solid #0d1117;
+            }
+            & > p {
+              color: rgb(158, 158, 158);
+              font-size: 0.8rem;
+              position: relative;
+              top: 5px;
+              left: 30px;
+              margin: 0;
+            }
           }
           .sectionArticle {
+            box-sizing: border-box;
             width: 100%;
             height: 90%;
+            padding: 30px 4%;
             .sectionArticle-column {
               box-sizing: border-box;
-              padding: 20px 20px 20px 0;
+              padding: 0 20px;
               width: 50%;
               height: 100%;
+              display: flex;
+              // justify-content: center;
+              align-items: center;
+            }
+            &.PursuitArticle {
+              .sectionArticle-column:nth-child(1) {
+                border-right: 0.5px solid rgba(158, 158, 158, 0.5);
+              }
+              .pursuit-box {
+                box-sizing: border-box;
+                width: 280px;
+                height: 50%;
+                padding: 0 20px;
+                .pursuitImage-wrapper {
+                  width: fit-content;
+                  display: flex;
+                  align-items: center;
+                  padding-right: 35px;
+                  img {
+                    width: 48px;
+                    height: auto;
+                  }
+                }
+                .pursuitExplain-box {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  font-size: 0.9rem;
+                  h3 {
+                    margin: 0;
+                    padding-bottom: 10px;
+                  }
+                  .pursuitExplainContent {
+                    padding-top: 10px;
+                    p {
+                      margin: 0;
+                    }
+                    p:nth-child(1) {
+                      padding-bottom: 5px;
+                    }
+                  }
+                }
+              }
+              .pursuit-box:nth-child(1) {
+                padding-bottom: 10px;
+              }
+              .pursuit-box:nth-child(2) {
+                padding-top: 10px;
+              }
+            }
+            &.MyInfoArticle {
+              .sectionArticle-column:nth-child(1) {
+                width: 30%;
+                display: flex;
+                align-items: center;
+                .myInfoImage-wrapper {
+                  height: 90%;
+                  width: fit-content;
+                  img {
+                    height: 100%;
+                    width: auto;
+                    border-radius: 50%;
+                  }
+                }
+              }
+              .sectionArticle-column:nth-child(2) {
+                @include xyCenter();
+                width: 70%;
+                font-size: 0.9rem;
+                div:nth-child(1) {
+                  padding-bottom: 30px;
+                  @include xyCenter();
+                  h2 {
+                    font-weight: 800;
+                    margin: 0;
+                    position: relative;
+                    right: 30px;
+                  }
+                }
+                div:nth-child(2) {
+                  ul {
+                    margin: 0;
+                    li {
+                      margin: 0 !important;
+                      padding: 10px;
+                      list-style-type: circle;
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -414,7 +604,7 @@
 
 //<Project> 컴포넌트
 .project {
-  background-color: rgba($color: #6ea0c1, $alpha: 0.2);
+  background-color: rgba($color: #a3cce7, $alpha: 0.2);
   position: relative;
   display: flex;
   flex-direction: row;
@@ -456,22 +646,37 @@
         height: 50%;
         .pageContentSection {
           height: 100%;
-          h2 {
-            color: #0d1117;
-            font-weight: 800;
-            width: fit-content;
-            height: 10%;
-            margin: 0;
-            border-bottom: 5px solid #0d1117;
+          .flexRow:nth-child(1) {
+            h2 {
+              color: #0d1117;
+              font-weight: 800;
+              width: fit-content;
+              height: 10%;
+              margin: 0;
+              border-bottom: 5px solid #0d1117;
+            }
+            & > p {
+              color: rgb(158, 158, 158);
+              font-size: 0.8rem;
+              position: relative;
+              top: 5px;
+              left: 30px;
+              margin: 0;
+            }
           }
           .sectionArticle {
             width: 100%;
             height: 90%;
+            @include xyCenter();
             .sectionArticle-column {
               box-sizing: border-box;
-              padding: 20px 20px 20px 0;
-              width: 50%;
-              height: 100%;
+              padding: 20px 30px 20px 0;
+              width: 45%;
+              height: 90%;
+              &.sectionArticle-column:nth-child(2) {
+                padding-right: 0;
+                padding-left: 30px;
+              }
               //.project-article 공통
               &.project-article {
                 .project-article-image {
@@ -526,6 +731,94 @@
                 }
               }
             }
+            &.WebTechArticle {
+              position: relative;
+              left: -20px;
+              font-size: 0.9rem;
+              padding: 0 50px;
+              box-sizing: border-box;
+              .sectionArticle-column {
+                @include flexColumn();
+                justify-content: space-evenly;
+                .webTech-box-wrapper {
+                  width: 100%;
+                  height: 30%;
+                  display: flex;
+                  align-items: center;
+                  .webTech-box {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 48%;
+                    @include flexRow();
+                    .webTechImage-wrapper {
+                      width: 20%;
+                      @include xyCenter();
+                      img {
+                        width: auto;
+                        height: 45px;
+                      }
+                    }
+                    .webTechGraph-wrapper {
+                      @include flexRow();
+                      align-items: center;
+                      width: 80%;
+                      height: 100%;
+                      position: relative;
+                      background: #d0e0f5;
+                      border-radius: 5px;
+                      .webTechGraph {
+                        font-family: "Nanum Square";
+                        display: flex;
+                        align-items: center;
+                        width: 2%;
+                        height: 100%;
+                        background-image: linear-gradient(
+                          to right,
+                          #eebdd6,
+                          #a264f5
+                        );
+                        border-radius: 5px;
+                        transition: width 2s ease-in-out;
+                        span {
+                          position: relative;
+                          left: 15px;
+                          color: white;
+                          font-weight: 700;
+                        }
+                        &.onGraphArea {
+                          &.webTechGraph_html {
+                            width: 80%;
+                          }
+                          &.webTechGraph_css {
+                            width: 80%;
+                          }
+                          &.webTechGraph_js {
+                            width: 60%;
+                          }
+                          &.webTechGraph_react {
+                            width: 70%;
+                          }
+                          &.webTechGraph_github {
+                            width: 40%;
+                          }
+                          &.webTechGraph_sass {
+                            width: 50%;
+                          }
+                        }
+                      }
+                      .webTechGraphPercent {
+                        position: absolute;
+                        right: 10px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            &.ProjectArticle {
+              box-sizing: border-box;
+              padding: 0 50px;
+            }
           }
         }
       }
@@ -539,6 +832,7 @@
   background-size: auto 150vh;
   background-position-x: 100%;
   background-position-y: 85%;
+  background-attachment: fixed;
   .contactMe {
     display: flex;
     flex-direction: row;
@@ -580,6 +874,7 @@
           height: 35%;
           @include xyCenter();
           .contactMeLink-box {
+            font-family: "Nanum Square";
             width: 100%;
             display: flex;
             justify-content: space-evenly;
