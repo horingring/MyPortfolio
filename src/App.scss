@@ -37,50 +37,6 @@
   @include flexColumn();
 }
 
-// 미디어쿼리 (for 반응형 웹)
-@media (min-width: 1024px) {
-  .pageTitleContainer-wrapper {
-    width: 27vw;
-  }
-  .pageContentContainer-wrapper,
-  .contactMeContentContainer-wrapper {
-    width: 67vw;
-  }
-  .menuSideBar-wrapper {
-    // width: 6vw;
-    width: 60px;
-    z-index: 100;
-  }
-}
-@media (max-width: 1023px) and (min-width: 768px) {
-  .pageTitleContainer-wrapper {
-    width: 28vw;
-  }
-  .pageContentContainer-wrapper,
-  .contactMeContentContainer-wrapper {
-    width: 65vw;
-  }
-  .menuSideBar-wrapper {
-    // width: 7vw;
-    width: 55px;
-    z-index: 100;
-  }
-}
-@media (max-width: 767px) {
-  .pageTitleContainer-wrapper {
-    display: none;
-  }
-  .pageContentContainer-wrapper,
-  .contactMeContentContainer-wrapper {
-    width: 87vw;
-  }
-  .menuSideBar-wrapper {
-    // width: 13vw;
-    width: 50px;
-    z-index: 100;
-  }
-}
-
 //<Modal> 컴포넌트
 .modal-overlay {
   z-index: 199;
@@ -969,6 +925,80 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+// 미디어쿼리 (for 반응형 웹)
+@media (min-width: 1024px) {
+  .pageTitleContainer-wrapper {
+    width: 27vw;
+  }
+  .pageContentContainer-wrapper,
+  .contactMeContentContainer-wrapper {
+    width: 67vw;
+  }
+  .menuSideBar-wrapper {
+    // width: 6vw;
+    width: 60px;
+    z-index: 100;
+  }
+}
+@media (max-width: 1023px) and (min-width: 768px) {
+  .pageTitleContainer-wrapper {
+    width: 28vw;
+  }
+  .pageContentContainer-wrapper,
+  .contactMeContentContainer-wrapper {
+    width: 65vw;
+  }
+  .menuSideBar-wrapper {
+    // width: 7vw;
+    width: 55px;
+    z-index: 100;
+  }
+}
+@media (max-width: 767px) {
+  .pageTitleContainer-wrapper {
+    display: none;
+  }
+
+  .pageContentContainer-wrapper,
+  .contactMeContentContainer-wrapper {
+    width: 87vw;
+  }
+
+  .menuSideBar-wrapper {
+    // width: 13vw;
+    width: 50px;
+    z-index: 100;
+  }
+
+  .home-wrapper {
+    font-size: 0.8rem;
+    background-size: auto 100vh;
+    background-position-x: 40%;
+    .home {
+      .menuHomeBar-wrapper {
+        width: 100%;
+        @include xyCenter();
+        .menuHomeBar {
+          top: 0;
+          right: 0;
+        }
+      }
+      .homeTitle-wrapper {
+        height: 45vh;
+        h1 {
+          font-size: 38px;
+        }
+      }
+      .homeStartBtn-wrapper {
+        height: 35vh;
+        .homeStartBtn {
+          padding: 0 50px;
         }
       }
     }
