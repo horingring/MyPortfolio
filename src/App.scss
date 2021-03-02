@@ -1205,4 +1205,232 @@
       }
     }
   }
+  .modal-overlay {
+    z-index: 199;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.5);
+  }
+  .modal-wrapper {
+    z-index: 200;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    @include xyCenter();
+    .modal {
+      z-index: 201;
+      width: 80%;
+      height: 90%;
+      border-radius: 10px;
+      .slick-slider > .slick-prev {
+        left: -30px;
+      }
+      .slick-slider > .slick-next {
+        right: -30px;
+      }
+      .slick-dots {
+        bottom: -30px;
+      }
+      .slick-slider,
+      .slick-list,
+      .slick-track,
+      .slick-slide,
+      .slick-slide > div {
+        @include WH100Percent();
+        border-radius: 10px;
+      }
+      .modalPage-wrapper {
+        @include WH100Percent();
+        box-sizing: border-box;
+        padding: 4% 5%;
+        border-radius: 10px;
+        background: rgba(181, 176, 221, 0.88);
+        .modalTitle-box-wrapper {
+          position: relative;
+          top: -20px;
+          width: 100%;
+          height: 10%;
+          display: flex;
+          flex-direction: row;
+          .modalTitle-wrapper {
+            // width: 55%;
+            width: 95%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            .modalTitle {
+              color: #2d2d2d;
+              margin: 0;
+              font-weight: 800;
+            }
+          }
+          .modalXBtn-wrapper {
+            @include xyCenter();
+            position: relative;
+            right: -15px;
+            width: 5%;
+            color: rgba(#e0e0e0, 1);
+            &:hover {
+              cursor: pointer;
+              color: white;
+            }
+          }
+        }
+        .modalLanguage-box-wrapper {
+          box-sizing: border-box;
+          width: 100%;
+          height: 10%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          div:nth-child(1) {
+            position: relative;
+            top: -15px;
+            margin-right: 25px;
+            font-size: 1.5rem;
+            color: rgb(94, 94, 94);
+            font-weight: 800;
+          }
+          .modalLanguage {
+            position: relative;
+            top: -15px;
+            box-sizing: content-box;
+            width: fit-content;
+            padding: 5px 30px;
+            color: rgb(94, 94, 94);
+            background-color: rgb(243, 236, 236);
+            margin-right: 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            // box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+          }
+        }
+        .modalContent-box-wrapper {
+          z-index: 1000;
+          width: 100%;
+          height: 80%;
+          background-color: rgb(243, 236, 236);
+          border-radius: 10px;
+          .slick-slider,
+          .slick-list,
+          .slick-track,
+          .slick-slide,
+          .slick-slide > div {
+            @include WH100Percent();
+            .modalContent-wrapper {
+              @include WH100Percent();
+              box-sizing: border-box;
+              padding: 3.5% 6%;
+              .modalContent {
+                @include WH100Percent();
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                .modalContentSection:nth-child(1) {
+                  @include xyCenter();
+                  width: 50%;
+                  height: 100%;
+                  border-radius: 10px;
+                  background-color: rgb(224, 224, 224);
+                  .modalImg-box {
+                    position: relative;
+                    top: -20px;
+                    width: 100%;
+                    height: fit-content;
+                    @include flexColumn();
+                    @include xyCenter();
+                    h2 {
+                      color: #2d2d2d;
+                      font-weight: 800;
+                    }
+                    img {
+                      border-radius: 10px;
+                      width: 90%;
+                      height: auto;
+                    }
+                  }
+                }
+                .modalContentSection:nth-child(2) {
+                  margin-left: 50px;
+                  width: 48%;
+                  height: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  .modalContentArticle-box {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 30%;
+                    &.modalContentArticle-box:nth-child(1) {
+                      height: 37.5%;
+                    }
+                    &.modalContentArticle-box:nth-child(2) {
+                      height: 60%;
+                    }
+                    .modalContentArticleTitle-wrapper {
+                      h4 {
+                        margin: 0;
+                        padding-bottom: 10px;
+                        color: #2d2d2d;
+                      }
+                    }
+                    .modalContentArticle {
+                      font-size: 0.9rem;
+                      box-sizing: border-box;
+                      height: 75%;
+                      padding: 10px 20px;
+                      background-color: rgb(224, 224, 224);
+                      border-radius: 10px;
+                      overflow: auto;
+                      ul {
+                        margin: 0;
+                        padding-left: 20px;
+                        li {
+                          padding: 5px 0;
+                          list-style-type: circle;
+                        }
+                      }
+                    }
+                    &:nth-child(2) {
+                      @include flexColumn();
+                      justify-content: flex-end;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        //피자 프로젝트 modalPage
+        &.project_pizza-color {
+          background: rgba($color: #e9c649, $alpha: 0.88);
+        }
+        //포트폴리오 프로젝트 modalPage
+        &.project_portfolio-color {
+          background: rgba(181, 176, 221, 0.88);
+          .modalContent-wrapper_portfolio_home,
+          .modalContent-wrapper_portfolio_myInfo,
+          .modalContent-wrapper_portfolio_project,
+          .modalContent-wrapper_portfolio_contactMe {
+            .modalContentArticle-box:nth-child(1) {
+              height: 37.5% !important;
+            }
+            .modalContentArticle-box:nth-child(2) {
+              height: 60% !important;
+            }
+          }
+        }
+      }
+    }
+  }
 }
