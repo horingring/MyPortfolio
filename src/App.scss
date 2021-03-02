@@ -1037,6 +1037,7 @@
                 @include xyCenter();
                 padding: 0;
               }
+              // PursuitArticle of <MyInfo> (media: phone)
               &.PursuitArticle {
                 height: fit-content;
                 .pursuit-box {
@@ -1067,7 +1068,7 @@
                 }
               }
 
-              /////
+              // MyInfoArticle of <MyInfo> (media: phone)
               &.MyInfoArticle {
                 height: 90%;
                 position: relative;
@@ -1109,6 +1110,8 @@
       }
     }
   }
+
+  // <Project> 컴포넌트 (media: phone)
   .project {
     .pageContentContainer-wrapper {
       .pageContentContainer {
@@ -1128,6 +1131,8 @@
             .sectionArticle {
               padding: 30px 0;
               height: 75%;
+
+              // WebTechArticle of <Project> (media: phone)
               &.WebTechArticle {
                 padding: 30px;
                 display: flex;
@@ -1166,6 +1171,8 @@
                   }
                 }
               }
+
+              // ProjectArticle of <Project> (media: phone)
               &.ProjectArticle {
                 padding: 30px;
                 display: flex;
