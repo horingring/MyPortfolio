@@ -68,7 +68,9 @@ const ContactMeContentContainer = () => {
                 window.open("https://blog.naver.com/dldldksl", "_blank")
               }
             >
-              <img src={naverLogo} alt="naverLogo"></img>
+              <div className="contactMeLinkImage-wrapper">
+                <img src={naverLogo} alt="naverLogo"></img>
+              </div>
               <p className="contactMeLinkName">Naver</p>
             </div>
             <div
