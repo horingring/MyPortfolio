@@ -940,6 +940,7 @@
 }
 
 // 미디어쿼리 (for 반응형 웹)
+// media: desktop
 @media (min-width: 1024px) {
   .pageTitleContainer-wrapper {
     width: 27vw;
@@ -954,6 +955,8 @@
     z-index: 100;
   }
 }
+
+// media: tablet
 @media (max-width: 1023px) and (min-width: 768px) {
   .pageTitleContainer-wrapper {
     width: 28vw;
@@ -968,6 +971,8 @@
     z-index: 100;
   }
 }
+
+// media: phone
 @media (max-width: 767px) {
   .pageTitleContainer-wrapper {
     // visibility: hidden;
@@ -975,21 +980,44 @@
 
   .pageContentContainer-wrapper {
     width: 100%;
-    padding: 15px 52px 15px 10px !important;
+    padding: 2vh 9vw 2vh 1vw !important;
   }
 
   .contactMeContentContainer-wrapper {
     box-sizing: border-box;
-    padding: 0 52px 0 10px;
+    padding: 0 9vw 0 1vw;
   }
 
+  // <MenuSideBar> 컴포넌트 (media: phone)
   .menuSideBar-wrapper {
-    // width: 13vw;
-    width: 42px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgb(74, 66, 145);
+    width: 8vw;
     z-index: 100;
+    &.onFixed {
+      position: fixed;
+    }
     .menuSideBar {
+      padding: 100% 0;
+      box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
       .menuSideBarTab-wrapper {
-        font-size: 0.8rem;
+        padding: 50% 10%;
+        transition: color 0.35s ease-in-out;
+        font-size: 2.5vw;
+        &.onCurrentPage {
+          color: white;
+        }
+        &:hover {
+          cursor: pointer;
+          color: white;
+        }
       }
     }
   }
@@ -1001,7 +1029,6 @@
     background-color: rgba($color: #6ea0c1, $alpha: 0.8);
     background-position-x: 40%;
     background-position-y: center;
-    font-size: 0.8em;
     background-size: auto 100vh;
     .home {
       .menuHomeBar-wrapper {
@@ -1009,15 +1036,19 @@
         height: 20vh;
         @include xyCenter();
         .menuHomeBar {
+          width: 95%;
           display: flex;
+          justify-content: space-around;
           position: relative;
           top: 0;
           right: 0;
           .menuHomeBarTab {
-            margin: 10px 20px;
+            margin: 1vw;
+            font-size: 3.5vw;
             font-weight: 600;
             color: rgb(190, 190, 190);
             transition: color 0.25s ease-in-out;
+            text-align: center;
             &.onCurrentPage {
               color: white;
             }
@@ -1033,7 +1064,7 @@
         @include xyCenter();
         h1 {
           color: white;
-          font-size: 38px;
+          font-size: 10vw;
           text-align: center;
         }
       }
@@ -1041,7 +1072,8 @@
         height: 35vh;
         @include xyCenter();
         .homeStartBtn {
-          padding: 0 50px;
+          box-sizing: border-box;
+          padding: 0 10vw;
           color: rgb(190, 190, 190);
           background: rgba($color: #000000, $alpha: 0.25);
           border-radius: 10px;
@@ -1087,7 +1119,7 @@
         width: 100%;
         position: absolute;
         top: 0;
-        color: white;
+        color: #c8b49f;
         background: rgba($color: #000000, $alpha: 0.2);
         h1 {
           margin-left: 5%;
@@ -1166,7 +1198,7 @@
                     top: 35%;
                     padding: 0;
                     img {
-                      width: 60px;
+                      width: 12vw;
                       height: auto;
                       opacity: 0.7;
                     }
@@ -1176,14 +1208,15 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
-                    font-size: 0.8rem;
                     h3 {
+                      font-size: 3.3vw;
                       margin: 0;
                       padding-bottom: 10px;
                     }
                     .pursuitExplainContent {
                       padding-top: 10px;
                       p {
+                        font-size: 2.8vw;
                         margin: 0;
                       }
                       p:nth-child(1) {
@@ -1243,10 +1276,10 @@
                       padding-left: 20px;
                       li {
                         margin: 0 !important;
-                        padding: 10px;
+                        padding: 8px;
                         padding-left: 0;
                         list-style-type: circle;
-                        font-size: 0.8rem;
+                        font-size: 2.8vw;
                       }
                     }
                   }
@@ -1399,7 +1432,7 @@
                 position: relative;
                 left: -20px;
                 font-size: 0.9rem;
-                padding: 30px;
+                padding: 20px 20px;
                 box-sizing: border-box;
                 display: flex;
                 justify-content: space-between;
@@ -1428,7 +1461,7 @@
                         @include xyCenter();
                         img {
                           width: auto;
-                          height: 30px;
+                          height: 7.5vw;
                         }
                       }
                       .webTechGraph-wrapper {
@@ -1458,7 +1491,7 @@
                             left: 10px;
                             color: white;
                             font-weight: 700;
-                            font-size: 0.9em;
+                            font-size: 3vw;
                           }
                           &.onGraphArea {
                             &.webTechGraph_html {
@@ -1483,8 +1516,8 @@
                         }
                         .webTechGraphPercent {
                           position: absolute;
-                          font-size: 0.9em;
-                          right: 5px;
+                          font-size: 3vw;
+                          right: 3px;
                         }
                       }
                     }
@@ -1495,7 +1528,7 @@
               // ProjectArticle of <Project> (media: phone)
               &.ProjectArticle {
                 box-sizing: border-box;
-                padding: 30px;
+                padding: 20px;
                 display: flex;
                 justify-content: space-between;
                 .sectionArticle-column:nth-child(1) {
@@ -1555,13 +1588,13 @@
       height: 90%;
       border-radius: 10px;
       .slick-slider > .slick-prev {
-        left: -30px;
+        left: -6vw;
       }
       .slick-slider > .slick-next {
-        right: -30px;
+        right: -6vw;
       }
       .slick-dots {
-        bottom: -30px;
+        bottom: -3.6vh;
       }
       .slick-slider,
       .slick-list,
@@ -1595,6 +1628,7 @@
               color: #2d2d2d;
               margin: 0;
               font-weight: 800;
+              font-size: 6.5vw;
             }
           }
           .modalXBtn-wrapper {
@@ -1604,6 +1638,7 @@
             top: 0;
             width: 5%;
             color: rgba(#e0e0e0, 1);
+            font-size: 3vw;
             &:hover {
               cursor: pointer;
               color: white;
@@ -1624,7 +1659,7 @@
             left: 0;
             top: -15px;
             margin-right: 0;
-            font-size: 1.5rem;
+            font-size: 3.5vw;
             color: rgb(94, 94, 94);
             font-weight: 800;
           }
@@ -1633,12 +1668,13 @@
             top: 0;
             box-sizing: content-box;
             width: fit-content;
-            padding: 5px 20px;
+            padding: 1vw 2vw;
             color: rgb(94, 94, 94);
             background-color: rgb(243, 236, 236);
             margin-right: 15px;
             border-radius: 5px;
             font-weight: 600;
+            font-size: 3.8vw;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
             &:nth-last-child(1) {
               margin-right: 0;
@@ -1654,10 +1690,12 @@
           border-radius: 10px;
           box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
           .slick-slider > .slick-prev {
-            left: -25px;
+            left: -5.3vw;
+            transform: scale(0.6);
           }
           .slick-slider > .slick-next {
-            right: -25px;
+            right: -5.3vw;
+            transform: scale(0.6);
           }
           .slick-slider,
           .slick-list,
@@ -1690,6 +1728,7 @@
                     h2 {
                       color: #2d2d2d;
                       font-weight: 800;
+                      font-size: 5vw;
                     }
                     img {
                       border-radius: 10px;
@@ -1725,10 +1764,11 @@
                         margin: 0;
                         padding-bottom: 0;
                         color: #2d2d2d;
+                        font-size: 3.8vw;
                       }
                     }
                     .modalContentArticle {
-                      font-size: 0.9rem;
+                      font-size: 3vw;
                       box-sizing: border-box;
                       height: 88%;
                       padding: 10px;
@@ -1803,6 +1843,7 @@
           h1 {
             color: white;
             font-weight: 900;
+            font-size: 8vw;
             margin: 0;
             margin-left: 0;
           }
