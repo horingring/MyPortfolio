@@ -940,6 +940,7 @@
 }
 
 // 미디어쿼리 (for 반응형 웹)
+// media: desktop
 @media (min-width: 1024px) {
   .pageTitleContainer-wrapper {
     width: 27vw;
@@ -954,6 +955,8 @@
     z-index: 100;
   }
 }
+
+// media: tablet
 @media (max-width: 1023px) and (min-width: 768px) {
   .pageTitleContainer-wrapper {
     width: 28vw;
@@ -968,6 +971,8 @@
     z-index: 100;
   }
 }
+
+// media: phone
 @media (max-width: 767px) {
   .pageTitleContainer-wrapper {
     // visibility: hidden;
@@ -975,49 +980,115 @@
 
   .pageContentContainer-wrapper {
     width: 100%;
-    padding: 15px 52px 15px 10px !important;
+    padding: 2vh 9vw 2vh 1vw !important;
   }
 
   .contactMeContentContainer-wrapper {
     box-sizing: border-box;
-    padding: 0 52px 0 10px;
+    padding: 0 9vw 0 1vw;
   }
 
+  // <MenuSideBar> 컴포넌트 (media: phone)
   .menuSideBar-wrapper {
-    // width: 13vw;
-    width: 42px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgb(74, 66, 145);
+    width: 8vw;
     z-index: 100;
+    &.onFixed {
+      position: fixed;
+    }
     .menuSideBar {
+      padding: 100% 0;
+      box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
       .menuSideBarTab-wrapper {
-        font-size: 0.8rem;
+        padding: 50% 10%;
+        transition: color 0.35s ease-in-out;
+        font-size: 2.5vw;
+        &.onCurrentPage {
+          color: white;
+        }
+        &:hover {
+          cursor: pointer;
+          color: white;
+        }
       }
     }
   }
 
   // <Home> 컴포넌트 (media: phone)
   .home-wrapper {
-    font-size: 0.8rem;
-    background-size: auto 100vh;
+    background-image: url("./img/air-balloons.jpg");
+    background-repeat: no-repeat;
+    background-color: rgba($color: #6ea0c1, $alpha: 0.8);
     background-position-x: 40%;
+    background-position-y: center;
+    background-size: auto 100vh;
     .home {
       .menuHomeBar-wrapper {
         width: 100%;
+        height: 20vh;
         @include xyCenter();
         .menuHomeBar {
+          width: 95%;
+          display: flex;
+          justify-content: space-around;
+          position: relative;
           top: 0;
           right: 0;
+          .menuHomeBarTab {
+            margin: 1vw;
+            font-size: 3.5vw;
+            font-weight: 600;
+            color: rgb(190, 190, 190);
+            transition: color 0.25s ease-in-out;
+            text-align: center;
+            &.onCurrentPage {
+              color: white;
+            }
+            &:hover {
+              cursor: pointer;
+              color: white;
+            }
+          }
         }
       }
       .homeTitle-wrapper {
         height: 45vh;
+        @include xyCenter();
         h1 {
-          font-size: 38px;
+          color: white;
+          font-size: 10vw;
+          text-align: center;
         }
       }
       .homeStartBtn-wrapper {
         height: 35vh;
+        @include xyCenter();
         .homeStartBtn {
-          padding: 0 50px;
+          box-sizing: border-box;
+          padding: 0 10vw;
+          color: rgb(190, 190, 190);
+          background: rgba($color: #000000, $alpha: 0.25);
+          border-radius: 10px;
+          display: inline-block;
+          position: relative;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+          transition: box-shadow 0.2s ease-in-out;
+          &:hover {
+            color: white;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+          }
+          h2 {
+            text-align: center;
+          }
         }
       }
     }
@@ -1025,50 +1096,133 @@
 
   // <MyInfo> 컴포넌트 (media: phone)
   .myInfo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    .pageTitleContainer-wrapper,
+    .pageContentContainer-wrapper,
+    .menuSideBar-wrapper {
+      height: 100vh;
+    }
+
+    // <PageTitleContainer> 컴포넌트 (of <MyInfo>)
+    .pageTitleContainer-wrapper {
+      background-image: url("./img/mountain.jpg");
+      background-size: auto 100vh;
+      background-color: rgba($color: #c8b49f, $alpha: 0.7);
+      background-repeat: no-repeat;
+      background-position-x: -500px;
+      // background-position-x: 580px;
+      background-attachment: fixed;
+      position: relative;
+      .pageTitleContainer {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        color: #c8b49f;
+        background: rgba($color: #000000, $alpha: 0.2);
+        h1 {
+          margin-left: 5%;
+          font-weight: 900;
+        }
+      }
+    }
+
+    // <PageContentContainer> 컴포넌트 (of <MyInfo>)
     .pageContentContainer-wrapper {
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 30px;
       .pageContentContainer {
+        height: 100%;
         .pageContentSection-wrapper {
+          height: 50%;
           .pageContentSection {
             box-sizing: content-box;
+            height: 100%;
             .flexRow:nth-child(1) {
               @include xyCenter();
               flex-direction: column;
               h2 {
-                border-bottom: 3px solid;
+                color: #0d1117;
+                font-weight: 800;
+                width: fit-content;
+                height: 10%;
+                margin: 0;
+                border-bottom: 3px solid #0d1117;
               }
               & > p {
+                color: rgb(158, 158, 158);
+                font-size: 0.8rem;
+                position: relative;
+                top: 5px;
                 left: 0;
+                margin: 0;
               }
             }
             .sectionArticle {
-              padding: 30px 0;
+              box-sizing: border-box;
+              width: 100%;
               height: 75%;
+              padding: 30px 0;
               @include xyCenter();
               .sectionArticle-column {
                 @include xyCenter();
+                box-sizing: border-box;
                 padding: 0;
+                width: 50%;
+                height: 100%;
+                display: flex;
+                // justify-content: center;
+                align-items: center;
               }
-              // PursuitArticle of <MyInfo> (media: phone)
+              //PursuitArticle of <MyInfo> (media: phone)
               &.PursuitArticle {
                 height: fit-content;
+                .sectionArticle-column:nth-child(1) {
+                  border-right: 0.5px solid rgba(158, 158, 158, 0.5);
+                }
                 .pursuit-box {
+                  box-sizing: border-box;
                   width: 100%;
                   height: fit-content;
+                  padding: 0 20px;
                   position: relative;
                   @include xyCenter();
                   .pursuitImage-wrapper {
                     z-index: -1;
+                    width: fit-content;
+                    display: flex;
+                    align-items: center;
                     position: absolute;
                     top: 35%;
                     padding: 0;
                     img {
-                      width: 60px;
+                      width: 12vw;
+                      height: auto;
                       opacity: 0.7;
                     }
                   }
                   .pursuitExplain-box {
                     @include xyCenter();
-                    font-size: 0.8rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    h3 {
+                      font-size: 3.3vw;
+                      margin: 0;
+                      padding-bottom: 10px;
+                    }
+                    .pursuitExplainContent {
+                      padding-top: 10px;
+                      p {
+                        font-size: 2.8vw;
+                        margin: 0;
+                      }
+                      p:nth-child(1) {
+                        padding-bottom: 5px;
+                      }
+                    }
                   }
                 }
                 .pursuit-box:nth-child(1) {
@@ -1086,14 +1240,18 @@
                 @include xyCenter();
                 .sectionArticle-column:nth-child(1) {
                   z-index: -1;
+                  width: 30%;
                   position: absolute;
                   display: flex;
                   align-items: center;
                   .myInfoImage-wrapper {
                     height: 90%;
+                    width: fit-content;
                     img {
-                      opacity: 0.3;
+                      height: 100%;
+                      width: auto;
                       border-radius: 20px;
+                      opacity: 0.3;
                     }
                   }
                 }
@@ -1102,14 +1260,26 @@
                   width: 80%;
                   font-size: 0.9rem;
                   div:nth-child(1) {
+                    padding-bottom: 30px;
+                    @include xyCenter();
                     display: none;
+                    h2 {
+                      font-weight: 800;
+                      margin: 0;
+                      position: relative;
+                      right: 30px;
+                    }
                   }
                   div:nth-child(2) {
                     ul {
+                      margin: 0;
                       padding-left: 20px;
                       li {
-                        font-size: 0.8rem;
+                        margin: 0 !important;
+                        padding: 8px;
                         padding-left: 0;
+                        list-style-type: circle;
+                        font-size: 2.8vw;
                       }
                     }
                   }
@@ -1124,58 +1294,230 @@
 
   // <Project> 컴포넌트 (media: phone)
   .project {
+    background-color: rgba($color: #a3cce7, $alpha: 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    .pageTitleContainer-wrapper,
     .pageContentContainer-wrapper {
+      height: 100vh;
+    }
+
+    // <PageTitleContainer> 컴포넌트 (of <Project>)
+    .pageTitleContainer-wrapper {
+      background-image: url("./img/notebook.jpg");
+      background-size: auto 100vh;
+      background-color: rgba($color: #7f561e, $alpha: 0.7);
+      background-repeat: no-repeat;
+      background-position-x: -400px;
+      background-attachment: fixed;
+      position: relative;
+      .pageTitleContainer {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        color: white;
+        background: rgba($color: #ffffff, $alpha: 0.13);
+        h1 {
+          margin-left: 5%;
+          font-weight: 900;
+        }
+      }
+    }
+
+    // <PageContentContainer> 컴포넌트 (of <Project>)
+    .pageContentContainer-wrapper {
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 30px;
       .pageContentContainer {
+        height: 100%;
         .pageContentSection-wrapper {
+          height: 50%;
           .pageContentSection {
             box-sizing: content-box;
+            height: 100%;
             .flexRow:nth-child(1) {
               @include xyCenter();
               flex-direction: column;
               h2 {
-                border-bottom: 3px solid;
+                color: #0d1117;
+                font-weight: 800;
+                width: fit-content;
+                height: 10%;
+                margin: 0;
+                border-bottom: 3px solid #0d1117;
               }
               & > p {
+                color: rgb(158, 158, 158);
+                font-size: 0.8rem;
+                position: relative;
+                top: 5px;
                 left: 0;
+                margin: 0;
               }
             }
             .sectionArticle {
-              padding: 30px 0;
+              width: 100%;
               height: 75%;
+              padding: 30px 0;
+              @include xyCenter();
+              .sectionArticle-column {
+                box-sizing: border-box;
+                padding: 20px 30px 20px 0;
+                width: 45%;
+                height: 90%;
+                &.sectionArticle-column:nth-child(2) {
+                  padding-right: 0;
+                  padding-left: 30px;
+                }
+                //.project-article 공통
+                &.project-article {
+                  .project-article-image {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($color: #6ea0c1, $alpha: 0.3);
+                    background-size: 93% 88%;
+                    // background-size: auto 100%;
+                    background-repeat: no-repeat;
+                    background-position-x: center;
+                    background-position-y: center;
+                    .project-article-overlay {
+                      @include xyCenter();
+                      flex-direction: column;
+                      z-index: 1;
+                      transition: all 0.25s ease-in-out;
+                      width: 100%;
+                      height: 100%;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      opacity: 0;
+                      p {
+                        text-align: center;
+                        font-size: 30px;
+                        font-weight: 700;
+                        margin: 0;
+                        padding: 5px 0;
+                        transition: all 0.3s ease-in-out;
+                      }
+                      &:hover {
+                        cursor: pointer;
+                        opacity: 1;
+                        background: rgba(0, 0, 0, 0.4);
+                        color: white;
+                        p {
+                          font-size: 35px;
+                        }
+                      }
+                    }
+                  }
+                  //.project-article - 1번째
+                  &.project-article:nth-child(1) {
+                    .project-article-image {
+                      background-image: url("./img/PizzaService_Menu.png");
+                    }
+                  }
+                  &.project-article:nth-child(2) {
+                    .project-article-image {
+                      background-image: url("./img/MyPortfolio_Home.png");
+                    }
+                  }
+                }
+              }
 
               // WebTechArticle of <Project> (media: phone)
               &.WebTechArticle {
-                padding: 30px;
+                position: relative;
+                left: -20px;
+                font-size: 0.9rem;
+                padding: 20px 20px;
+                box-sizing: border-box;
                 display: flex;
                 justify-content: space-between;
                 left: 0;
                 .sectionArticle-column {
                   @include xyCenter();
+                  @include flexColumn();
+                  justify-content: space-evenly;
                   padding: 0;
                   height: 100%;
                   &.sectionArticle-column:nth-child(2) {
                     padding-left: 0;
                   }
                   .webTech-box-wrapper {
+                    width: 100%;
+                    height: 30%;
+                    display: flex;
+                    align-items: center;
                     .webTech-box {
+                      box-sizing: border-box;
+                      width: 100%;
+                      height: 48%;
+                      @include flexRow();
                       .webTechImage-wrapper {
+                        width: 20%;
+                        @include xyCenter();
                         img {
-                          height: 30px;
+                          width: auto;
+                          height: 7.5vw;
                         }
                       }
                       .webTechGraph-wrapper {
+                        @include flexRow();
+                        align-items: center;
+                        width: 80%;
+                        height: 100%;
+                        position: relative;
+                        background: #d0e0f5;
                         margin-left: 8px;
                         border-radius: 8px;
                         .webTechGraph {
+                          font-family: "Nanum Square";
+                          display: flex;
+                          align-items: center;
+                          width: 2%;
+                          height: 100%;
+                          background-image: linear-gradient(
+                            to right,
+                            #eebdd6,
+                            #a264f5
+                          );
                           border-radius: 8px;
+                          transition: width 2s ease-in-out;
                           span {
+                            position: relative;
                             left: 10px;
-                            font-size: 0.9em;
+                            color: white;
+                            font-weight: 700;
+                            font-size: 3vw;
+                          }
+                          &.onGraphArea {
+                            &.webTechGraph_html {
+                              width: 80%;
+                            }
+                            &.webTechGraph_css {
+                              width: 80%;
+                            }
+                            &.webTechGraph_js {
+                              width: 60%;
+                            }
+                            &.webTechGraph_react {
+                              width: 70%;
+                            }
+                            &.webTechGraph_github {
+                              width: 40%;
+                            }
+                            &.webTechGraph_sass {
+                              width: 50%;
+                            }
                           }
                         }
                         .webTechGraphPercent {
-                          font-size: 0.9em;
-                          right: 5px;
+                          position: absolute;
+                          font-size: 3vw;
+                          right: 3px;
                         }
                       }
                     }
@@ -1185,7 +1527,8 @@
 
               // ProjectArticle of <Project> (media: phone)
               &.ProjectArticle {
-                padding: 30px;
+                box-sizing: border-box;
+                padding: 20px;
                 display: flex;
                 justify-content: space-between;
                 .sectionArticle-column:nth-child(1) {
@@ -1245,13 +1588,13 @@
       height: 90%;
       border-radius: 10px;
       .slick-slider > .slick-prev {
-        left: -30px;
+        left: -6vw;
       }
       .slick-slider > .slick-next {
-        right: -30px;
+        right: -6vw;
       }
       .slick-dots {
-        bottom: -30px;
+        bottom: -3.6vh;
       }
       .slick-slider,
       .slick-list,
@@ -1285,6 +1628,7 @@
               color: #2d2d2d;
               margin: 0;
               font-weight: 800;
+              font-size: 6.5vw;
             }
           }
           .modalXBtn-wrapper {
@@ -1294,6 +1638,7 @@
             top: 0;
             width: 5%;
             color: rgba(#e0e0e0, 1);
+            font-size: 3vw;
             &:hover {
               cursor: pointer;
               color: white;
@@ -1314,7 +1659,7 @@
             left: 0;
             top: -15px;
             margin-right: 0;
-            font-size: 1.5rem;
+            font-size: 3.5vw;
             color: rgb(94, 94, 94);
             font-weight: 800;
           }
@@ -1323,12 +1668,13 @@
             top: 0;
             box-sizing: content-box;
             width: fit-content;
-            padding: 5px 20px;
+            padding: 1vw 2vw;
             color: rgb(94, 94, 94);
             background-color: rgb(243, 236, 236);
             margin-right: 15px;
             border-radius: 5px;
             font-weight: 600;
+            font-size: 3.8vw;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
             &:nth-last-child(1) {
               margin-right: 0;
@@ -1344,10 +1690,12 @@
           border-radius: 10px;
           box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
           .slick-slider > .slick-prev {
-            left: -25px;
+            left: -5.3vw;
+            transform: scale(0.6);
           }
           .slick-slider > .slick-next {
-            right: -25px;
+            right: -5.3vw;
+            transform: scale(0.6);
           }
           .slick-slider,
           .slick-list,
@@ -1380,6 +1728,7 @@
                     h2 {
                       color: #2d2d2d;
                       font-weight: 800;
+                      font-size: 5vw;
                     }
                     img {
                       border-radius: 10px;
@@ -1415,10 +1764,11 @@
                         margin: 0;
                         padding-bottom: 0;
                         color: #2d2d2d;
+                        font-size: 3.8vw;
                       }
                     }
                     .modalContentArticle {
-                      font-size: 0.9rem;
+                      font-size: 3vw;
                       box-sizing: border-box;
                       height: 88%;
                       padding: 10px;
@@ -1493,6 +1843,7 @@
           h1 {
             color: white;
             font-weight: 900;
+            font-size: 8vw;
             margin: 0;
             margin-left: 0;
           }
