@@ -957,7 +957,7 @@
 }
 
 // media: tablet
-@media (max-width: 1023px) and (min-width: 768px) {
+@media (max-width: 1023.5px) and (min-width: 768px) {
   .pageTitleContainer-wrapper {
     width: 28vw;
   }
@@ -1922,7 +1922,7 @@
 }
 
 // media: phone
-@media (max-width: 767px) {
+@media (max-width: 767.5px) {
   .pageTitleContainer-wrapper {
     // visibility: hidden;
   }
