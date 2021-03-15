@@ -37,908 +37,6 @@
   @include flexColumn();
 }
 
-//<Modal> 컴포넌트
-.modal-overlay {
-  z-index: 199;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba($color: #000000, $alpha: 0.5);
-}
-.modal-wrapper {
-  z-index: 200;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
-  @include xyCenter();
-  .modal {
-    z-index: 201;
-    width: 80%;
-    height: 90%;
-    border-radius: 10px;
-    .slick-slider > .slick-prev {
-      left: -30px;
-    }
-    .slick-slider > .slick-next {
-      right: -30px;
-    }
-    .slick-dots {
-      bottom: -30px;
-    }
-    .slick-slider,
-    .slick-list,
-    .slick-track,
-    .slick-slide,
-    .slick-slide > div {
-      @include WH100Percent();
-      border-radius: 10px;
-    }
-    .modalPage-wrapper {
-      @include WH100Percent();
-      box-sizing: border-box;
-      padding: 4% 5%;
-      border-radius: 10px;
-      background: rgba(181, 176, 221, 0.88);
-      .modalTitle-box-wrapper {
-        position: relative;
-        top: -20px;
-        width: 100%;
-        height: 10%;
-        display: flex;
-        flex-direction: row;
-        .modalTitle-wrapper {
-          // width: 55%;
-          width: 95%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          .modalTitle {
-            color: #2d2d2d;
-            margin: 0;
-            font-weight: 800;
-          }
-        }
-        // 이 프로젝트 상세보기 Btn. JSX에서 주석처리.
-        // .moreDetail-btn-wrapper {
-        //   width: 40%;
-        //   height: 100%;
-        //   @include xyCenter();
-        //   .moreDetail-btn {
-        //     width: 80%;
-        //     height: 80%;
-        //     border-radius: 5px;
-        //     background-color: rgb(224, 224, 224);
-        //     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-        //     transition: box-shadow 0.2s ease-in-out;
-        //     @include xyCenter();
-        //     &:hover {
-        //       cursor: pointer;
-        //       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-        //     }
-        //     p {
-        //       margin: 0;
-        //     }
-        //   }
-        // }
-        .modalXBtn-wrapper {
-          @include xyCenter();
-          position: relative;
-          right: -15px;
-          width: 5%;
-          color: rgba(#e0e0e0, 1);
-          &:hover {
-            cursor: pointer;
-            color: white;
-          }
-        }
-      }
-      .modalLanguage-box-wrapper {
-        box-sizing: border-box;
-        width: 100%;
-        height: 10%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-        div:nth-child(1) {
-          position: relative;
-          top: -15px;
-          margin-right: 25px;
-          font-size: 1.5rem;
-          color: rgb(94, 94, 94);
-          font-weight: 800;
-        }
-        .modalLanguage {
-          position: relative;
-          top: -15px;
-          box-sizing: content-box;
-          width: fit-content;
-          padding: 5px 30px;
-          color: rgb(94, 94, 94);
-          background-color: rgb(243, 236, 236);
-          margin-right: 15px;
-          border-radius: 5px;
-          font-weight: 600;
-          // box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-        }
-      }
-      .modalContent-box-wrapper {
-        z-index: 1000;
-        width: 100%;
-        height: 80%;
-        background-color: rgb(243, 236, 236);
-        border-radius: 10px;
-        .slick-slider,
-        .slick-list,
-        .slick-track,
-        .slick-slide,
-        .slick-slide > div {
-          @include WH100Percent();
-          .modalContent-wrapper {
-            @include WH100Percent();
-            box-sizing: border-box;
-            padding: 3.5% 6%;
-            .modalContent {
-              @include WH100Percent();
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
-              .modalContentSection:nth-child(1) {
-                @include xyCenter();
-                width: 50%;
-                height: 100%;
-                border-radius: 10px;
-                background-color: rgb(224, 224, 224);
-                .modalImg-box {
-                  position: relative;
-                  top: -20px;
-                  width: 100%;
-                  height: fit-content;
-                  @include flexColumn();
-                  @include xyCenter();
-                  h2 {
-                    color: #2d2d2d;
-                    font-weight: 800;
-                  }
-                  img {
-                    border-radius: 10px;
-                    width: 90%;
-                    height: auto;
-                  }
-                }
-              }
-              .modalContentSection:nth-child(2) {
-                margin-left: 50px;
-                width: 48%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                .modalContentArticle-box {
-                  box-sizing: border-box;
-                  width: 100%;
-                  height: 30%;
-                  &.modalContentArticle-box:nth-child(1) {
-                    height: 37.5%;
-                  }
-                  &.modalContentArticle-box:nth-child(2) {
-                    height: 60%;
-                  }
-                  .modalContentArticleTitle-wrapper {
-                    h4 {
-                      margin: 0;
-                      padding-bottom: 10px;
-                      color: #2d2d2d;
-                    }
-                  }
-                  .modalContentArticle {
-                    font-size: 0.9rem;
-                    box-sizing: border-box;
-                    height: 75%;
-                    padding: 10px 20px;
-                    background-color: rgb(224, 224, 224);
-                    border-radius: 10px;
-                    overflow: auto;
-                    ul {
-                      margin: 0;
-                      padding-left: 20px;
-                      li {
-                        padding: 5px 0;
-                        list-style-type: circle;
-                      }
-                    }
-                  }
-                  &:nth-child(2) {
-                    @include flexColumn();
-                    justify-content: flex-end;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      //피자 프로젝트 modalPage
-      &.project_pizza-color {
-        background: rgba($color: #e9c649, $alpha: 0.88);
-      }
-      //포트폴리오 프로젝트 modalPage
-      &.project_portfolio-color {
-        background: rgba(181, 176, 221, 0.88);
-        .modalContent-wrapper_portfolio_home,
-        .modalContent-wrapper_portfolio_myInfo,
-        .modalContent-wrapper_portfolio_project,
-        .modalContent-wrapper_portfolio_contactMe {
-          .modalContentArticle-box:nth-child(1) {
-            height: 37.5% !important;
-          }
-          .modalContentArticle-box:nth-child(2) {
-            height: 60% !important;
-          }
-        }
-      }
-    }
-  }
-}
-
-// <Home> 컴포넌트
-.home-wrapper {
-  background-image: url("./img/air-balloons.jpg");
-  background-repeat: no-repeat;
-  background-color: rgba($color: #6ea0c1, $alpha: 0.8);
-  background-position-x: center;
-  background-position-y: center;
-  .home {
-    .menuHomeBar-wrapper {
-      height: 20vh;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      .menuHomeBar {
-        display: flex;
-        position: relative;
-        top: -10px;
-        right: 50px;
-        .menuHomeBarTab {
-          margin: 10px 20px;
-          font-weight: 600;
-          color: rgb(190, 190, 190);
-          transition: color 0.25s ease-in-out;
-          &.onCurrentPage {
-            color: white;
-          }
-          &:hover {
-            cursor: pointer;
-            color: white;
-          }
-        }
-      }
-    }
-    .homeTitle-wrapper {
-      height: 40vh;
-      @include xyCenter();
-      h1 {
-        color: white;
-        font-size: 45px;
-        text-align: center;
-      }
-    }
-    .homeStartBtn-wrapper {
-      height: 40vh;
-      @include xyCenter();
-      .homeStartBtn {
-        padding: 0 60px;
-        color: rgb(190, 190, 190);
-        background: rgba($color: #000000, $alpha: 0.25);
-        border-radius: 10px;
-        display: inline-block;
-        position: relative;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-        transition: box-shadow 0.2s ease-in-out;
-        &:hover {
-          color: white;
-          cursor: pointer;
-          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
-        }
-        h2 {
-          text-align: center;
-        }
-      }
-    }
-  }
-}
-
-// <MenuSideBar> 컴포넌트
-.menuSideBar-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: rgb(74, 66, 145);
-  &.onFixed {
-    position: fixed;
-  }
-  .menuSideBar {
-    padding: 100% 0;
-    box-sizing: border-box;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    .menuSideBarTab-wrapper {
-      padding: 50% 10%;
-      transition: color 0.35s ease-in-out;
-      &.onCurrentPage {
-        color: white;
-      }
-      &:hover {
-        cursor: pointer;
-        color: white;
-      }
-    }
-  }
-}
-
-// <MyInfo> 컴포넌트
-.myInfo {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  .pageTitleContainer-wrapper,
-  .pageContentContainer-wrapper,
-  .menuSideBar-wrapper {
-    height: 100vh;
-  }
-
-  // <PageTitleContainer> 컴포넌트 (of <MyInfo>)
-  .pageTitleContainer-wrapper {
-    background-image: url("./img/mountain.jpg");
-    background-size: auto 100vh;
-    background-color: rgba($color: #c8b49f, $alpha: 0.7);
-    background-repeat: no-repeat;
-    background-position-x: -500px;
-    // background-position-x: 580px;
-    background-attachment: fixed;
-    position: relative;
-    .pageTitleContainer {
-      width: 100%;
-      position: absolute;
-      top: 0;
-      color: white;
-      background: rgba($color: #000000, $alpha: 0.2);
-      h1 {
-        margin-left: 5%;
-        font-weight: 900;
-      }
-    }
-  }
-
-  // <PageContentContainer> 컴포넌트 (of <MyInfo>)
-  .pageContentContainer-wrapper {
-    height: 100vh;
-    box-sizing: border-box;
-    padding: 30px;
-    .pageContentContainer {
-      height: 100%;
-      .pageContentSection-wrapper {
-        height: 50%;
-        .pageContentSection {
-          height: 100%;
-          .flexRow:nth-child(1) {
-            h2 {
-              color: #0d1117;
-              font-weight: 800;
-              width: fit-content;
-              height: 10%;
-              margin: 0;
-              border-bottom: 5px solid #0d1117;
-            }
-            & > p {
-              color: rgb(158, 158, 158);
-              font-size: 0.8rem;
-              position: relative;
-              top: 5px;
-              left: 30px;
-              margin: 0;
-            }
-          }
-          .sectionArticle {
-            box-sizing: border-box;
-            width: 100%;
-            height: 90%;
-            padding: 30px 4%;
-            .sectionArticle-column {
-              box-sizing: border-box;
-              padding: 0 20px;
-              width: 50%;
-              height: 100%;
-              display: flex;
-              // justify-content: center;
-              align-items: center;
-            }
-            &.PursuitArticle {
-              .sectionArticle-column:nth-child(1) {
-                border-right: 0.5px solid rgba(158, 158, 158, 0.5);
-              }
-              .pursuit-box {
-                box-sizing: border-box;
-                width: 280px;
-                height: 50%;
-                padding: 0 20px;
-                .pursuitImage-wrapper {
-                  width: fit-content;
-                  display: flex;
-                  align-items: center;
-                  padding-right: 35px;
-                  img {
-                    width: 48px;
-                    height: auto;
-                  }
-                }
-                .pursuitExplain-box {
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  font-size: 0.9rem;
-                  h3 {
-                    margin: 0;
-                    padding-bottom: 10px;
-                  }
-                  .pursuitExplainContent {
-                    padding-top: 10px;
-                    p {
-                      margin: 0;
-                    }
-                    p:nth-child(1) {
-                      padding-bottom: 5px;
-                    }
-                  }
-                }
-              }
-              .pursuit-box:nth-child(1) {
-                padding-bottom: 10px;
-              }
-              .pursuit-box:nth-child(2) {
-                padding-top: 10px;
-              }
-            }
-            &.MyInfoArticle {
-              .sectionArticle-column:nth-child(1) {
-                width: 30%;
-                display: flex;
-                align-items: center;
-                .myInfoImage-wrapper {
-                  height: 90%;
-                  width: fit-content;
-                  img {
-                    height: 100%;
-                    width: auto;
-                    border-radius: 50%;
-                  }
-                }
-              }
-              .sectionArticle-column:nth-child(2) {
-                @include xyCenter();
-                width: 70%;
-                font-size: 0.9rem;
-                div:nth-child(1) {
-                  padding-bottom: 30px;
-                  @include xyCenter();
-                  h2 {
-                    font-weight: 800;
-                    margin: 0;
-                    position: relative;
-                    right: 30px;
-                  }
-                }
-                div:nth-child(2) {
-                  ul {
-                    margin: 0;
-                    li {
-                      margin: 0 !important;
-                      padding: 10px;
-                      list-style-type: circle;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-//<Project> 컴포넌트
-.project {
-  background-color: rgba($color: #a3cce7, $alpha: 0.2);
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  .pageTitleContainer-wrapper,
-  .pageContentContainer-wrapper {
-    height: 100vh;
-  }
-
-  // <PageTitleContainer> 컴포넌트 (of <Project>)
-  .pageTitleContainer-wrapper {
-    background-image: url("./img/notebook.jpg");
-    background-size: auto 100vh;
-    background-color: rgba($color: #7f561e, $alpha: 0.7);
-    background-repeat: no-repeat;
-    background-position-x: -400px;
-    background-attachment: fixed;
-    position: relative;
-    .pageTitleContainer {
-      width: 100%;
-      position: absolute;
-      top: 0;
-      color: white;
-      background: rgba($color: #ffffff, $alpha: 0.13);
-      h1 {
-        margin-left: 5%;
-        font-weight: 900;
-      }
-    }
-  }
-
-  // <PageContentContainer> 컴포넌트 (of <Project>)
-  .pageContentContainer-wrapper {
-    height: 100vh;
-    box-sizing: border-box;
-    padding: 30px;
-    .pageContentContainer {
-      height: 100%;
-      .pageContentSection-wrapper {
-        height: 50%;
-        .pageContentSection {
-          height: 100%;
-          .flexRow:nth-child(1) {
-            h2 {
-              color: #0d1117;
-              font-weight: 800;
-              width: fit-content;
-              height: 10%;
-              margin: 0;
-              border-bottom: 5px solid #0d1117;
-            }
-            & > p {
-              color: rgb(158, 158, 158);
-              font-size: 0.8rem;
-              position: relative;
-              top: 5px;
-              left: 30px;
-              margin: 0;
-            }
-          }
-          .sectionArticle {
-            width: 100%;
-            height: 90%;
-            @include xyCenter();
-            .sectionArticle-column {
-              box-sizing: border-box;
-              padding: 20px 30px 20px 0;
-              width: 45%;
-              height: 90%;
-              &.sectionArticle-column:nth-child(2) {
-                padding-right: 0;
-                padding-left: 30px;
-              }
-              //.project-article 공통
-              &.project-article {
-                .project-article-image {
-                  position: relative;
-                  width: 100%;
-                  height: 100%;
-                  background-color: rgba($color: #6ea0c1, $alpha: 0.3);
-                  background-size: 93% 88%;
-                  // background-size: auto 100%;
-                  background-repeat: no-repeat;
-                  background-position-x: center;
-                  background-position-y: center;
-                  .project-article-overlay {
-                    @include xyCenter();
-                    flex-direction: column;
-                    z-index: 1;
-                    transition: all 0.25s ease-in-out;
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    opacity: 0;
-                    p {
-                      text-align: center;
-                      font-size: 30px;
-                      font-weight: 700;
-                      margin: 0;
-                      padding: 5px 0;
-                      transition: all 0.3s ease-in-out;
-                    }
-                    &:hover {
-                      cursor: pointer;
-                      opacity: 1;
-                      background: rgba(0, 0, 0, 0.4);
-                      color: white;
-                      p {
-                        font-size: 35px;
-                      }
-                    }
-                  }
-                }
-                //.project-article - 1번째
-                &.project-article:nth-child(1) {
-                  .project-article-image {
-                    background-image: url("./img/PizzaService_Menu.png");
-                  }
-                }
-                &.project-article:nth-child(2) {
-                  .project-article-image {
-                    background-image: url("./img/MyPortfolio_Home.png");
-                  }
-                }
-              }
-            }
-            &.WebTechArticle {
-              position: relative;
-              left: -20px;
-              font-size: 0.9rem;
-              padding: 0 50px;
-              box-sizing: border-box;
-              .sectionArticle-column {
-                @include flexColumn();
-                justify-content: space-evenly;
-                .webTech-box-wrapper {
-                  width: 100%;
-                  height: 30%;
-                  display: flex;
-                  align-items: center;
-                  .webTech-box {
-                    box-sizing: border-box;
-                    width: 100%;
-                    height: 48%;
-                    @include flexRow();
-                    .webTechImage-wrapper {
-                      width: 20%;
-                      @include xyCenter();
-                      img {
-                        width: auto;
-                        height: 45px;
-                      }
-                    }
-                    .webTechGraph-wrapper {
-                      @include flexRow();
-                      align-items: center;
-                      width: 80%;
-                      height: 100%;
-                      position: relative;
-                      background: #d0e0f5;
-                      border-radius: 5px;
-                      .webTechGraph {
-                        font-family: "Nanum Square";
-                        display: flex;
-                        align-items: center;
-                        width: 2%;
-                        height: 100%;
-                        background-image: linear-gradient(
-                          to right,
-                          #eebdd6,
-                          #a264f5
-                        );
-                        border-radius: 5px;
-                        transition: width 2s ease-in-out;
-                        span {
-                          position: relative;
-                          left: 15px;
-                          color: white;
-                          font-weight: 700;
-                        }
-                        &.onGraphArea {
-                          &.webTechGraph_html {
-                            width: 80%;
-                          }
-                          &.webTechGraph_css {
-                            width: 80%;
-                          }
-                          &.webTechGraph_js {
-                            width: 60%;
-                          }
-                          &.webTechGraph_react {
-                            width: 70%;
-                          }
-                          &.webTechGraph_github {
-                            width: 40%;
-                          }
-                          &.webTechGraph_sass {
-                            width: 50%;
-                          }
-                        }
-                      }
-                      .webTechGraphPercent {
-                        position: absolute;
-                        right: 10px;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            &.ProjectArticle {
-              box-sizing: border-box;
-              padding: 0 50px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.contactMe-wrapper {
-  background-image: url("./img/nightSky.jpg");
-  background-repeat: no-repeat;
-  background-size: auto 150vh;
-  background-position-x: 100%;
-  background-position-y: 85%;
-  background-attachment: fixed;
-  .contactMe {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    position: relative;
-    .pageTitleContainer-wrapper {
-      position: absolute;
-      left: 0;
-      height: 100%;
-      background-color: rgba($color: #000000, $alpha: 0.1);
-      .pageTitleContainer {
-        @include xyCenter();
-        width: 95vw;
-        height: 25%;
-        background-color: rgba($color: #000000, $alpha: 0.1);
-        h1 {
-          color: white;
-          font-weight: 900;
-          margin: 0;
-          margin-left: 5%;
-          // position: relative;
-          // left: 10%;
-        }
-      }
-    }
-    .contactMeContentContainer-wrapper {
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-      .contactMeContentContainer {
-        @include WH100Percent();
-        box-sizing: border-box;
-        & > div:nth-child(1) {
-          width: 100%;
-          height: 25%;
-        }
-        .contactMeLink-wrapper {
-          width: 100%;
-          height: 35%;
-          @include xyCenter();
-          .contactMeLink-box {
-            font-family: "Nanum Square";
-            width: 100%;
-            display: flex;
-            justify-content: space-evenly;
-            .contactMeLink {
-              width: 100px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              opacity: 0.9;
-              &:hover {
-                cursor: pointer;
-                opacity: 1;
-                font-weight: 700;
-              }
-              p {
-                color: white;
-                font-size: 20px;
-                text-align: center;
-                margin: 0;
-                padding-top: 10px;
-              }
-            }
-
-            .contactMeLink > .contactMeLinkImage-wrapper {
-              @include xyCenter();
-              height: 64px;
-            }
-
-            .contactMeLinkImage-wrapper > img {
-              width: 56px;
-              height: 56px;
-              border-radius: 5px;
-            }
-
-            .contactMeLink:nth-child(2) > svg {
-              color: rgba(0, 0, 0, 0.8);
-            }
-            .contactMeLink:nth-child(3) > svg {
-              color: rgb(41, 128, 185);
-            }
-            .contactMeLink:nth-child(4) > svg {
-              color: rgb(236, 173, 173);
-            }
-          }
-        }
-        .contactMeAddress-wrapper {
-          width: 100%;
-          height: 40%;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          .contactMeAddress {
-            width: fit-content;
-            margin: 0;
-            padding: 10px 20px;
-            position: relative;
-            top: 5%;
-            right: 10%;
-            color: rgb(200, 200, 200);
-            font-size: 32px;
-            font-weight: 700;
-          }
-          .contactMeAddress:nth-child(2) {
-            color: white;
-            padding: 0;
-            position: relative;
-            .eMailAddress {
-              padding: 10px 20px;
-              &:hover {
-                cursor: pointer;
-              }
-            }
-            .copyMessage {
-              opacity: 0;
-              transition: opacity 0.8s ease-out;
-              width: 130px;
-              font-size: 20px;
-              padding: 10px 15px;
-              text-align: center;
-              position: absolute;
-              background: rgba(0, 0, 0, 0.6);
-              border-radius: 8px;
-              top: -80%;
-              left: -15%;
-              &::after {
-                top: 100%;
-                left: 50%;
-                border: solid transparent;
-                content: "";
-                height: 0;
-                width: 0;
-                position: absolute;
-                pointer-events: none;
-                border-color: rgba(0, 0, 0, 0);
-                border-top-color: rgba(0, 0, 0, 0.6);
-                border-width: 10px;
-                margin-left: -10px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 // 미디어쿼리 (for 반응형 웹)
 // media: desktop
 @media (min-width: 1024px) {
@@ -947,33 +45,1884 @@
   }
   .pageContentContainer-wrapper,
   .contactMeContentContainer-wrapper {
-    width: 67vw;
+    width: 73vw;
   }
   .menuSideBar-wrapper {
     // width: 6vw;
-    width: 60px;
+    width: 5vw;
     z-index: 100;
+  }
+
+  //<Modal> 컴포넌트 (media: desktop)
+  .modal-overlay {
+    z-index: 199;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.5);
+  }
+  .modal-wrapper {
+    z-index: 200;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    @include xyCenter();
+    .modal {
+      z-index: 201;
+      width: 80%;
+      height: 90%;
+      border-radius: 10px;
+      .slick-slider > .slick-prev {
+        left: -30px;
+      }
+      .slick-slider > .slick-next {
+        right: -30px;
+      }
+      .slick-dots {
+        bottom: -30px;
+      }
+      .slick-slider,
+      .slick-list,
+      .slick-track,
+      .slick-slide,
+      .slick-slide > div {
+        @include WH100Percent();
+        border-radius: 10px;
+      }
+      .modalPage-wrapper {
+        @include WH100Percent();
+        box-sizing: border-box;
+        padding: 4% 5%;
+        border-radius: 10px;
+        background: rgba(181, 176, 221, 0.88);
+        .modalTitle-box-wrapper {
+          position: relative;
+          top: -20px;
+          width: 100%;
+          height: 10%;
+          display: flex;
+          flex-direction: row;
+          .modalTitle-wrapper {
+            // width: 55%;
+            width: 95%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            .modalTitle {
+              color: #2d2d2d;
+              margin: 0;
+              font-weight: 800;
+            }
+          }
+          // 이 프로젝트 상세보기 Btn. JSX에서 주석처리.
+          // .moreDetail-btn-wrapper {
+          //   width: 40%;
+          //   height: 100%;
+          //   @include xyCenter();
+          //   .moreDetail-btn {
+          //     width: 80%;
+          //     height: 80%;
+          //     border-radius: 5px;
+          //     background-color: rgb(224, 224, 224);
+          //     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+          //     transition: box-shadow 0.2s ease-in-out;
+          //     @include xyCenter();
+          //     &:hover {
+          //       cursor: pointer;
+          //       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+          //     }
+          //     p {
+          //       margin: 0;
+          //     }
+          //   }
+          // }
+          .modalXBtn-wrapper {
+            @include xyCenter();
+            position: relative;
+            right: -15px;
+            width: 5%;
+            color: rgba(#e0e0e0, 1);
+            &:hover {
+              cursor: pointer;
+              color: white;
+            }
+          }
+        }
+        .modalLanguage-box-wrapper {
+          box-sizing: border-box;
+          width: 100%;
+          height: 10%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          div:nth-child(1) {
+            position: relative;
+            top: -15px;
+            margin-right: 25px;
+            font-size: 1.5rem;
+            color: rgb(94, 94, 94);
+            font-weight: 800;
+          }
+          .modalLanguage {
+            position: relative;
+            top: -15px;
+            box-sizing: content-box;
+            width: fit-content;
+            padding: 5px 30px;
+            color: rgb(94, 94, 94);
+            background-color: rgb(243, 236, 236);
+            margin-right: 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            // box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+          }
+        }
+        .modalContent-box-wrapper {
+          z-index: 1000;
+          width: 100%;
+          height: 80%;
+          background-color: rgb(243, 236, 236);
+          border-radius: 10px;
+          .slick-slider,
+          .slick-list,
+          .slick-track,
+          .slick-slide,
+          .slick-slide > div {
+            @include WH100Percent();
+            .modalContent-wrapper {
+              @include WH100Percent();
+              box-sizing: border-box;
+              padding: 3.5% 6%;
+              .modalContent {
+                @include WH100Percent();
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                .modalContentSection:nth-child(1) {
+                  @include xyCenter();
+                  width: 50%;
+                  height: 100%;
+                  border-radius: 10px;
+                  background-color: rgb(224, 224, 224);
+                  .modalImg-box {
+                    position: relative;
+                    top: -20px;
+                    width: 100%;
+                    height: fit-content;
+                    @include flexColumn();
+                    @include xyCenter();
+                    h2 {
+                      color: #2d2d2d;
+                      font-weight: 800;
+                    }
+                    img {
+                      border-radius: 10px;
+                      width: 90%;
+                      height: auto;
+                    }
+                  }
+                }
+                .modalContentSection:nth-child(2) {
+                  margin-left: 50px;
+                  width: 48%;
+                  height: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  .modalContentArticle-box {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 30%;
+                    &.modalContentArticle-box:nth-child(1) {
+                      height: 37.5%;
+                    }
+                    &.modalContentArticle-box:nth-child(2) {
+                      height: 60%;
+                    }
+                    .modalContentArticleTitle-wrapper {
+                      h4 {
+                        margin: 0;
+                        padding-bottom: 10px;
+                        color: #2d2d2d;
+                      }
+                    }
+                    .modalContentArticle {
+                      font-size: 0.9rem;
+                      box-sizing: border-box;
+                      height: 75%;
+                      padding: 10px 20px;
+                      background-color: rgb(224, 224, 224);
+                      border-radius: 10px;
+                      overflow: auto;
+                      ul {
+                        margin: 0;
+                        padding-left: 20px;
+                        li {
+                          padding: 5px 0;
+                          list-style-type: circle;
+                        }
+                      }
+                    }
+                    &:nth-child(2) {
+                      @include flexColumn();
+                      justify-content: flex-end;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        //피자 프로젝트 modalPage (media: desktop)
+        &.project_pizza-color {
+          background: rgba($color: #e9c649, $alpha: 0.88);
+        }
+        //포트폴리오 프로젝트 modalPage (media: desktop)
+        &.project_portfolio-color {
+          background: rgba(181, 176, 221, 0.88);
+          .modalContent-wrapper_portfolio_home,
+          .modalContent-wrapper_portfolio_myInfo,
+          .modalContent-wrapper_portfolio_project,
+          .modalContent-wrapper_portfolio_contactMe {
+            .modalContentArticle-box:nth-child(1) {
+              height: 37.5% !important;
+            }
+            .modalContentArticle-box:nth-child(2) {
+              height: 60% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // <Home> 컴포넌트 (media: desktop)
+  .home-wrapper {
+    background-image: url("./img/air-balloons.jpg");
+    background-repeat: no-repeat;
+    background-color: rgba($color: #6ea0c1, $alpha: 0.8);
+    background-position-x: center;
+    background-position-y: center;
+    .home {
+      .menuHomeBar-wrapper {
+        height: 20vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .menuHomeBar {
+          display: flex;
+          position: relative;
+          top: -10px;
+          right: 50px;
+          .menuHomeBarTab {
+            margin: 10px 20px;
+            font-weight: 600;
+            color: rgb(190, 190, 190);
+            transition: color 0.25s ease-in-out;
+            &.onCurrentPage {
+              color: white;
+            }
+            &:hover {
+              cursor: pointer;
+              color: white;
+            }
+          }
+        }
+      }
+      .homeTitle-wrapper {
+        height: 40vh;
+        @include xyCenter();
+        h1 {
+          color: white;
+          font-size: 45px;
+          text-align: center;
+        }
+      }
+      .homeStartBtn-wrapper {
+        height: 40vh;
+        @include xyCenter();
+        .homeStartBtn {
+          padding: 0 60px;
+          color: rgb(190, 190, 190);
+          background: rgba($color: #000000, $alpha: 0.25);
+          border-radius: 10px;
+          display: inline-block;
+          position: relative;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+          transition: box-shadow 0.2s ease-in-out;
+          &:hover {
+            color: white;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+          }
+          h2 {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  // <MenuSideBar> 컴포넌트 (media: desktop)
+  .menuSideBar-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgb(74, 66, 145);
+    &.onFixed {
+      position: fixed;
+    }
+    .menuSideBar {
+      padding: 100% 0;
+      box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      .menuSideBarTab-wrapper {
+        font-size: 0.8em;
+        padding: 50% 10%;
+        transition: color 0.35s ease-in-out;
+        &.onCurrentPage {
+          color: white;
+        }
+        &:hover {
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+  }
+
+  // <MyInfo> 컴포넌트 (media: desktop)
+  .myInfo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    .pageTitleContainer-wrapper,
+    .pageContentContainer-wrapper,
+    .menuSideBar-wrapper {
+      height: 100vh;
+    }
+
+    // <PageTitleContainer> 컴포넌트 (of <MyInfo>) (media: desktop)
+    .pageTitleContainer-wrapper {
+      background-image: url("./img/mountain.jpg");
+      background-size: auto 100vh;
+      background-color: rgba($color: #c8b49f, $alpha: 0.7);
+      background-repeat: no-repeat;
+      background-position-x: -500px;
+      background-attachment: fixed;
+      position: relative;
+      .pageTitleContainer {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        color: white;
+        background: rgba($color: #000000, $alpha: 0.2);
+        h1 {
+          margin-left: 5%;
+          font-weight: 900;
+        }
+      }
+    }
+
+    // <PageContentContainer> 컴포넌트 (of <MyInfo>) (media: desktop)
+    .pageContentContainer-wrapper {
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 3vw 8vw 3vw 3vw;
+      .pageContentContainer {
+        height: 100%;
+        .pageContentSection-wrapper {
+          height: 50%;
+          .pageContentSection {
+            height: 100%;
+            .flexRow:nth-child(1) {
+              h2 {
+                color: #0d1117;
+                font-weight: 800;
+                width: fit-content;
+                height: 10%;
+                margin: 0;
+                border-bottom: 5px solid #0d1117;
+              }
+              & > p {
+                color: rgb(158, 158, 158);
+                font-size: 0.8rem;
+                position: relative;
+                top: 5px;
+                left: 30px;
+                margin: 0;
+              }
+            }
+            .sectionArticle {
+              box-sizing: border-box;
+              width: 100%;
+              height: 90%;
+              padding: 30px 4%;
+              .sectionArticle-column {
+                box-sizing: border-box;
+                padding: 0 20px;
+                width: 50%;
+                height: 100%;
+                display: flex;
+                // justify-content: center;
+                align-items: center;
+              }
+              &.PursuitArticle {
+                .sectionArticle-column:nth-child(1) {
+                  border-right: 0.5px solid rgba(158, 158, 158, 0.5);
+                }
+                .pursuit-box {
+                  box-sizing: border-box;
+                  @include xyCenter();
+                  width: 100%;
+                  height: 50%;
+                  .pursuitImage-wrapper {
+                    width: fit-content;
+                    display: flex;
+                    align-items: center;
+                    padding-right: 35px;
+                    img {
+                      width: 48px;
+                      height: auto;
+                    }
+                  }
+                  .pursuitExplain-box {
+                    width: 60%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-size: 0.9rem;
+                    h3 {
+                      margin: 0;
+                      padding-bottom: 10px;
+                    }
+                    .pursuitExplainContent {
+                      padding-top: 10px;
+                      p {
+                        margin: 0;
+                      }
+                      p:nth-child(1) {
+                        padding-bottom: 5px;
+                      }
+                    }
+                  }
+                }
+                .pursuit-box:nth-child(1) {
+                  padding-bottom: 10px;
+                }
+                .pursuit-box:nth-child(2) {
+                  padding-top: 10px;
+                }
+              }
+              &.MyInfoArticle {
+                .sectionArticle-column:nth-child(1) {
+                  width: 30%;
+                  @include xyCenter();
+                  .myInfoImage-wrapper {
+                    height: 90%;
+                    width: fit-content;
+                    img {
+                      height: 100%;
+                      width: auto;
+                      border-radius: 50%;
+                    }
+                  }
+                }
+                .sectionArticle-column:nth-child(2) {
+                  @include xyCenter();
+                  width: 70%;
+                  div:nth-child(1) {
+                    padding-bottom: 30px;
+                    @include xyCenter();
+                    h2 {
+                      font-weight: 800;
+                      margin: 0;
+                      font-size: 22px;
+                    }
+                  }
+                  div:nth-child(2) {
+                    ul {
+                      margin: 0;
+                      li {
+                        margin: 0 !important;
+                        padding-bottom: 15px;
+                        list-style-type: circle;
+                        font-size: 14px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //<Project> 컴포넌트 (media: desktop)
+  .project {
+    background-color: rgba($color: #a3cce7, $alpha: 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    .pageTitleContainer-wrapper,
+    .pageContentContainer-wrapper {
+      height: 100vh;
+    }
+
+    // <PageTitleContainer> 컴포넌트 (of <Project>)
+    .pageTitleContainer-wrapper {
+      background-image: url("./img/notebook.jpg");
+      background-size: auto 100vh;
+      background-color: rgba($color: #7f561e, $alpha: 0.7);
+      background-repeat: no-repeat;
+      background-position-x: -400px;
+      background-attachment: fixed;
+      position: relative;
+      .pageTitleContainer {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        color: white;
+        background: rgba($color: #ffffff, $alpha: 0.13);
+        h1 {
+          margin-left: 5%;
+          font-weight: 900;
+        }
+      }
+    }
+
+    // <PageContentContainer> 컴포넌트 (of <Project>) (media: desktop)
+    .pageContentContainer-wrapper {
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 3vw 8vw 3vw 3vw;
+      .pageContentContainer {
+        height: 100%;
+        .pageContentSection-wrapper {
+          height: 50%;
+          .pageContentSection {
+            height: 100%;
+            @include flexColumn();
+            justify-content: space-around;
+            .flexRow:nth-child(1) {
+              h2 {
+                color: #0d1117;
+                font-weight: 800;
+                width: fit-content;
+                margin: 0;
+                border-bottom: 5px solid #0d1117;
+              }
+              & > p {
+                color: rgb(158, 158, 158);
+                font-size: 0.8rem;
+                position: relative;
+                top: 5px;
+                left: 30px;
+                margin: 0;
+              }
+            }
+            .sectionArticle {
+              box-sizing: border-box;
+              width: 100%;
+              height: 85%;
+              padding: 0 30px;
+              @include xyCenter();
+              justify-content: space-evenly;
+              .sectionArticle-column {
+                box-sizing: border-box;
+                padding: 20px 20px 20px 0;
+                width: 45%;
+                height: 90%;
+                &.sectionArticle-column:nth-child(2) {
+                  padding-right: 0;
+                  padding-left: 20px;
+                }
+                //.project-article 공통 (media: desktop)
+                &.project-article {
+                  .project-article-image {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($color: #6ea0c1, $alpha: 0.3);
+                    background-size: auto 90%;
+                    // background-size: auto 100%;
+                    background-repeat: no-repeat;
+                    background-position-x: center;
+                    background-position-y: center;
+                    .project-article-overlay {
+                      @include xyCenter();
+                      flex-direction: column;
+                      z-index: 1;
+                      transition: all 0.25s ease-in-out;
+                      width: 100%;
+                      height: 100%;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      opacity: 0;
+                      p {
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 700;
+                        margin: 0;
+                        padding: 5px 0;
+                        transition: all 0.3s ease-in-out;
+                      }
+                      &:hover {
+                        cursor: pointer;
+                        opacity: 1;
+                        background: rgba(0, 0, 0, 0.4);
+                        color: white;
+                        p {
+                          font-size: 26px;
+                        }
+                      }
+                    }
+                  }
+                  //.project-article - 1번째 (media: desktop)
+                  &.project-article:nth-child(1) {
+                    .project-article-image {
+                      background-image: url("./img/PizzaService_Menu.png");
+                    }
+                  }
+                  &.project-article:nth-child(2) {
+                    .project-article-image {
+                      background-image: url("./img/MyPortfolio_Home.png");
+                    }
+                  }
+                }
+              }
+              &.WebTechArticle {
+                font-size: 0.9rem;
+                box-sizing: border-box;
+                .sectionArticle-column {
+                  @include flexColumn();
+                  justify-content: space-evenly;
+                  .webTech-box-wrapper {
+                    width: 100%;
+                    height: 30%;
+                    display: flex;
+                    align-items: center;
+                    .webTech-box {
+                      box-sizing: border-box;
+                      width: 100%;
+                      height: 48%;
+                      @include flexRow();
+                      .webTechImage-wrapper {
+                        width: 20%;
+                        @include xyCenter();
+                        img {
+                          width: auto;
+                          height: 45px;
+                        }
+                      }
+                      .webTechGraph-wrapper {
+                        @include flexRow();
+                        align-items: center;
+                        width: 80%;
+                        height: 100%;
+                        position: relative;
+                        background: #d0e0f5;
+                        border-radius: 5px;
+                        .webTechGraph {
+                          font-family: "Nanum Square";
+                          display: flex;
+                          align-items: center;
+                          width: 2%;
+                          height: 100%;
+                          background-image: linear-gradient(
+                            to right,
+                            #eebdd6,
+                            #a264f5
+                          );
+                          border-radius: 5px;
+                          transition: width 2s ease-in-out;
+                          span {
+                            position: relative;
+                            left: 15px;
+                            color: white;
+                            font-weight: 700;
+                          }
+                          &.onGraphArea {
+                            &.webTechGraph_html {
+                              width: 80%;
+                            }
+                            &.webTechGraph_css {
+                              width: 80%;
+                            }
+                            &.webTechGraph_js {
+                              width: 60%;
+                            }
+                            &.webTechGraph_react {
+                              width: 70%;
+                            }
+                            &.webTechGraph_github {
+                              width: 40%;
+                            }
+                            &.webTechGraph_sass {
+                              width: 50%;
+                            }
+                          }
+                        }
+                        .webTechGraphPercent {
+                          position: absolute;
+                          right: 10px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .contactMe-wrapper {
+    background-image: url("./img/nightSky.jpg");
+    background-repeat: no-repeat;
+    background-size: auto 135vh;
+    background-color: #03041d;
+    background-position-x: 100%;
+    background-position-y: 85%;
+    background-attachment: fixed;
+    .contactMe {
+      padding-right: 5vw;
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      position: relative;
+      .pageTitleContainer-wrapper {
+        position: absolute;
+        left: 0;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.1);
+        .pageTitleContainer {
+          @include xyCenter();
+          width: 94vw;
+          height: 25%;
+          background-color: rgba($color: #000000, $alpha: 0.1);
+          h1 {
+            color: white;
+            font-weight: 900;
+            margin: 0;
+            margin-left: 5%;
+          }
+        }
+      }
+      .contactMeContentContainer-wrapper {
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        .contactMeContentContainer {
+          @include WH100Percent();
+          box-sizing: border-box;
+          & > div:nth-child(1) {
+            width: 100%;
+            height: 25%;
+          }
+          .contactMeLink-wrapper {
+            width: 100%;
+            height: 35%;
+            @include xyCenter();
+            .contactMeLink-box {
+              font-family: "Nanum Square";
+              width: 100%;
+              display: flex;
+              justify-content: space-evenly;
+              .contactMeLink {
+                width: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                opacity: 0.9;
+                &:hover {
+                  cursor: pointer;
+                  opacity: 1;
+                  font-weight: 700;
+                }
+                p {
+                  color: white;
+                  font-size: 18px;
+                  text-align: center;
+                  margin: 0;
+                  padding-top: 10px;
+                }
+              }
+
+              .contactMeLink > .contactMeLinkImage-wrapper {
+                @include xyCenter();
+                height: 64px;
+              }
+
+              .contactMeLinkImage-wrapper > img {
+                width: 56px;
+                height: 56px;
+                border-radius: 5px;
+                transform: scale(0.8);
+              }
+
+              .contactMeLink:nth-child(2) > svg {
+                color: rgba(0, 0, 0, 0.8);
+                transform: scale(0.8);
+              }
+              .contactMeLink:nth-child(3) > svg {
+                color: rgb(41, 128, 185);
+                transform: scale(0.8);
+              }
+              .contactMeLink:nth-child(4) > svg {
+                color: rgb(236, 173, 173);
+                transform: scale(0.8);
+              }
+            }
+          }
+          .contactMeAddress-wrapper {
+            width: 100%;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            .contactMeAddress {
+              width: fit-content;
+              margin: 0;
+              padding: 10px 20px;
+              position: relative;
+              top: 5%;
+              right: 10%;
+              color: rgb(200, 200, 200);
+              font-size: 28px;
+              font-weight: 700;
+            }
+            .contactMeAddress:nth-child(2) {
+              color: white;
+              padding: 0;
+              position: relative;
+              .eMailAddress {
+                padding: 10px 20px;
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+              .copyMessage {
+                opacity: 0;
+                transition: opacity 0.8s ease-out;
+                width: 130px;
+                font-size: 20px;
+                padding: 10px 15px;
+                text-align: center;
+                position: absolute;
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 8px;
+                top: -80%;
+                left: -15%;
+                &::after {
+                  top: 100%;
+                  left: 50%;
+                  border: solid transparent;
+                  content: "";
+                  height: 0;
+                  width: 0;
+                  position: absolute;
+                  pointer-events: none;
+                  border-color: rgba(0, 0, 0, 0);
+                  border-top-color: rgba(0, 0, 0, 0.6);
+                  border-width: 10px;
+                  margin-left: -10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 // media: tablet
-@media (max-width: 1023px) and (min-width: 768px) {
+@media (max-width: 1023.5px) and (min-width: 768px) {
   .pageTitleContainer-wrapper {
     width: 28vw;
   }
   .pageContentContainer-wrapper,
   .contactMeContentContainer-wrapper {
-    width: 65vw;
+    width: 72vw;
   }
   .menuSideBar-wrapper {
-    // width: 7vw;
-    width: 55px;
+    width: 5vw;
     z-index: 100;
+  }
+
+  // <Modal> 컴포넌트 (media: tablet)
+  .modal-overlay {
+    z-index: 199;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.5);
+  }
+  .modal-wrapper {
+    z-index: 200;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    @include xyCenter();
+    .modal {
+      z-index: 201;
+      width: 87%;
+      height: 90%;
+      border-radius: 10px;
+      .slick-slider > .slick-prev {
+        left: -30px;
+        transform: scale(0.8);
+      }
+      .slick-slider > .slick-next {
+        right: -30px;
+        transform: scale(0.8);
+      }
+      .slick-dots {
+        bottom: -3.6vh;
+      }
+      .slick-slider,
+      .slick-list,
+      .slick-track,
+      .slick-slide,
+      .slick-slide > div {
+        @include WH100Percent();
+        border-radius: 10px;
+      }
+      .modalPage-wrapper {
+        @include WH100Percent();
+        box-sizing: border-box;
+        padding: 4% 5%;
+        border-radius: 10px;
+        background: rgba(181, 176, 221, 0.88);
+        .modalTitle-box-wrapper {
+          position: relative;
+          top: 0;
+          width: 100%;
+          height: 10%;
+          display: flex;
+          flex-direction: row;
+          .modalTitle-wrapper {
+            width: 100%;
+            height: 100%;
+            @include xyCenter();
+            .modalTitle {
+              position: relative;
+              top: -10px;
+              color: #2d2d2d;
+              margin: 0;
+              font-weight: 800;
+              font-size: 3.5vw;
+            }
+          }
+          .modalXBtn-wrapper {
+            @include xyCenter();
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 5%;
+            color: rgba(#e0e0e0, 1);
+            font-size: 1.7vw;
+            &:hover {
+              cursor: pointer;
+              color: white;
+            }
+          }
+        }
+        .modalLanguage-box-wrapper {
+          position: relative;
+          box-sizing: border-box;
+          width: 100%;
+          height: 10%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          div:nth-child(1) {
+            position: absolute;
+            left: 50px;
+            top: -5px;
+            margin-right: 0;
+            font-size: 1.7vw;
+            color: rgb(94, 94, 94);
+            font-weight: 800;
+          }
+          .modalLanguage {
+            position: relative;
+            top: 0;
+            box-sizing: content-box;
+            width: fit-content;
+            padding: 8px 12px;
+            color: rgb(94, 94, 94);
+            background-color: rgb(243, 236, 236);
+            margin-right: 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 2vw;
+            &:nth-last-child(1) {
+              margin-right: 0;
+            }
+          }
+        }
+        .modalContent-box-wrapper {
+          z-index: 1000;
+          width: 97%;
+          height: 77%;
+          margin: 0 auto;
+          background-color: rgb(243, 236, 236);
+          border-radius: 10px;
+          .slick-slider > .slick-prev {
+            left: -30px;
+            transform: scale(0.8);
+          }
+          .slick-slider > .slick-next {
+            right: -30px;
+            transform: scale(0.8);
+          }
+          .slick-slider,
+          .slick-list,
+          .slick-track,
+          .slick-slide,
+          .slick-slide > div {
+            @include WH100Percent();
+            .modalContent-wrapper {
+              @include WH100Percent();
+              box-sizing: border-box;
+              padding: 3%;
+              .modalContent {
+                @include WH100Percent();
+                @include xyCenter();
+                flex-direction: column;
+                justify-content: space-between;
+                .modalContentSection:nth-child(1) {
+                  @include xyCenter();
+                  width: 100%;
+                  height: 49%;
+                  border-radius: 10px;
+                  background-color: rgb(224, 224, 224);
+                  .modalImg-box {
+                    position: relative;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    @include flexColumn();
+                    @include xyCenter();
+                    justify-content: space-evenly;
+                    h2 {
+                      color: #2d2d2d;
+                      font-weight: 800;
+                      font-size: 2vw;
+                      margin: 0;
+                    }
+                    img {
+                      border-radius: 10px;
+                      width: auto;
+                      height: 70%;
+                    }
+                  }
+                }
+                .modalContentSection:nth-child(2) {
+                  margin-left: 0;
+                  width: 100%;
+                  height: 47%;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  .modalContentArticle-box {
+                    box-sizing: border-box;
+                    width: 48%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    &.modalContentArticle-box:nth-child(1) {
+                      height: 100%;
+                    }
+                    &.modalContentArticle-box:nth-child(2) {
+                      height: 100%;
+                    }
+                    .modalContentArticleTitle-wrapper {
+                      height: 10%;
+                      display: flex;
+                      justify-content: center;
+                      margin-bottom: 15px;
+                      h4 {
+                        margin: 0;
+                        padding-bottom: 0;
+                        color: #2d2d2d;
+                        font-size: 2vw;
+                      }
+                    }
+                    .modalContentArticle {
+                      font-size: 1.5vw;
+                      box-sizing: border-box;
+                      height: 88%;
+                      padding: 10px;
+                      background-color: rgb(224, 224, 224);
+                      border-radius: 10px;
+                      overflow: auto;
+                      ul {
+                        margin: 0;
+                        padding-left: 15px;
+                        li {
+                          padding: 5px 0;
+                          list-style-type: circle;
+                        }
+                      }
+                    }
+                    &:nth-child(2) {
+                      @include flexColumn();
+                      justify-content: space-between;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        //피자 프로젝트 modalPage
+        &.project_pizza-color {
+          background: rgba($color: #e9c649, $alpha: 0.88);
+        }
+        //포트폴리오 프로젝트 modalPage
+        &.project_portfolio-color {
+          background: rgba(181, 176, 221, 0.88);
+          .modalContent-wrapper_portfolio_home,
+          .modalContent-wrapper_portfolio_myInfo,
+          .modalContent-wrapper_portfolio_project,
+          .modalContent-wrapper_portfolio_contactMe {
+            .modalContentArticle-box:nth-child(1) {
+              height: 100% !important;
+            }
+            .modalContentArticle-box:nth-child(2) {
+              height: 100% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // <Home> 컴포넌트 (media: tablet)
+  .home-wrapper {
+    background-image: url("./img/air-balloons.jpg");
+    background-repeat: no-repeat;
+    background-color: rgba($color: #6ea0c1, $alpha: 0.8);
+    background-position-x: center;
+    background-position-y: center;
+    .home {
+      .menuHomeBar-wrapper {
+        height: 20vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .menuHomeBar {
+          display: flex;
+          position: relative;
+          top: -10px;
+          right: 50px;
+          .menuHomeBarTab {
+            margin: 10px 20px;
+            font-weight: 600;
+            color: rgb(190, 190, 190);
+            transition: color 0.25s ease-in-out;
+            &.onCurrentPage {
+              color: white;
+            }
+            &:hover {
+              cursor: pointer;
+              color: white;
+            }
+          }
+        }
+      }
+      .homeTitle-wrapper {
+        height: 40vh;
+        @include xyCenter();
+        h1 {
+          color: white;
+          font-size: 45px;
+          text-align: center;
+        }
+      }
+      .homeStartBtn-wrapper {
+        height: 40vh;
+        @include xyCenter();
+        .homeStartBtn {
+          padding: 0 60px;
+          color: rgb(190, 190, 190);
+          background: rgba($color: #000000, $alpha: 0.25);
+          border-radius: 10px;
+          display: inline-block;
+          position: relative;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+          transition: box-shadow 0.2s ease-in-out;
+          &:hover {
+            color: white;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+          }
+          h2 {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  // <MenuSideBar> 컴포넌트 (media: tablet)
+  .menuSideBar-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgb(74, 66, 145);
+    &.onFixed {
+      position: fixed;
+    }
+    .menuSideBar {
+      padding: 100% 0;
+      box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      .menuSideBarTab-wrapper {
+        padding: 50% 10%;
+        transition: color 0.35s ease-in-out;
+        font-size: 1.5vw;
+        &.onCurrentPage {
+          color: white;
+        }
+        &:hover {
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+  }
+
+  // <MyInfo> 컴포넌트 (media: tablet)
+  .myInfo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    .pageTitleContainer-wrapper,
+    .pageContentContainer-wrapper,
+    .menuSideBar-wrapper {
+      height: 100vh;
+    }
+
+    // <PageTitleContainer> 컴포넌트 (of <MyInfo>) (media: tablet)
+    .pageTitleContainer-wrapper {
+      background-image: url("./img/mountain.jpg");
+      background-size: auto 100vh;
+      background-color: rgba($color: #c8b49f, $alpha: 0.7);
+      background-repeat: no-repeat;
+      background-position-x: -500px;
+      // background-position-x: 580px;
+      background-attachment: fixed;
+      position: relative;
+      .pageTitleContainer {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        color: white;
+        background: rgba($color: #000000, $alpha: 0.2);
+        h1 {
+          margin-left: 5%;
+          font-weight: 900;
+        }
+      }
+    }
+
+    // <PageContentContainer> 컴포넌트 (of <MyInfo>) (media: tablet)
+    .pageContentContainer-wrapper {
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 3vw 8vw 3vw 3vw;
+      .pageContentContainer {
+        height: 100%;
+        .pageContentSection-wrapper {
+          height: 50%;
+          .pageContentSection {
+            height: 100%;
+            .flexRow:nth-child(1) {
+              h2 {
+                color: #0d1117;
+                font-weight: 800;
+                width: fit-content;
+                height: 10%;
+                margin: 0;
+                border-bottom: 5px solid #0d1117;
+              }
+              & > p {
+                color: rgb(158, 158, 158);
+                font-size: 0.8rem;
+                position: relative;
+                top: 5px;
+                left: 30px;
+                margin: 0;
+              }
+            }
+            .sectionArticle {
+              box-sizing: border-box;
+              width: 100%;
+              height: 90%;
+              padding: 30px 0;
+              .sectionArticle-column {
+                box-sizing: border-box;
+                padding: 0;
+                width: 50%;
+                height: 100%;
+                display: flex;
+                // justify-content: center;
+                align-items: center;
+              }
+              &.PursuitArticle {
+                .sectionArticle-column:nth-child(1) {
+                  border-right: 0.5px solid rgba(158, 158, 158, 0.5);
+                }
+                .pursuit-box {
+                  box-sizing: border-box;
+                  width: 100%;
+                  height: 50%;
+                  padding: 0 20px;
+                  .pursuitImage-wrapper {
+                    width: fit-content;
+                    display: flex;
+                    align-items: center;
+                    padding-right: 10%;
+                    img {
+                      width: 4vw;
+                      height: auto;
+                    }
+                  }
+                  .pursuitExplain-box {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-size: 0.9rem;
+                    h3 {
+                      font-size: 2vw;
+                      margin: 0;
+                      padding-bottom: 10px;
+                    }
+                    .pursuitExplainContent {
+                      font-size: 1.5vw;
+                      padding-top: 10px;
+                      p {
+                        margin: 0;
+                      }
+                      p:nth-child(1) {
+                        padding-bottom: 5px;
+                      }
+                    }
+                  }
+                }
+                .pursuit-box:nth-child(1) {
+                  padding-bottom: 10px;
+                }
+                .pursuit-box:nth-child(2) {
+                  padding-top: 10px;
+                }
+              }
+              &.MyInfoArticle {
+                .sectionArticle-column:nth-child(1) {
+                  width: 30%;
+                  display: flex;
+                  align-items: center;
+                  .myInfoImage-wrapper {
+                    width: 100%;
+                    height: 80%;
+                    max-height: 500px;
+                    background-image: url("./img/myInfo_myPicture.jpg");
+                    background-size: auto 100%;
+                    background-position-x: 70%;
+                    background-position-y: 50%;
+                    background-repeat: no-repeat;
+                    border-radius: 30px;
+                    img {
+                      display: none;
+                      height: 100%;
+                      width: auto;
+                      border-radius: 0;
+                    }
+                  }
+                }
+                .sectionArticle-column:nth-child(2) {
+                  @include xyCenter();
+                  width: 70%;
+                  font-size: 1rem;
+                  div:nth-child(1) {
+                    padding-bottom: 15px;
+                    @include xyCenter();
+                    h2 {
+                      font-weight: 800;
+                      margin: 0;
+                      position: relative;
+                      right: 0;
+                      font-size: 2.5vw;
+                    }
+                  }
+                  div:nth-child(2) {
+                    ul {
+                      margin: 0;
+                      li {
+                        margin: 0 !important;
+                        padding: 0;
+                        padding-bottom: 10px;
+                        list-style-type: circle;
+                        font-size: 1.5vw;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //<Project> 컴포넌트 (media: tablet)
+  .project {
+    background-color: rgba($color: #a3cce7, $alpha: 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    .pageTitleContainer-wrapper,
+    .pageContentContainer-wrapper {
+      height: 100vh;
+    }
+
+    // <PageTitleContainer> 컴포넌트 (of <Project>) (media: tablet)
+    .pageTitleContainer-wrapper {
+      background-image: url("./img/notebook.jpg");
+      background-size: auto 100vh;
+      background-color: rgba($color: #7f561e, $alpha: 0.7);
+      background-repeat: no-repeat;
+      background-position-x: -400px;
+      background-attachment: fixed;
+      position: relative;
+      .pageTitleContainer {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        color: white;
+        background: rgba($color: #ffffff, $alpha: 0.13);
+        h1 {
+          margin-left: 5%;
+          font-weight: 900;
+        }
+      }
+    }
+
+    // <PageContentContainer> 컴포넌트 (of <Project>) (media: tablet)
+    .pageContentContainer-wrapper {
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 3vw 8vw 3vw 3vw;
+      .pageContentContainer {
+        height: 100%;
+        .pageContentSection-wrapper {
+          height: 50%;
+          .pageContentSection {
+            height: 100%;
+            .flexRow:nth-child(1) {
+              h2 {
+                color: #0d1117;
+                font-weight: 800;
+                width: fit-content;
+                height: 10%;
+                margin: 0;
+                border-bottom: 5px solid #0d1117;
+              }
+              & > p {
+                color: rgb(158, 158, 158);
+                font-size: 0.8rem;
+                position: relative;
+                top: 5px;
+                left: 30px;
+                margin: 0;
+              }
+            }
+            .sectionArticle {
+              width: 100%;
+              height: 90%;
+              @include xyCenter();
+              justify-content: space-between;
+              .sectionArticle-column {
+                box-sizing: border-box;
+                padding: 0 20px 0 0;
+                width: 45%;
+                height: 90%;
+                &.sectionArticle-column:nth-child(2) {
+                  padding-right: 0;
+                  padding-left: 20px;
+                }
+                //.project-article 공통 (media: tablet)
+                &.project-article {
+                  .project-article-image {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($color: #6ea0c1, $alpha: 0.3);
+                    background-size: 93% 88%;
+                    // background-size: auto 100%;
+                    background-repeat: no-repeat;
+                    background-position-x: center;
+                    background-position-y: center;
+                    .project-article-overlay {
+                      @include xyCenter();
+                      flex-direction: column;
+                      z-index: 1;
+                      transition: all 0.25s ease-in-out;
+                      width: 100%;
+                      height: 100%;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      opacity: 0;
+                      p {
+                        text-align: center;
+                        font-size: 30px;
+                        font-weight: 700;
+                        margin: 0;
+                        padding: 5px 0;
+                        transition: all 0.3s ease-in-out;
+                      }
+                      &:hover {
+                        cursor: pointer;
+                        opacity: 1;
+                        background: rgba(0, 0, 0, 0.4);
+                        color: white;
+                        p {
+                          font-size: 35px;
+                        }
+                      }
+                    }
+                  }
+                  //.project-article - 1번째 (media: tablet)
+                  &.project-article:nth-child(1) {
+                    .project-article-image {
+                      background-image: url("./img/PizzaService_Menu.png");
+                    }
+                  }
+                  &.project-article:nth-child(2) {
+                    .project-article-image {
+                      background-image: url("./img/MyPortfolio_Home.png");
+                    }
+                  }
+                }
+              }
+              &.WebTechArticle {
+                position: relative;
+                left: 0;
+                font-size: 0.9rem;
+                padding: 0;
+                box-sizing: border-box;
+                .sectionArticle-column {
+                  width: 48%;
+                  @include flexColumn();
+                  justify-content: space-evenly;
+                  .webTech-box-wrapper {
+                    width: 100%;
+                    height: 30%;
+                    display: flex;
+                    align-items: center;
+                    .webTech-box {
+                      box-sizing: border-box;
+                      width: 100%;
+                      height: 48%;
+                      @include flexRow();
+                      align-items: center;
+                      .webTechImage-wrapper {
+                        width: 20%;
+                        @include xyCenter();
+                        img {
+                          width: auto;
+                          height: 4vw;
+                          max-height: 40px;
+                        }
+                      }
+                      .webTechGraph-wrapper {
+                        margin-left: 10px;
+                        @include flexRow();
+                        align-items: center;
+                        width: 80%;
+                        height: 70%;
+                        position: relative;
+                        background: #d0e0f5;
+                        border-radius: 5px;
+                        .webTechGraph {
+                          font-family: "Nanum Square";
+                          display: flex;
+                          align-items: center;
+                          width: 2%;
+                          height: 100%;
+                          background-image: linear-gradient(
+                            to right,
+                            #eebdd6,
+                            #a264f5
+                          );
+                          border-radius: 5px;
+                          transition: width 2s ease-in-out;
+                          span {
+                            position: relative;
+                            left: 15px;
+                            color: white;
+                            font-weight: 700;
+                            font-size: 1.7vw;
+                          }
+                          &.onGraphArea {
+                            &.webTechGraph_html {
+                              width: 80%;
+                            }
+                            &.webTechGraph_css {
+                              width: 80%;
+                            }
+                            &.webTechGraph_js {
+                              width: 60%;
+                            }
+                            &.webTechGraph_react {
+                              width: 70%;
+                            }
+                            &.webTechGraph_github {
+                              width: 40%;
+                            }
+                            &.webTechGraph_sass {
+                              width: 50%;
+                            }
+                          }
+                        }
+                        .webTechGraphPercent {
+                          position: absolute;
+                          right: 10px;
+                          font-size: 1.5vw;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              &.ProjectArticle {
+                box-sizing: border-box;
+                padding: 0;
+                display: flex;
+                justify-content: space-between;
+                .project-article {
+                  width: 48%;
+                  height: 80%;
+                  .project-article-image {
+                    background-size: auto 90%;
+                    .project-article-overlay {
+                      p {
+                        font-size: 1.5vw;
+                      }
+                      &:hover {
+                        p {
+                          font-size: 3vw;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //<ContactMe> 컴포넌트 (media: tablet)
+  .contactMe-wrapper {
+    background-image: url("./img/nightSky.jpg");
+    background-repeat: no-repeat;
+    background-size: auto 100vh;
+    background-position-x: 50%;
+    background-position-y: 0;
+    background-attachment: fixed;
+    padding-right: 5vw;
+    .contactMe {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      position: relative;
+      .pageTitleContainer-wrapper {
+        position: absolute;
+        left: 0;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0);
+        .pageTitleContainer {
+          @include xyCenter();
+          width: 93vw;
+          height: 25%;
+          background-color: rgba($color: #000000, $alpha: 0.2);
+          h1 {
+            color: white;
+            font-weight: 900;
+            font-size: 32px;
+            margin: 0;
+            margin-left: 0;
+          }
+        }
+      }
+      .contactMeContentContainer-wrapper {
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        .contactMeContentContainer {
+          @include WH100Percent();
+          box-sizing: border-box;
+          & > div:nth-child(1) {
+            width: 100%;
+            height: 25%;
+          }
+          .contactMeLink-wrapper {
+            width: 100%;
+            height: 35%;
+            @include xyCenter();
+            .contactMeLink-box {
+              font-family: "Nanum Square";
+              width: 100%;
+              display: flex;
+              justify-content: space-evenly;
+              .contactMeLink {
+                width: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                opacity: 0.9;
+                &:hover {
+                  cursor: pointer;
+                  opacity: 1;
+                  font-weight: 700;
+                }
+                p.contactMeLinkName {
+                  color: white;
+                  font-size: 2vw;
+                  text-align: center;
+                  margin: 0;
+                  padding-top: 1vw;
+                }
+              }
+              .contactMeLink > .contactMeLinkImage-wrapper {
+                @include xyCenter();
+                height: 64px;
+              }
+              .contactMeLinkImage-wrapper > img {
+                width: 5vw;
+                height: auto;
+                border-radius: 5px;
+              }
+              .contactMeLink:nth-child(2) > svg {
+                color: rgba(0, 0, 0, 0.8);
+                width: 5vw;
+              }
+              .contactMeLink:nth-child(3) > svg {
+                color: rgb(41, 128, 185);
+                width: 5vw;
+              }
+              .contactMeLink:nth-child(4) > svg {
+                color: rgb(236, 173, 173);
+                width: 5vw;
+              }
+            }
+          }
+          .contactMeAddress-wrapper {
+            width: 100%;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            .contactMeAddress {
+              width: fit-content;
+              margin: 0;
+              padding: 10px 20px;
+              position: relative;
+              top: 10%;
+              right: 10%;
+              color: rgb(200, 200, 200);
+              font-size: 3vw;
+              font-weight: 700;
+            }
+            .contactMeAddress:nth-child(2) {
+              color: white;
+              padding: 0;
+              position: relative;
+              .eMailAddress {
+                padding: 10px 20px;
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+              .copyMessage {
+                opacity: 0;
+                transition: opacity 0.8s ease-out;
+                width: 130px;
+                font-size: 2vw;
+                padding: 10px 15px;
+                text-align: center;
+                position: absolute;
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 8px;
+                top: -80%;
+                left: -15%;
+                &::after {
+                  top: 100%;
+                  left: 50%;
+                  border: solid transparent;
+                  content: "";
+                  height: 0;
+                  width: 0;
+                  position: absolute;
+                  pointer-events: none;
+                  border-color: rgba(0, 0, 0, 0);
+                  border-top-color: rgba(0, 0, 0, 0.6);
+                  border-width: 10px;
+                  margin-left: -10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 // media: phone
-@media (max-width: 767px) {
+@media (max-width: 767.5px) {
   .pageTitleContainer-wrapper {
     // visibility: hidden;
   }
@@ -1691,11 +2640,11 @@
           box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
           .slick-slider > .slick-prev {
             left: -5.3vw;
-            transform: scale(0.6);
+            transform: scale(0.8);
           }
           .slick-slider > .slick-next {
             right: -5.3vw;
-            transform: scale(0.6);
+            transform: scale(0.8);
           }
           .slick-slider,
           .slick-list,
