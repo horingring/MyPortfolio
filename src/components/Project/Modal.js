@@ -23,6 +23,7 @@ const Modal = (props) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     draggable: false,
+    touchMove: false,
     initialSlide: initialProjectNum - 1,
   };
 
