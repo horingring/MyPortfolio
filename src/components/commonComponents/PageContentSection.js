@@ -35,7 +35,7 @@ const PageContentSection = (props) => {
     } else if (contentTitle === "Web Tech") {
       titleComment = "다음의 기술을 사용할 수 있습니다.";
     } else if (contentTitle === "Project") {
-      titleComment = "이러한 프로젝트를 수행하였습니다.";
+      titleComment = "클릭/터치로 수행한 프로젝트를 열람할 수 있습니다.";
     }
     return titleComment;
   };
